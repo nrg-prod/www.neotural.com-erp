@@ -1,0 +1,40 @@
+* {
+  font-size: 13px;
+  color: white;
+}
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+#background-color {
+  background: #243641;
+  width: 97%;
+  height: 100%;
+  margin: 20px;
+}
+#Report-box {
+  background: #1b2931;
+  height: 150px;
+  width: 90%;
+  margin-left: 30px;
+  outline: none;
+  cursor: pointer;
+}
+#Report-box1 {
+  background: #1b2931;
+  height: 150px;
+  width: 90%;
+  outline: none;
+  cursor: pointer;
+}
+#Report-box2 {
+  background: #1b2931;
+  height: 150px;
+  width: 90%;
+  outline: none;
+  cursor: pointer;
+}
+#text-size {
+  font-size: x-large;
+  font-weight: bold;
+}

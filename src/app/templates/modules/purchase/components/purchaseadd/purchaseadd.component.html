@@ -1,0 +1,197 @@
+<div class="mb-3" style="font-size: 12px;">        
+  <div class="grid-container3">
+    <div></div>
+    <button id="x" (click)="addPurchaseOrderClose()"> X </button>
+    <form name="purchaseForm" (ngSubmit)="purchaseForm.form.valid && addPurchaseOrder(data)"
+      #purchaseForm="ngForm" novalidate>       
+      <div>
+        <!-- <button type="button" class="close" style="color: #1c313e;" aria-label="Close" (click)="addPurchaseOrderClose()">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+        <h2 id="h2ID" class="m-t-20px">{{data.dialogTitle}}</h2>
+
+        <div class="column">
+          <div class="row">
+            <label id="po-label">Date </label>
+            <div id="date-borderbox" class="text-field-align">
+              <div id="date-box" *ngIf="data.id === undefined">{{purchaseDate | date : 'dd-MM-yyyy'}}</div>
+              <div id="date-box" *ngIf="data.id !== ''">{{data.date | date : 'dd-MM-yyyy'}}</div>
+            </div>
+
+            <label id="po-label">Product Category</label>
+            <select id="selected-box" class="m-t-5px" [(ngModel)]="model.category" #category="ngModel" name="category"
+              (ngModelChange)="getNetAmount(model.productName,model.qty,model.category)" autocomplete="off" required>
+              <option id="options-box" [ngValue]="undefined" hidden selected> Select Category </option>
+              <option id="options-box" *ngFor="let itemcategory of productList" 
+              [value]="itemcategory.categoryname+'-'+itemcategory.categorycode">
+              {{ itemcategory.categoryname }}</option>                     
+            </select> 
+
+            <div *ngIf="category.errors && (category.dirty || category.touched) ||
+              (purchaseForm.submitted && !category.valid )">
+              <span [hidden]="!category.errors.required" class="spanerror">
+                  Required field cannot be left blank
+              </span>
+            </div>
+
+            <label id="po-label">Quantity</label>
+            <input type="number" min="0" id="po-textbox" class="m-t-5px" [(ngModel)]="model.qty" #qty="ngModel" 
+              name="qty" (ngModelChange)="getNetAmount(model.productName,model.qty,model.category)" 
+              autocomplete="off" required  />
+            
+            <div *ngIf="qty.errors && (qty.dirty || qty.touched) ||
+              (purchaseForm.submitted && !qty.valid )">
+              <span [hidden]="!qty.errors.required" class="spanerror">
+                  Required field cannot be left blank
+              </span>
+            </div>
+            <!-- name="qty" (input)="onSubTotalCalc($event.target.value, 'qty')"> -->
+
+            <label id="po-label">Unit :  {{ this.model.unit }} </label>
+            <!-- <p style="font-size: 12px;">0.003</p>
+            <input type="number" min="0" id="po-textbox" style="width:100%;border: none !important;" 
+              [(ngModel)]="model.price" #price="ngModel" name="price" 
+              (input)="onSubTotalCalc($event.target.value, 'price')"> -->
+              
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="row">
+            <label id="po-label" style="margin-left: auto;">Vendor</label>
+            <select id="selected-box" class="text-field-align" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName"
+              (ngModelChange)="getVendorProduct(this.model.vendorName)" style="margin-left: auto;"
+              autocomplete="off" required >
+              <option id="options-box" [value]="null"  class="text-field-align">Select Vendor</option>
+              <option id="options-box" *ngFor="let item of vendorList" 
+                [value]="item.vendorName+'-'+item.vendorcode"> {{item.vendorName}} 
+              </option>
+            </select>
+
+            <div *ngIf="vendorName.errors && (vendorName.dirty || vendorName.touched) ||
+              (purchaseForm.submitted && !vendorName.valid )">
+              <span [hidden]="!vendorName.errors.required" class="spanerror1">
+                  Required field cannot be left blank
+              </span>
+            </div>
+
+            <label id="po-label" style="margin-left: auto;">Product </label>
+            <select id="selected-box" class="m-t-5px" [(ngModel)]="model.productName" #productName="ngModel" name="productName"
+              (ngModelChange)="getNetAmount(model.productName,model.qty,model.category)" style="margin-left: auto;" autocomplete="off" required>
+              <option id="options-box" [ngValue]="undefined" hidden selected> Select Product </option>
+              <option id="options-box" *ngFor="let item of productList" 
+              [value]="item.productname+'-'+item.prodcode"> 
+              {{ item.productname }} </option>
+            </select>
+
+            <div *ngIf="productName.errors && (productName.dirty || productName.touched) ||
+              (purchaseForm.submitted && !productName.valid )">
+              <span [hidden]="!productName.errors.required" class="spanerror1">
+                  Required field cannot be left blank
+              </span>
+            </div>
+
+            <label id="po-label" style="margin-left: auto;">Price</label>
+            <label class="m-t-5px" id="po-textbox" style="margin-left: auto;border: 1px solid  #2C4655;
+              padding-top: 4px;" name="unit">  {{ this.model.unitPrice }} </label>
+            
+          </div>
+        </div>
+                
+        <!--<div class="grid-container2 m-t-20px">
+            <div id="po-label">Date</div>
+            <div id="po-label">Vendor</div>
+          </div>
+                
+          <div class="grid-container2">
+            <div id="date-borderbox" class="text-field-align">
+              <div id="date-box" *ngIf="data.id === undefined">{{purchaseDate | date : 'dd-MM-yyyy'}}</div>
+              <div id="date-box" *ngIf="data.id !== ''">{{data.date | date : 'dd-MM-yyyy'}}</div>
+            </div>
+            
+            <div>
+              <select id="selected-box" class="text-field-align" [(ngModel)]="model.vendorName" #vendorName="ngModel" name="vendorName">
+                <option id="options-box" [value]="null"  class="text-field-align">Select Vendor</option>
+                <option id="options-box" *ngFor="let item of vendorList" 
+                  [value]="item.vendorName+'-'+item.vendorcode"> {{item.vendorName}} 
+                </option>
+              </select>
+            </div>
+          </div>
+                
+          <div id="po-label" class="m-t-20px">Product Category</div>
+          <select id="selected-box" class="m-t-5px" style="height: 28px;" [(ngModel)]="model.category" #category="ngModel" name="category">
+            <option id="options-box" [ngValue]="undefined" hidden selected> Select Category </option>
+            <option id="options-box" *ngFor="let itemcategory of categoryList" 
+            [value]="itemcategory.name+'-'+itemcategory.categorycode">
+              
+            {{ itemcategory.name }}</option>                     
+          </select> 
+                  
+          <div class="grid-container6">
+            <div>
+              <div id="po-label">Product</div>
+              <select id="selected-box" class="m-t-5px" [(ngModel)]="model.productName" #productName="ngModel" name="productName">
+                <option id="options-box" [ngValue]="undefined" hidden selected> Select Product </option>
+                <option id="options-box" *ngFor="let item of productList" 
+                [value]="item.productname+'-'+item.prodcode"> 
+                {{ item.productname }} </option>
+              </select>
+            </div>
+          
+            <div>
+          
+              <div id="po-label">Price</div>
+              <input type="number" min="0" id="po-textbox" style="width:100%;border: none !important;" 
+                [(ngModel)]="model.price" #price="ngModel" name="price" 
+              (input)="onSubTotalCalc($event.target.value, 'price')">
+            </div>
+          </div> 
+                
+          <div class="grid-container7">
+            <div>
+              <div id="po-label">Quantity</div>
+              <input type="number" min="0" id="po-textbox" class="m-t-5px" [(ngModel)]="model.qty" #qty="ngModel" 
+                name="qty" (input)="onSubTotalCalc($event.target.value, 'qty')">
+            </div>
+                
+            <div>
+                  
+              <div id="po-label">Unit</div>
+              <input type="text" class="m-t-5px" style="width:35%" id="po-textbox" [(ngModel)]="model.unit" #unit="ngModel" 
+                name="unit">
+            </div>
+          </div>
+        </div> -->
+
+        <hr class="hrLine">
+                  
+        <div class="grid-container4">
+          <div></div>
+          <div> <p id="totID">Total</p></div>
+          <div>
+            <p id="pID" *ngIf="this.model.productName !== undefined && this.model.qty === undefined">
+              {{ this.model.unitPrice }}</p>
+            <p id="pID" *ngIf="this.model.productName !== undefined && this.model.qty !== undefined">
+                  {{ this.model.netAmount }}</p>
+            <p id="pID" *ngIf="this.model.productName === undefined">
+              {{this.model.subtotal === 0 ? '0.00':this.model.subtotal}}</p>
+          </div>
+        </div>
+                  
+        <div class="update-btn" style="margin: 20px 0px;">
+          <button id="add-btn">{{data.dialogText}}</button>
+        </div>
+      </div>
+                   
+    </form>                   
+  </div>
+
+</div>      
+          <!-- Submit Button -->
+        <!-- </div> -->
+     <!-- </div>
+    </div>                    
+  </div>
+  <br/><br/><br/>
+</div>-->

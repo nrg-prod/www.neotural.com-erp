@@ -1,0 +1,105 @@
+<div class="grid-container">
+  <button id="x" (click)="addEmployeeClose()"> X </button>
+  <form name="employeeForm" (ngSubmit)="employeeForm.form.valid && saveEmployee()"
+    #employeeForm="ngForm" novalidate>
+    <div class="row">
+      <div class="column">
+        <fieldset class="form-group"> 
+          <div class="custom-file fileInputProfileWrap">
+              <p class="error">{{imageError}}</p>
+              <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+              <div class="img-space">   
+                <ng-container *ngIf="isImageSaved; else elseTemplate">
+                    <img [src]="cardImageBase64" />
+                </ng-container>
+                <ng-template #elseTemplate> 
+                  <img id="imageplaceholder" src="./../../assets/images/placeholder.png" class="img-responsive"> 
+                </ng-template>
+              </div>
+          </div>
+        </fieldset>
+        <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+        <div> </div>
+        <br/>
+      </div>
+      <div class="column">
+  
+        <label class="heading">Employee Name </label>
+        <input type="text" name="name" id="textbox1" [(ngModel)]="this.model.name" 
+          #name="ngModel" autocomplete="off" required/>
+  
+        <div *ngIf="name.errors && (name.dirty || name.touched) ||
+          (employeeForm.submitted && !name.valid )">
+          <span [hidden]="!name.errors.required" class="spanerror">
+              Required field cannot be left blank
+          </span>
+        </div>
+  
+        <label class="heading">Employee Rank </label>
+        <input type="text" name="rank" id="textbox2" [(ngModel)]="this.model.rank" 
+          #rank="ngModel" autocomplete="off"/>
+  
+        <label class="heading">Phone Number </label>
+        <input type="text" name="phonenumber" id="textbox3" [(ngModel)]="this.model.phonenumber" 
+          #phonenumber="ngModel" autocomplete="off"/>
+  
+  
+        <label class="heading">Employee Address </label>
+        <input type="text" name="address" id="textbox4" [(ngModel)]="this.model.address" 
+          #address="ngModel" autocomplete="off"/>
+        
+        <label class="heading">Employee Email </label>
+        <input type="text" name="email" id="textbox5" [(ngModel)]="this.model.email" 
+          #email="ngModel" autocomplete="off"/>
+        
+        <label class="heading">Date of Birth</label>
+        <input type="date" name="dob" id="textbox6" [(ngModel)]="this.model.dob" 
+          #dob="ngModel" autocomplete="off"/>
+
+        <label class="heading">Department Name</label>
+        <input type="text" name="departmentname" id="textbox6" [(ngModel)]="this.model.departmentname" 
+          #departmentname="ngModel" autocomplete="off"/>
+        <div> </div>
+        <br/>
+      </div>
+      <div class="column">
+        
+        <label class="heading">Contract Number </label>
+        <input type="text" name="contractnumber" id="textbox7" [(ngModel)]="this.model.contractnumber" 
+          #contractnumber="ngModel" />
+  
+        <label class="heading">NPWP Number </label>
+        <input type="text" name="npwp" id="textbox8" [(ngModel)]="this.model.npwp" 
+          #npwp="ngModel" autocomplete="off"/>
+  
+        <label class="heading">Employee BPJS </label>
+        <input type="text" name="bpjs" id="textbox9" [(ngModel)]="this.model.bpjs" 
+          #bpjs="ngModel" autocomplete="off"/>
+  
+  
+        <label class="heading">Monthly Salary </label>
+        <input type="text" name="monthlysalary" id="textbox10" [(ngModel)]="this.model.monthlysalary" 
+          #monthlysalary="ngModel" autocomplete="off"/>
+        
+        <label class="heading1">Work Hour </label>
+        <input type="text" name="workHour" id="textbox11" [(ngModel)]="this.model.workHour" 
+          #workHour="ngModel" autocomplete="off"/>
+        
+                
+        <label class="heading">Annual Leave </label>
+        <input type="text" name="annualLeave" id="textbox12" [(ngModel)]="this.model.annualLeave" 
+          #annualLeave="ngModel" autocomplete="off"/>
+
+        <label class="heading1">Location</label>
+        <input type="text" name="location" id="textbox6" [(ngModel)]="this.model.location" 
+          #location="ngModel" autocomplete="off"/>
+  
+        <div> </div>
+        <br/>
+        <button>Add</button>
+        <div style="margin-top: 15px;"> </div>
+      </div>
+
+    </div>
+  </form>
+</div>

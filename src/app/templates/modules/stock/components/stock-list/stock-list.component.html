@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-4">
+  <h4>Stock List</h4> 
+</div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+
+    <table class="table" *ngIf="stockTable">
+      <thead>
+        <tr>
+          <th>Invoice Date</th>
+          <th>Category Name</th>
+          <th>Product Code</th>
+          <th>Product Name</th>
+          <th>Stock</th>
+          <th></th>
+          <th>Status</th>
+          <th>Unit</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let c of stockList; let i = index"> 
+        <tr>
+          <td>{{c.invoicedate}}</td>
+          <td>{{c.category}}</td>
+          <td>{{c.itemcode}}</td>
+          <td>{{c.itemname}}</td>
+          <td style="width:10%;">
+            <span *ngIf="!c.editable">{{c.recentStock}}</span>
+            <input type="text" [(ngModel)]="c.recentStock" #recentStock="ngModel"
+              name="recentStock" *ngIf="c.editable" />
+          </td>
+          <td></td>
+          <td>{{c.status}}</td>
+          <td>{{c.unit}}
+            <span class="edit-delete-icon user-icon" *ngIf="!c.editable">
+              <span class="fas fa-pen" (click)="editStock(c)" ></span>
+            </span>
+
+            <span class="edit-delete-icon user-icon" *ngIf="c.editable">
+              <span class="fas fa-check" (click)="updateStock(c.id,c.recentStock)" ></span>
+              <span class="fas fa-times" (click)="cancelStock(c)" ></span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Loading Image Start -->
+<div class="row">
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">			
+    <img *ngIf="loadinggif" class="loadingimage" src="/assets/images/rotateload.gif"/> 
+  </div>
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">
+  </div>
+</div>
+<!-- Loading Image End -->

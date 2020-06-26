@@ -1,0 +1,115 @@
+<div id="discountedit-secondlayer">
+    <form name="addnewcategory" (ngSubmit)="updateDiscount()"> 
+    <div class="row">
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1"></div>
+    <div class="col-11 col-md-11 col-sm-11 col-lg-11">
+        <div class="row" style="margin-top: 15px;">
+            <div id="editicon-background">
+            <i class="fa fa-pencil-square-o" id="disedit-icon" aria-hidden="true"></i> 
+            </div>
+            <h2>Discount Edit</h2>
+        </div>
+    </div>
+    </div>
+    <div style="height: 10px;"></div>
+    <div class="row">
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1"></div>
+    
+    <div class="col-6 col-md-6 col-sm-6 col-lg-6">
+        <div class="row">
+            <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+            <label id="text-cursor">Category </label>
+            </div>
+            <div class="col-2 col-md-2 col-sm-2 col-lg-2">
+                <select id="editselect-box"  name ="selectcategory" [(ngModel)]="model.categorycode" 
+                #categorycode="ngModel" required>
+                    <option value="">---- Select ----</option>
+                    <option *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
+                </select>
+            </div>
+        </div>
+
+        <br/>
+        <div class="row">
+            <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+                <label id="text-cursor">Product</label>
+            </div>
+            <div class="col-2 col-md-2 col-sm-2 col-lg-2">
+                <input type="text" id="name-box"value="{{model.productname}}" placeholder="Fiber Kevlar Matt"
+                [(ngModel)]="model.productname" 
+                #productname="ngModel" 
+                placeholder="Enter productname" name="productname"/>
+            </div>
+        </div>
+
+
+        <br/>
+        <div class="row">
+            <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+                <label id="text-cursor">Discount</label>
+            </div>
+            <div class="col-2 col-md-2 col-sm-2 col-lg-2">
+                <input type="text" id="name-box" value="{{model.discount}}"
+                [(ngModel)]="model.discount" 
+                #discount="ngModel" 
+                placeholder="Enter discount" name="discount"/>
+            </div>
+        </div>
+
+        <br/>
+        <div class="row">
+            <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+                <label id="text-cursor">Start Date</label>
+            </div>
+            <div class="col-2 col-md-2 col-sm-2 col-lg-2">
+                <input type="text" id="name-box" value="{{model.fromdate_promotionperiod}}"
+                [(ngModel)]="model.fromdate_promotionperiod" 
+                #fromdate_promotionperiod="ngModel" 
+                name="fromdate_promotionperiod"/>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+                <label id="text-cursor">End Date</label>
+            </div>
+            <div class="col-2 col-md-2 col-sm-2 col-lg-2">
+                <input type="text" id="name-box" value="todate_promotionperiod"
+                [(ngModel)]="model.todate_promotionperiod" 
+                #todate_promotionperiod="ngModel" 
+                name="todate_promotionperiod"/>
+            </div>
+        </div>
+
+
+        <br/>
+        <div class="row">
+            <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+                <label id="text-cursor">Qty</label>
+            </div>
+            <div class="col-2 col-md-2 col-sm-2 col-lg-2">
+                <input type="text" id="name-box"value="{{model.qty}}"
+                [(ngModel)]="model.qty" 
+                #qty="ngModel" 
+                placeholder="Enter qty" name="qty"/>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
+        <div class="col-3 col-md-3 col-sm-3 col-lg-3">
+        <button id="save-btn">Save</button>
+        </div>
+        <div class="col-3 col-md-3 col-sm-3 col-lg-3">
+        <button id="cancel-btn" (click)="close($event); false">Cancel</button>
+        </div>
+        <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
+    </div>
+  </form>
+</div>

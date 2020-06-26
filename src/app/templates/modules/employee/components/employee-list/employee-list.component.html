@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-4">
+    <h4>Employee List</h4> 
+  </div>
+  <div class="col-8">
+    <div style="float: right;">
+      <button class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addEmployee()">
+        <span class="fas fa-plus"></span> Add Employee 
+      </button>
+      <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+      <img src="assets/images/download.png" class="img-fluid logo" alt="download" />
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="enable">
+      <thead>
+        <tr>
+          <!-- <th class="wid-50px" style="width: 4% !important;"></th> -->
+          <th>ID #
+              <i *ngIf="!isSortIdDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
+              <i class="sort-by-asc" *ngIf="!isSortIdAsc" (click)="sortByOrder('code','asc')"></i>
+          </th>
+          <th>Name
+              <i *ngIf="!isSortNameDesc" class="sort-by-desc" (click)="sortByOrder('name','desc')"></i>
+              <i class="sort-by-asc" *ngIf="!isSortNameAsc" (click)="sortByOrder('name','asc')"></i>
+          </th>
+          <th>Designation</th>
+          <th>Email</th>
+          <th>Joined Date</th>
+          <th class="txt-right">Phone</th>
+          <th></th>
+          <th class="wid-90px">Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of employeesDS; let i = index"
+        (dblclick)= "router.navigateByUrl('/employment/viewEmployee/'+item.employeecode)"> 
+        <tr>
+          <!-- <td class="wid-50px" style="width: 4% !important;">
+            <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+          </td> -->
+          <td>{{item.employeecode}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.rank}}</td>
+          <td>{{item.email}}</td>
+          <td>
+            <app-employee-absence *ngIf="isShowHideAbsent[i]" [absenceItem]="item" (closeAbsencePopup)="closePopup($event, i,'absence')" [getAbsentDetail]="getAbsentDetail"></app-employee-absence>
+            <app-employee-checkin-checkout *ngIf="isShowHideCheckinCheckout[i]" (closeCheckinCheckoutPopup)="closePopup($event, i,'checkinCheckout')" (enableAbsentIcon)="enableAbsentIcon($event, i)" [absenceItem]="item" [getAbsentDetail]="getAbsentDetail" [currentTime]="todayTime"></app-employee-checkin-checkout>
+            {{item.addeddate}}
+          </td>
+          <td class="txt-right">
+            <app-employee-report (closeDailyReport)="closePopup($event, i,'report')" *ngIf="showHideDailyReport[i]" [dailyReportItem]="item" [getDailyReportDetail]="getDailyReportDetail"></app-employee-report>
+            {{item.phonenumber}}
+          </td>
+          <td></td>
+          <td class="wid-75px">{{item.status}}
+            <span class="edit-delete-icon user-icon">
+              <span class="fas fa-list-alt" (click)="dailyReport(i, item)"></span>
+              <span class="fas fa-user-clock" (click)="checkinCheckout(i, item)"></span>
+              <span class="fas fa-calendar-times" [ngClass]="isAbsentMouseover[i] ? 'absent-disabled' : ''" (mouseover)="absentMouseover(i, item)" (click)="absentPopup(i, item)"></span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+

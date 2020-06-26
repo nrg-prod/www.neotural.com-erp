@@ -1,0 +1,193 @@
+<!--Dialouge box start-->
+<div id="box-dialouge">
+    <button id="x" (click)="addPromotionClose()"> X </button>
+    <!-- <button type="button" class="close" aria-label="Close" 
+        (click)="addPromotionClose()" style="position: relative; left: 0px; top: 5px;">
+        <span aria-hidden="true" id="close-icon">&times;</span>
+    </button> --> 
+    <br/>
+    <form name="addpromotionForm" (ngSubmit)="addpromotionForm.form.valid && savePromotion()"
+        #addpromotionForm="ngForm" novalidate> 
+        <h2 style="text-align: center;">{{title}}</h2>
+        <br/>
+        <div class="row">
+            <div class="col-1 col-md-1 col-sm-1 col-lg-1"></div>
+            <div class="col-11 col-md-11 col-sm-11 col-lg-11">
+                <div class="row">
+                    <div class="col-3 col-md-3 col-sm-3 col-lg-3">
+                        <p class="heading">Category</p>
+                    </div>
+                    <div class="col-1 col-md-1 col-sm-1 col-lg-1">
+                        <p class="heading">:</p>
+                    </div>
+                    <div class="col-7 col-md-7 col-sm-7 col-lg-7">
+                        <!--  <ng2-completer class="autosearch1" 
+                            placeholder="&#xf002; Search here"  
+                            [(ngModel)]="model.productname" name="productname"
+                            #productname="ngModel" [datasource]="dataService" 
+                            [minSearchLength]="0" ></ng2-completer> -->
+
+                        <select id="selectbox-category" name ="selectcategory" 
+                            [(ngModel)]="model.categorycode"
+                            #categorycode="ngModel" required>
+                            <option>---- Select ----</option>
+                            <option *ngFor="let itemcategory of allcategorylist" value="{{itemcategory.name}}-{{itemcategory.categorycode}}"> {{itemcategory.name}}-{{itemcategory.categorycode}} </option>
+                        </select>
+
+                        <div *ngIf="categorycode.errors  && (categorycode.dirty || categorycode.touched) ||
+                            (addpromotionForm.submitted && !categorycode.valid )">
+                            <span [hidden]="!categorycode.errors.required" class="spanerror">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-3 col-md-3 col-sm-3 col-lg-3">
+                        <p class="heading">Product</p>
+                    </div>
+                    <div class="col-1 col-md-1 col-sm-1 col-lg-1">
+                        <p class="heading">:</p>
+                    </div>
+                    <div class="col-7 col-md-7 col-sm-7 col-lg-7">
+                        <div class="search-box">
+                            <i class="fas fa-search search-icon"
+                                style="left: -10px;top: 10px;"
+                                aria-hidden="true">
+                            </i>
+                            
+                            <ng2-completer
+                                placeholder="Search Product"
+                                [(ngModel)]="model.productname"
+                                name="productname"
+                                #productname="ngModel"
+                                [datasource]="dataService"
+                                [minSearchLength]="0"
+                                id="textSize2" required>
+                            </ng2-completer>
+
+                            <div *ngIf="productname.errors  && (productname.dirty || productname.touched) ||
+                                (addpromotionForm.submitted && !productname.valid )">
+                                <span [hidden]="!productname.errors.required" class="spanerror">
+                                    Required field cannot be left blank
+                                </span>
+                            </div>
+                            <!-- <input
+                                class="search-text-box"
+                                type="search"
+                                [(ngModel)]="model.productname" 
+                                name="productname"
+                                #productname="ngModel"
+                                autocomplete="on"
+                                placeholder="Search Product"
+                            /> -->
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-3 col-md-3 col-sm-3 col-lg-3">
+                        <p class="heading">Please Choose Option</p>
+                    </div>
+                    <div class="col-1 col-md-1 col-sm-1 col-lg-1">
+                        <p class="heading">:</p>
+                    </div>
+                    <div class="col-7 col-md-7 col-sm-7 col-lg-7">
+                        <div class="row">
+                            <div class="col-6 col-md-6 col-sm-6 col-lg-6">
+                                <input type="radio" class="regular-radio" value="freegift"
+                                    [(ngModel)]="model.discountType" #discountType="ngModel"
+                                    name="radiopromo" style="margin: 5px 0px -3px -20px" 
+                                    (change)="freediscountBox(title)" />
+                                <label *ngIf="freegiftLabel" style="margin: 5px 0px 17px 8px">Free Gift</label>
+                                <label *ngIf="discountLabel" style="margin: 5px 0px 17px 8px">Discount</label>
+                            </div>
+                            <div class="col-6 col-md-6 col-sm-6 col-lg-6">
+                                <input type="radio" class="regular-radio" value="others"
+                                    [(ngModel)]="model.discountType" #discountType="ngModel"
+                                    name="radiopromo" style="margin: 5px 0px -3px -20px" 
+                                    (change)="otherBox()" />
+                                <label style="margin: 5px 0px 17px 8px">Others</label>
+                            </div>
+                        </div>
+
+                        <div *ngIf="freegiftShow">
+                            <input type="text" id="inputBoxVal" name="freegift" 
+                                [(ngModel)]="model.freegift" placeholder="Product Free Gift"
+                                #freegift="ngModel" required />
+
+                            <div *ngIf="freegift.errors  && (freegift.dirty || freegift.touched) ||
+                                (addpromotionForm.submitted && !freegift.valid )">
+                                <span [hidden]="!freegift.errors.required" class="spanerror">
+                                    Required field cannot be left blank
+                                </span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="discountShow">
+                            <input type="text" id="inputDis" name="discount" 
+                                [(ngModel)]="model.discount" placeholder="%"
+                                #discount="ngModel" readonly />
+
+                            <input type="text" id="inputQty" name="qty" 
+                                [(ngModel)]="model.qty" placeholder="Discount Qty"
+                                #qty="ngModel" required />
+                            <div *ngIf="qty.errors  && (qty.dirty || qty.touched) ||
+                                (addpromotionForm.submitted && !qty.valid )">
+                                <span [hidden]="!qty.errors.required" class="spanerror">
+                                    Required field cannot be left blank
+                                </span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="otherShow">
+                            <input type="text" id="inputBoxVal" name="others" 
+                                [(ngModel)]="model.others" placeholder="Custom Promotion"
+                                #others="ngModel" required />
+
+                            <div *ngIf="others.errors  && (others.dirty || others.touched) ||
+                                (addpromotionForm.submitted && !others.valid )">
+                                <span [hidden]="!others.errors.required" class="spanerror">
+                                    Required field cannot be left blank
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-3 col-md-3 col-sm-3 col-lg-3">
+                        <p class="heading">Promotion Period</p>
+                    </div>
+                    <div class="col-1 col-md-1 col-sm-1 col-lg-1">
+                        <p class="heading">:</p>
+                    </div>
+                    <div class="col-7 col-md-7 col-sm-7 col-lg-7">
+                        <input type="date" id="promotion-periodbox" class="datepicker"
+                            [(ngModel)]="model.fromdate_promotionperiod" name="fromdate_promotionperiod" 
+                            #fromdate_promotionperiod="ngModel"  />
+                        <label id="labelbar"> - </label>
+                        <input type="date" id="promotion-periodbox2" class="datepicker"
+                            [(ngModel)]="model.todate_promotionperiod" name="todate_promotionperiod"
+                            #todate_promotionperiod="ngModel"  />
+
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-4 col-md-4 col-sm-4 col-lg-4"></div>
+                    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+                        <button id="save-btn" type="submit">Save</button>
+                    </div>
+                    <!--   <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+                        <button id="cancel-btn" (click)="close($event); false">Cancel</button>
+                    </div> -->
+                    <div class="col-2 col-md-2 col-sm-2 col-lg-2"></div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </form>  
+</div>
+<!--Dialouge box end-->

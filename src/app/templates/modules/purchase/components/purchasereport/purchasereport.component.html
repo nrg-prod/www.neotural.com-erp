@@ -1,0 +1,154 @@
+<div class="container">
+    <div id="content">
+		<div id="main-content">
+	
+					<div class="col-12 col-md-12 col-lg-12"> 
+                        <div id="addemployee-div">
+                            <br/><br/>
+                            <div class="group-gap" >
+                                <br/>
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <h5>PURCHASE ORDER PURCHASE RETURN OVERALL LIST</h5>
+                                            </div>
+                                            <div class="col-lg-3"></div>
+                                            <div class="col-lg-6">
+                                                <button id="print-butn" style="float: right;">
+                                                    &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>&nbsp;
+                                                    <label id="text" style="margin-bottom: -0.5rem;">Print Page</label>&nbsp;
+                                                </button>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <mat-form-field>
+                                                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="&nbsp;&nbsp;&nbsp;Search PO order " >
+                                                </mat-form-field>
+                                               </div>
+                                        </div>
+                                        <br/>
+            
+                                        <!--<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>-->
+                                        <div class="mat-elevation-z8">
+                                            <table mat-table [dataSource]="dataSource" matSort>
+                                                <ng-container matColumnDef="No">
+                                                    <th mat-header-cell *matHeaderCellDef> No </th>
+                                                    <td mat-cell *matCellDef="let row ;let i = index;" id="middleContent" (click)="getReportDetails(row.invoiceNumber)" id="{{row.invoiceNumber}}">{{ i+1 }} </td>
+                                                </ng-container>
+                                            
+                                                <ng-container matColumnDef="PoInvoice">
+                                                    <th mat-header-cell *matHeaderCellDef style="font-size: 16px;"> PO Invoice</th>
+                                                    <td mat-cell *matCellDef="let row" id="middleContent" (click)="getReportDetails(row.invoiceNumber)" id="{{row.invoiceNumber}}"> {{row.invoiceNumber}} </td>
+                                                </ng-container>
+                                            
+            
+                                                <ng-container matColumnDef="poDate">
+                                                    <th mat-header-cell *matHeaderCellDef style="font-size: 16px;"> PO Date </th>
+                                                    <td mat-cell *matCellDef="let row" id="middleContent" (click)="getReportDetails(row.invoiceNumber)" id="{{row.invoiceNumber}}"> {{row.poDate}} </td>
+                                                </ng-container>
+            
+                                                <ng-container matColumnDef="vendor">
+                                                    <th mat-header-cell *matHeaderCellDef style="font-size: 16px;"> Vendor </th>
+                                                    <td mat-cell *matCellDef="let row" id="middleContent" (click)="getReportDetails(row.invoiceNumber)" id="{{row.invoiceNumber}}"> {{row.vendorName}} </td>
+                                                </ng-container>
+            
+                                                <ng-container matColumnDef="Total">
+                                                    <th mat-header-cell *matHeaderCellDef style="font-size: 16px;"> Total </th>
+                                                    <td mat-cell *matCellDef="let row" id="middleContent" (click)="getReportDetails(row.invoiceNumber)" id="{{row.invoiceNumber}}"> {{row.totalAmount}} </td>
+                                                </ng-container>
+            
+                                                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                                                <tr mat-row class="table-row" tabindex="1" *matRowDef="let row; columns: displayedColumns;"></tr>
+                                            </table>   
+                                        </div>  
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="empdet-div">
+                                            <div class="row">
+                                                <div id="sale-details">
+                                                    <p class="text">Purchase Order Detail</p>
+                                                    <br/>
+                                                    <div class="row" id="purchasesummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Invoice</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.invoiceNumber }}</div>
+                                                    </div>
+                                                    <div class="row" id="purchasesummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Date</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.poDate }}</div>
+                                                    </div>
+                                                    <div class="row" id="purchasesummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Vendor</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.vendorName }}</div>
+                                                    </div>
+                                                    <div class="row" id="purchasesummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Order List</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.productName }}</div>
+                                                    </div>
+                                                    <div class="row" id="purchasesummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Delivery Fee</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.deliveryCost }}</div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row" id="purchasesummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Total</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.totalAmount--this.model.deliveryCost }}</div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <br/><br/>
+                                            <div class="row">
+                                                <div id="date-details">
+                                                    <p class="text">Purchase Order Summary </p>
+                                                    <br/>
+                                                    <div class="row" id="salessummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Date of PO</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ model.poDate }}</div>
+                                                    </div>
+                                                    <div class="row" id="salessummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Total Product</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.totalItem }}</div>
+                                                    </div>
+                                                    <div class="row" id="salessummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Subtotal </div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.totalAmount }}</div>
+                                                    </div>
+                                                    <div class="row" id="salessummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Delivery Fee</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.deliveryCost }}</div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row" id="salessummary">
+                                                        <div class="col-md-5 col-xs-5 col-lg-5">Total</div>
+                                                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                                                        <div class="col-md-6 col-xs-6 col-lg-4">{{ this.model.totalAmount--this.model.deliveryCost }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <button id="print-butn">
+                                                    &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>&nbsp;
+                                                    <label id="text" style="margin-bottom: -0.5rem;">Print Page</label>&nbsp;
+                                                </button>
+                                            </div>
+                                            <br/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+		
+		</div>
+	</div>
+</div>

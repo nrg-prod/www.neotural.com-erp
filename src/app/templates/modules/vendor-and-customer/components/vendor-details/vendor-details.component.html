@@ -1,0 +1,139 @@
+<div class="vendor-details-container">
+    <a class="close" (click)="vendorDetailsClose()"></a>
+    <div class="vendor-selected" >
+        <div class="org-header">
+            <div>
+                <img [src]="data.vendorbase64" onerror="this.src='/assets/images/no-image.png'" />
+            </div>
+            <div>
+                <h2 *ngIf="!data.editable">{{data.vendorName}}</h2>
+                <input type="text" id ="editinput" [(ngModel)]="data.vendorName" #vendorName="ngModel"
+                    name="vendorName" *ngIf="data.editable" />
+                <span>{{data.vendorcode}}</span>
+            </div>
+        </div>
+        <div class="org-info">
+            <div class="org-address">
+                <!-- <div class="address-box">
+                    <span>contact Number</span>
+                    <h3>{{data.mobileNumber}}</h3>
+                </div> -->
+                <div class="address-box">
+                    <span>Phone</span>
+                    <!-- <h3>{{data.phoneNumber}}</h3> -->
+                    <h2 *ngIf="!data.editable">{{data.phoneNumber}}</h2>
+                    <input type="text" id ="editinput" [(ngModel)]="data.phoneNumber" #phoneNumber="ngModel"
+                        name="phoneNumber" *ngIf="data.editable" />
+                </div>
+                <div class="address-box">
+                    <span>Email</span>
+                    <!-- <h3>{{data.email}}</h3> -->
+                    <h2 *ngIf="!data.editable">{{data.email}}</h2>
+                    <input type="text" id ="editinput" [(ngModel)]="data.email" #email="ngModel"
+                        name="email" *ngIf="data.editable" />
+                </div>
+                <div class="address-box">
+                    <span>Street Address</span>
+                    <!-- <h3>{{data.address}}</h3> -->
+                    <h2 *ngIf="!data.editable">{{data.address}}</h2>
+                    <input type="text" id ="editinput" [(ngModel)]="data.address" #address="ngModel"
+                        name="address" *ngIf="data.editable" />
+                </div>
+                <div class="address-box">
+                    <span>City</span>
+                    <!-- <h3>{{data.city}}</h3> -->
+                    <h2 *ngIf="!data.editable">{{data.city}}</h2>
+                    <input type="text" id ="editinput" [(ngModel)]="data.city" #city="ngModel"
+                        name="city" *ngIf="data.editable" />
+                </div>
+                <div class="address-box">
+                    <span>Country</span>
+                    <!-- <h3>{{data.country}}</h3> -->
+                    <h2 *ngIf="!data.editable">{{data.country}}</h2>
+                    <select name="country" id ="editinput" [(ngModel)]="data.country" 
+                        #country="ngModel" value="{{data.country}}" *ngIf="data.editable">
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Australia">Australia</option>
+                        <option value="US">US</option>
+                        <option value="UK">UK</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="address-box">
+                    <span>Date Added</span>
+                    <h3>{{data.addeddate}}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="org-footer" *ngIf="!data.editable">
+            <a [routerLink]="" class="icon-printer"></a>
+            <div class="icon-edit" (click)="editVendor(data)"></div>
+            <div class="icon-delete" (click)="deleteVendor(data.vendorcode)"></div>
+        </div>
+        <div class="org-footer" *ngIf="data.editable">
+            <div class="row">
+                <div class="col-6">
+                    <div class="fas fa-check" (click)="update(data)"></div>
+                    <div class="fas fa-times" (click)="cancelVendor(data)"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="vendor-categories">
+        <div class="vendor-category-header">
+            <div class="drop-down" #dropDwn>
+                <h2>{{selectedCategory}}</h2>
+                <a class="drop-down-arrow" (click)="categoyDropDownHandler(); false;">&#9660;</a>
+                <ul [class.show]="dropDownView" *ngIf="categoriesForFilter.length">
+                    <li><a [routerLink]="" (click)="selectCategory({name:'All Categories'})" class="menu-item"> All Categories</a></li>
+                    <li  *ngFor="let category of categoriesForFilter; let i = index"  (mouseenter)="showEditMenu(i)" (mouseleave)="showEditMenu(-1)" >
+                        <a *ngIf="onEdit !== i"  [routerLink]="" (click)="selectCategory(category)" class="menu-item">{{category.name}}</a>
+                        <span [class.show]="i === editIndex" [class.edit]="isLabelEdited" (click)="isLabelEdited ? updateMenu(category) : editMenu(i)" class="menu-edit"></span>
+                        <div *ngIf="onEdit === i"><input class="input" (input)="menuLabelChange($event)" type="text" value="{{category.name}}"></div>
+                    </li>
+                    <li class="addCategory">
+                        <div *ngIf="isAddCategory">
+                            <input type="text" [(ngModel)]="newCateogry">
+                            <span class="menu-add" (click)="addCategory()"></span>
+                        </div>
+                        <a [routerLink]="" (click)="showAddCategory()">+ Add Category</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="vendor-category-content">
+
+            <div class="item-search">
+                <input type="text"  (input)="searchItems($event)" placeholder="Search product name">
+            </div>
+
+            <div class="category-items" >
+                <div class="category-item" *ngFor="let item of allCategoryItems">
+                    <div class="item-image">
+                        <img [src]="getImage(item.productImage)" onerror="this.src='/assets/images/no-image.png'" />
+                    </div>
+                    <div class="item-content">
+                        <div class="info">
+                            <div><span>{{item.prodcode}}</span> <span>{{item.categoryname}}</span></div>
+                            <div class="date"><span>15 Oct 2019</span></div>
+                        </div>
+                        <div class="item-name">
+                            <h3>{{item.productname}}</h3>
+                            <span>{{item.sellingprice}} / {{item.unit}}</span>
+                        </div>
+                        <div class="item-desc">
+                            <p>{{item.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

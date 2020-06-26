@@ -1,0 +1,71 @@
+<div id="editdelete-secondlayer">
+  <form name="addnewcategory" (ngSubmit)="saveCategoryeditdelete()">
+    <label id="edit-del-text">
+      <i class="fas fa-edit" style="font-size: 20px;" aria-hidden="true"></i>
+      &nbsp; Edit/Delete Category
+    </label>
+    <div class="row">
+      <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+        <div id="editdelcategory-div" class="overflow-scroll">
+          <div
+            *ngFor="let list of categorylist"
+            (click)="onChangeCategory(list.categorycode)"
+            class="productlists-alignment"
+            id="{{ list.categorycode }}"
+          >
+            <div class="row" id="categoryeditdeletetext-row">
+              <div class="col-9 col-md-9 col-lg-9">
+                <p>{{ list.name }}</p>
+              </div>
+              <div class="col-3 col-md-3 col-lg-3">
+                <i
+                  class="fas fa-trash"
+                  aria-hidden="true"
+                  (click)="categorydelete(list.categorycode)"
+                  style="color: red;"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-7 col-md-7 col-sm-7 col-lg-7">
+        <br />
+        <p>Category Name</p>
+        <!--   <textarea id="categoryname-div" [(ngModel)]="model.name" #name="ngModel" 
+             placeholder="Enter category name" name="name">{{this.model.name}}
+             </textarea>
+-->
+        <input
+          type="text"
+          id="categoryname-div"
+          [(ngModel)]="model.name"
+          #name="ngModel"
+          name="name"
+        />
+
+        <br />
+        <p>Category Description</p>
+        <textarea
+          type="text"
+          id="categorydesc-div"
+          value="{{this.model.description}}"
+          [(ngModel)]="model.description"
+          #description="ngModel"
+          placeholder="Enter category description"
+          name="description"
+        >
+        </textarea>
+        <br /><br />
+        <div class="row">
+          <div class="col-6 col-md-6 col-sm-6 col-lg-6">
+            <button id="save-btn">Save</button>
+          </div>
+          <div class="col-6 col-md-6 col-sm-6 col-lg-6">
+            <button id="cancel-btn" (click)="close(); false">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,9 @@
+@import "_base";
+
+// host uesd to attach classes to the component's container element
+:host {
+  height: 100%;
+  display: block;
+  padding: 15px;
+  background-color: $data-widget-bg;
+}

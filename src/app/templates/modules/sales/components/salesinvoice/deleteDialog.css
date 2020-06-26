@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size:13px;
+  color: white;
+}
+::ng-deep .delete .mat-dialog-container {
+  background-color: green;
+  width: 400px;
+  height: 15%;
+  margin-top: 50px;
+}  

@@ -1,0 +1,138 @@
+<div class="container-fluid" style="height:15vh;width: 100vh;">
+</div>
+<div class="container-fluid" style="height: 60vh;width: 100vh;">
+  <div class="row">
+ 
+  <div class="col-md-3" style="height: 70vh;background-color: #17252F;">
+    <div class="row">
+      <div class="col-md-12" style="height: 10vh;">  </div>    
+    </div>
+        
+
+    <img src="assets/images/LOGO-nrg.svg" class="img-fluid logo" alt="app logo" />
+
+    <div class="row">
+      <div class="col-md-12" style="height: 10vh;">  </div>    
+    </div>
+        
+  <div class="row">
+    <div class="col-md-12" >{{label4}} </div>    
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">{{label5}} </div>    
+  </div>
+
+  <div class="row">
+    <div class="col-md-12"> {{label6}} </div>    
+  </div>
+
+
+ </div>
+
+
+
+
+ <div class="col-md-9" style="height: 70vh;background-color: #1A2D39;">
+  <form 
+  name="loginForm"
+  (submit)="loginForm.form.valid && login()"
+  #loginForm="ngForm"
+  novalidate
+ >
+  <div class="row">
+  <div class="col-md-3" >  </div>
+
+  <div class="col-md-6" >  
+   
+    <div class="row" style="height: 10vh;"> 
+      <div class="col-md-12" >  </div>
+      </div>
+      
+     
+<div class="row">
+    <label class="col-md-12" > {{label1}}* </label>    
+</div>
+
+
+<div class="row">
+   <input type="text" class="col-md-12" 
+   id="currentusername" 
+   name="currentusername"
+   [(ngModel)]="model.currentusername" #currentusername="ngModel" 
+   name="currentusername" required  /> 
+
+   <p
+   class="font-sm my-1 text-danger"
+   [ngStyle]="{
+     visibility:
+       loginForm.submitted && !currentusername.valid ? 'visible' : 'hidden'
+   }"
+ >
+ {{emptyvalidation}}
+ </p>
+
+</div>
+
+
+
+<div class="row">
+  <label class="col-md-12" > {{label2}}* </label>    
+</div>
+
+
+<div class="row">
+ <input type="{{ passwordtype }}" class="col-md-12" [(ngModel)]="model.currentpassword" #currentpassword="ngModel" 
+  name="currentpassword" required  /> 
+
+  <p
+  class="font-sm my-1 text-danger"
+  [ngStyle]="{
+    visibility:
+      loginForm.submitted && !currentpassword.valid ? 'visible' : 'hidden'
+  }"
+>
+{{emptyvalidation}}
+</p>
+
+</div>
+
+
+
+
+<div class="row">
+
+  <button type="submit" class="col-md-12" id="loginbtn" name="loginbtn"> {{label3}} </button>
+  
+ </div>
+
+ 
+
+
+  </div>
+  
+  <div class="col-md-3" > </div>
+</div>
+</form>
+
+ </div>
+ 
+
+
+  
+
+
+</div>
+</div>
+
+<div class="container-fluid" style="height: 10vh;width: 100vh;">
+  <div class="row"> 
+    <div class="col-md-5" > 
+    </div>
+    <div class="col-md-7" > 
+      <label> <a  (click)="lang('english')">English </a>| <a  (click)="lang('malay')">Malay </a>  | <a  (click)="lang('indo')">Indonesian </a> </label>
+    </div>
+
+    </div>
+    
+</div>

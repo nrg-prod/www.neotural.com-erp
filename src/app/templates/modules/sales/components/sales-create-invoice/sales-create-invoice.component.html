@@ -1,0 +1,104 @@
+<div class="grid-container3">
+  <div class="purchase-invoice-view">
+    <div class="purchase-orders-view">
+      <div class="orders-view-header">
+        <h3>{{ data.dialogPaneTitle }}</h3>
+        <span>
+          3 Open orders found from Carbon Composite that need to invoiced
+        </span>
+      </div>
+      <div class="orders-view-body">
+        <div class="orders-view-box" *ngFor="let invoiceItem of data?.invoiceItems">
+          <div class="option custom-control">
+            <input type="checkbox" [checked]="true" (change)="removeProduct(invoiceItem, $event)" />
+          </div>
+          <div class="details">
+            <div>
+              <span>{{ invoiceItem.socode }}</span>
+              <span>{{ invoiceItem.date }}</span>
+              <span>{{ invoiceItem.customername }}</span>
+            </div>
+            <div>
+              <h4>{{ invoiceItem.productname }}</h4>
+              <span>{{ invoiceItem.categoryname }}</span>
+            </div>
+            <div>
+              {{ invoiceItem.subtotal | number : '1.3-3' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="create-invoice-view">
+      <div class="create-invoice-header">
+        <a
+          class="popup-close-invoice"
+          [routerLink]="[]"
+          (click)="createSalesInvoiceClose()"
+        ></a>
+        <h3>{{ data.dialogInvoiceTitle }}</h3>
+      </div>
+      <div class="vendor-info">
+        <div>
+          <span>Customer</span>
+          <span>{{ data.customerName }}</span>
+        </div>
+        <div>
+          <span>Date</span>
+          <span>{{ data.date | date: "dd/MM/yyyy" }}</span>
+        </div>
+        <div>
+          <span>Cash</span>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input1" id="customChecks2" (click)="paymentSelected()">
+            <label class="custom-control-label1" for="customCheck2"></label>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="product-list">
+        <h4>Product List</h4>
+        <div class="table-invoice">
+          <div class="invoice-header">
+            <div>Name</div>
+            <div>Quantity</div>
+            <div>Cost</div>
+          </div>
+          <div class="invoice-body-holder">
+            <div class="invoice-body" *ngFor="let item of invoiceList">
+              <div>
+                {{ item.productname }}
+                <span>{{ item.categoryname }}</span>
+              </div>
+              <div>{{ item.qty }} {{ item.unit }}</div>
+              <div>{{ item.subtotal | number : '1.3-3' }}</div>
+            </div>
+          </div>
+          <div class="invoice-footer">
+            <div>
+              <div>Subtotal</div>
+              <div>{{ getSubTotal() | number : '1.3-3' }}</div>
+            </div>
+            <div class='sub-gross'>
+              <div>Delivery Charges</div>
+              <div>
+                <span><input (blur)="setDefaultNumber()" [(ngModel)]="delivery"   type="number" ></span>
+              </div>
+            </div>
+            <div class='gross'>
+              <div><span>Total</span></div>
+              <div>
+               
+                <span>{{ getTotal() | number : '1.3-3' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="add-button">
+          <button [disabled]='!getSubTotal()' (click)="createInvoice()">{{ data.dialogText }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

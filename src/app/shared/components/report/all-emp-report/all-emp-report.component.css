@@ -1,0 +1,187 @@
+* {
+  font-size: 13px;
+  color: white;
+}
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+.mat-table {
+  background: #686868;
+}
+.mat-table .sectable-color {
+  background: #181818;
+}
+table.mat-table {
+  width: 100%;
+}
+.mat-elevation-z8 {
+  width: 100%;
+  height: 60%;
+  margin-left: 8px;
+  background: #686868;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+mat-form-field {
+  width: 280px;
+}
+tr:nth-child(even) {
+  background-color: #606060;
+}
+tr:nth-child(odd) {
+  background-color: #686868;
+}
+tr.mat-row {
+  height: 47px;
+  cursor: pointer;
+}
+:host /deep/ td {
+  vertical-align: middle;
+}
+.mat-input-element {
+  font: inherit;
+  font-family: fontawesome;
+  background: white;
+  color: black;
+  height: 35px;
+  outline: 0;
+  margin: 10;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: bottom;
+  text-align: start;
+  border-radius: 6px;
+  padding: 11px;
+  margin-top: -10px;
+}
+::ng-deep .mat-form-field-wrapper {
+  margin-left: 10px;
+}
+th.mat-header-cell:first-of-type {
+  padding-left: 12px;
+  width: 299px;
+}
+td.mat-cell:first-of-type {
+  padding-left: 13px;
+}
+
+#background {
+  background-color: #243641;
+  width: 97%;
+  height: 100%;
+  margin: 10px;
+}
+#text-size {
+  font-size: x-large;
+  font-weight: bold;
+  margin: 15px;
+}
+#previewemp-box {
+  background: #1b2931;
+  height: 145px;
+  width: 100%;
+  overflow: scroll;
+}
+#absentcard-box {
+  background: #1b2931;
+  height: 300px;
+  width: 100%;
+}
+#preview-text {
+  font-size: 12px;
+  margin: 6px;
+}
+#emppicture-box {
+  background: #ffffff;
+  height: 80px;
+  width: 90%;
+  margin: 6px;
+}
+#Emppic-text {
+  color: #181818;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+#fontsize-11 {
+  font-size: 11px;
+}
+#button-printpage {
+  height: 25px;
+  width: 100px;
+  border: 1px solid;
+  cursor: pointer;
+  margin: 10px 0px 0px 0px;
+}
+#sectable-back-color {
+  background: #1b2931;
+  border: 1px solid;
+  width: 90%;
+  height: 68%;
+  margin-left: 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  cursor: pointer;
+}
+#absent-text {
+  margin: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+#font-sixe12 {
+  font-size: 11px;
+  margin-left: 7px;
+}
+hr {
+  background: white;
+  width: 95%;
+  margin: auto;
+}
+#empreport-backcolor {
+  height: 77%;
+  background: #1b2931;
+}
+#back-btn {
+  height: 22px;
+  width: 75px;
+  background: #243641;
+  border: 1px solid white;
+  text-align: center;
+  margin: auto;
+}
+#report-datebox {
+  height: 20px;
+  width: 120px;
+  background: #1b2931;
+  border: 1px solid white;
+  text-align: center;
+  margin: auto;
+  font-size: 12px;
+}
+#report-detailbox {
+  background: #000000;
+  height: 75%;
+  width: 94%;
+  margin: auto;
+}
+#reportbutton-printpage {
+  height: 25px;
+  width: 100px;
+  border: 1px solid;
+  cursor: pointer;
+  margin: auto;
+}
+#selct-joindatebox {
+  background: #20303a;
+  width: 40%;
+  height: 22px;
+  box-shadow: none;
+  border: 1px solid;
+  margin-left: 7px;
+  font-size: xx-small;
+}
+#absentedit-icon {
+  margin-top: 20px;
+  font-size: 10px;
+}

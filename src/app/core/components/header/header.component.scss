@@ -1,0 +1,136 @@
+@import "_base";
+
+a,
+a label {
+    cursor: pointer;
+}
+
+header {
+
+  background-color: $header-bg;
+  height: 65px;
+  z-index: 2;
+
+  .header-menu {
+    padding: 10px 14px;
+    background: url(/assets/images/header-menu-icon.svg) no-repeat;
+    border: 0;
+  }
+
+  .app-logo{
+    display: block;
+    width: 80px;
+    height: 35px;
+    margin-left: 20px;
+
+    img {
+      width: 78px;
+      vertical-align: top;
+    }
+  }
+
+   .global-search-box {
+      margin-left: 120px;
+      border-radius: 18px;
+      font-size: 14px;
+      padding: 3px 40px 3px 15px;
+      background:#617480 url(/assets/images/icon-search.svg) no-repeat 130% 50%;
+      background-size: 50% 50%;
+      color: white;
+    }
+
+    ::placeholder {
+      color: #bcc8cf;
+    }
+
+    .user-config {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .user-info {
+      margin-right: 20px;
+      text-align: right;
+
+      h3 {
+        font-size: 17px;
+        margin-bottom: 0;
+        line-height: 1;
+      }
+      span {
+        font-size: 13px;
+      }
+    }
+
+    .user-photo {
+      margin-right: 15px;
+      border-radius: 50%;
+      position: relative;
+
+      img {
+        width: 40px;
+        cursor: pointer;
+      }
+
+      ul.option-list {
+        display: none;
+      }
+
+      ul.option-list.show {
+        display: block;
+      }
+
+      ul.option-list,
+      ul.option-list li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      ul.option-list {
+        background-color: #334f5f;
+        position: absolute;
+        z-index: 200;
+        border-radius: 6px;
+        top: 60px;
+        right: 0;
+      }
+
+      ul.option-list a {
+        color: #fff;
+        font-size: 11px;
+        display: block;
+        white-space: nowrap;
+        padding: 6px 15px;
+        min-width: 110px;
+      }
+
+     ul.option-list li:first-child a{
+       padding-top: 12px;
+     }
+
+     ul.option-list li:first-child a:hover{
+        color: #55bcdc;
+     } 
+
+     ul.option-list li:last-child a,
+     ul.option-list li:last-child a:hover{
+        color: #e05152;
+        padding-bottom: 12px;
+     } 
+
+    }
+
+    .user-options {
+      background:#4c6472 url(/assets/images/icon-gear.svg) no-repeat center;
+      padding: 20px;
+      height: 10px;
+      display: inline-block;
+      background-size: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    
+
+}

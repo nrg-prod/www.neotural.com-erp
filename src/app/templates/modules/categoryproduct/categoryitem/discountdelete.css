@@ -1,0 +1,12 @@
+.discountdelete .mat-dialog-container {
+  background-color: #5ba95b;
+  width: 400px;
+  height: 70px;
+  padding: 17px;
+  overflow: hidden;
+  margin-top: -305px;
+}
+h2 {
+  text-align: center;
+  font-size: 25px;
+}

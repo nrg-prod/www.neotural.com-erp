@@ -1,0 +1,105 @@
+<div class="mb-3" style="font-size: 12px;">        
+    <div class="grid-container3">
+      <div></div>
+      <button id="x" (click)="addPettyClose()"> X </button>
+      <form name="pettyForm" (ngSubmit)="pettyForm.form.valid && pettyCash(data.dialogText)"
+        #pettyForm="ngForm" novalidate>       
+        <div>
+          <h2 id="h2ID" class="m-t-20px">{{data.dialogTitle}}</h2>
+  
+          <div class="column">
+            <div class="row">
+              <label id="po-label">Description* </label>
+              <textarea type="text" id="po-textbox" class="m-t-5px" [(ngModel)]="model.description"
+                #description="ngModel" name="description" class="form-control" required>
+              </textarea>
+
+              <div *ngIf="description.errors  && (description.dirty || description.touched) ||
+                (pettyForm.submitted && !description.valid )">
+                <span [hidden]="!description.errors.required" class="spanerror">
+                  Required field cannot be left blank
+                </span>
+              </div>
+  
+              <label id="po-label">Transaction Date*</label>
+              <input type="date" id="po-textbox" class="m-t-5px" [(ngModel)]="model.addedDate"
+                name="addedDate" placeholder="xx/xx/xx" #addedDate="ngModel" required/>
+
+              <div *ngIf="addedDate.errors  && (addedDate.dirty || addedDate.touched) ||
+                (pettyForm.submitted && !addedDate.valid )">
+                <span [hidden]="!addedDate.errors.required" class="spanerror">
+                  Required field cannot be left blank
+                </span>
+              </div>
+  
+              <label id="po-label">Type</label>
+              <select id="selected-box" [(ngModel)]="model.type" name="type" #type="ngModel" required>
+                <option>-- Select --</option>
+                <option *ngFor="let itemType of typeList" value="{{ itemType }}">
+                  {{ itemType }}
+                </option>
+              </select>
+
+              <div *ngIf="type.errors  && (type.dirty || type.touched) ||
+                (pettyForm.submitted && !type.valid )">
+                <span [hidden]="!type.errors.required" class="spanerror">
+                  Required field cannot be left blank
+                </span>
+              </div>
+
+            </div>
+          </div>
+  
+          <div class="column">
+            <div class="row">  
+              <label id="po-label" style="margin-left: auto;">Paid To* </label>
+              <input type="text" id="po-textbox" class="m-t-5px" class="form-control" [(ngModel)]="model.toPerson"
+                name="toPerson" #toPerson="ngModel" style="margin-left: auto;" required/>
+  
+              <div *ngIf="toPerson.errors  && (toPerson.dirty || toPerson.touched) ||
+                (pettyForm.submitted && !toPerson.valid )">
+                <span [hidden]="!toPerson.errors.required" class="spanerror1">
+                  Required field cannot be left blank
+                </span>
+              </div>
+
+              <label id="po-label" style="margin-left: auto;">Value*</label>
+              <input type="text" id="po-textbox" class="m-t-5px" class="form-control" [(ngModel)]="model.totalAmount"
+                name="totalAmount" placeholder="Eg:-IDR" #totalAmount="ngModel" style="margin-left: auto;" required/>
+              
+              <div *ngIf="totalAmount.errors  && (totalAmount.dirty || totalAmount.touched) ||
+                (pettyForm.submitted && !totalAmount.valid )">
+                <span [hidden]="!totalAmount.errors.required" class="spanerror1">
+                  Required field cannot be left blank
+                </span>
+              </div>
+
+
+              <label id="po-label" style="margin-left: auto;">Currency*</label>
+              <select id="selected-box" [(ngModel)]="model.currency" name="currency"
+                #currency="ngModel" style="margin-left: auto;" required>
+                <option>-- Select --</option>
+                <option *ngFor="let currency of currencyList" value="{{ currency }}">
+                  {{ currency }}
+                </option>
+              </select>
+
+              <div *ngIf="currency.errors  && (currency.dirty || currency.touched) ||
+                (pettyForm.submitted && !currency.valid )">
+                <span [hidden]="!currency.errors.required" class="spanerror1">
+                  Required field cannot be left blank
+                </span>
+              </div>
+
+            </div>
+          </div>
+                    
+          <div class="update-btn" style="margin: 20px 0px;">
+            <button id="add-btn">{{data.dialogText}}</button>
+          </div>
+        </div>
+                     
+      </form>                   
+    </div>
+  
+  </div>      

@@ -1,0 +1,140 @@
+<h5> Create Sales Return</h5>  <br/>
+  <div class="container">
+    <form name="returnForm"
+      (submit)="returnForm.form.valid && addReturn()"
+      #returnForm="ngForm" novalidate>
+
+        <div style="background: #253F4B;">
+
+            <div class="row marginRow">
+                <div class="col-25">
+                    <label class="heading">Customer	</label>
+                </div>
+                <div class="col-75">
+                    <label>{{ this.model.customername }}</label>
+                </div>
+            </div>
+            
+        
+            <div class="row marginRow">
+                <div class="col-25">
+                <label class="heading">Product Name	</label>
+                </div>
+                <div class="col-75">
+                    <label>{{ this.model.productname }}</label>
+                </div>
+            </div>
+        
+            <div class="row marginRow">
+                <div class="col-25">
+                <label class="heading">Quantity Invoiced</label>
+                </div>
+                <div class="col-75">
+                    <label>{{ this.model.invqty }}</label> 
+                </div>
+            </div>
+            
+            <div class="row marginRow">
+                <div class="col-25">
+                <label class="heading">Date Invoiced		</label>
+                </div>
+                <div class="col-75">
+                    <label>{{ this.model.date | date : 'dd/MM/yyyy' }} </label>
+                </div>
+            </div>
+        </div>
+        <div style="height: 20px;"></div>
+
+        <br/>
+        <div class="row marginRow">
+            <div class="col-25">
+            <label class="heading1">Item Status </label>
+            </div>
+        </div>
+        
+        <div class="row marginRow">
+            <div class="col-100">
+                <input id="damaged" type="radio" class="regular-radio" value="damanged" 
+                    [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus"
+                    (ngModelChange)="getItemValid(model.itemstatus)">
+                <label for="damaged" id="radiolabel">Damaged</label>
+                &nbsp;&nbsp;&nbsp;
+
+                <input id="expired" type="radio" class="regular-radio" value="expired" 
+                    [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus"
+                    (ngModelChange)="getItemValid(model.itemstatus)">
+                <label for="expired" id="radiolabel">Expired</label>
+                &nbsp;&nbsp;&nbsp;
+
+                <input id="others" type="radio" class="regular-radio" value="others"
+                    [(ngModel)]="model.itemstatus" #itemstatus="ngModel" name="itemstatus"
+                    (ngModelChange)="getItemValid(model.itemstatus)">
+                <label for="others" id="radiolabel">Others</label>
+            </div>
+        </div>
+        <br/>
+        <div class="row marginRow">
+            <div class="col-25">
+            <label class="heading1">Repayment Method	</label>
+            </div>        
+        </div>
+
+        <div class="row marginRow">
+            <div class="col-100">
+                <input type="radio" class="regular-radio" value="cash"  [(ngModel)]="model.paymentType" #paymentType="ngModel"
+                    id="cash" name="paymentType" (ngModelChange)="getPaymentValid(model.paymentType)">
+                <label id="radiolabel">Cash</label>  
+                    &nbsp;&nbsp;&nbsp;
+                <input type="radio" class="regular-radio" value="credit" [(ngModel)]="model.paymentType" #paymentType="ngModel"
+                    id="credit" name="paymentType" (ngModelChange)="getPaymentValid(model.paymentType)">
+                <label id="radiolabel">Credit</label>
+                    &nbsp;&nbsp;&nbsp;
+                
+                <input  type="radio" class="regular-radio" value="voucher" [(ngModel)]="model.paymentType" #paymentType="ngModel"
+                    id="voucher" name="paymentType" (ngModelChange)="getPaymentValid(model.paymentType)">
+                <label id="radiolabel">Voucher</label>
+            </div>        
+
+        </div>
+        <br/>
+
+        <div class="row marginRow">
+            <div class="col-40">
+                <label class="heading1">Quantity</label>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-40">
+                <label class="heading1">Price</label>
+            </div>
+        </div>
+
+        <div class="row marginRow">
+            <div class="col-40">
+                <input type="number" id="qtyBox" [(ngModel)]="model.quantity" #quantity="ngModel" 
+                    min="0" [max]="this.model.invqty" name="quantity" (ngModelChange)="getPrice(model.quantity)" 
+                    autocomplete="off" required  />
+            </div>
+            <div class="col-2"></div>
+            <div class="col-40">
+                <label id="priceBox">{{ this.model.price }}</label>
+            </div>
+        </div>
+        
+        <br/>
+        <!-- <div *ngIf="quantity.errors && (quantity.dirty || quantity.touched) ||
+            (returnForm.submitted && !quantity.valid )">
+            <span [hidden]="!quantity.errors.required" class="spanerror">
+                Required field cannot be left blank
+            </span>
+        </div> -->
+        <br/>
+    
+        <div class="row marginRow">
+            <div class="col-20"></div>
+            <div class="col-50">
+                <button class="save-button">{{btnsave}} </button>
+            </div>
+            <div class="col-20"></div>
+        </div>
+    </form>
+</div>

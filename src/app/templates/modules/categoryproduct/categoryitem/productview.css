@@ -1,0 +1,131 @@
+* {
+  font-size: medium;
+  color: white;
+}
+::ng-deep .productview .mat-dialog-container {
+  background-color: #434f5b;
+  width: 850px;
+  height: 580px;
+  padding: 17px;
+}
+h2 {
+  margin: 3px 3px 3px 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+#discountedit-secondlayer {
+  background: #333c45;
+  height: 100%;
+  width: 100%;
+}
+#productview-icon {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  margin: 5px;
+}
+#viewicon-background {
+  width: 30px;
+  height: 30px;
+  background-color: #51af57;
+  border-radius: 15px;
+}
+#view-box {
+  width: 220px;
+  height: 35px;
+  background: #272e34;
+  border: none;
+  box-shadow: none;
+}
+#name-box {
+  width: 220px;
+  height: 35px;
+  background: #272e34;
+  border: none;
+  box-shadow: none;
+}
+#description-box {
+  width: 220px;
+  height: 75px;
+  background: #272e34;
+  border: none;
+  box-shadow: none;
+  font-size: 10px;
+}
+#productcode-box {
+  background-color: #999999;
+  width: 220px;
+  height: 35px;
+}
+#productcode-box2 {
+  background-color: #999999;
+  width: 190px;
+  height: 35px;
+}
+#tax-box {
+  width: 60px;
+  height: 35px;
+  background: #272e34;
+  border: none;
+  box-shadow: none;
+  margin-left: 89px;
+}
+#margin-box {
+  width: 60px;
+  height: 35px;
+  background: #272e34;
+  border: none;
+  box-shadow: none;
+}
+#price-box {
+  width: 190px;
+  height: 35px;
+  background: #272e34;
+  border: none;
+  box-shadow: none;
+}
+#picture-box {
+  height: 130px;
+  text-align: center;
+  background: white;
+  border: none;
+  box-shadow: none;
+}
+#chooseimg-box1 {
+  width: 73px;
+  height: 60px;
+  background: white;
+  border: none;
+  box-shadow: none;
+}
+#chooseimg-box2 {
+  width: 73px;
+  height: 60px;
+  background: white;
+  border: none;
+  box-shadow: none;
+  margin-top: 10px;
+}
+#save-btn {
+  width: 140px;
+  height: 35px;
+  background: #51af57;
+  border: none;
+}
+#cancel-btn {
+  width: 140px;
+  height: 35px;
+  background: #ff0000;
+  border: none;
+}
+#button-printpage {
+  height: 30px;
+  width: 120px;
+  border: 1px solid;
+  margin-top: 10px;
+  cursor: pointer;
+  margin-left: 260px;
+}
+#icon-align {
+  margin: 5px;
+}

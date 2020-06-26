@@ -1,0 +1,309 @@
+@import "_base";
+@import "_common";
+
+.purchase-invoice-view {
+  display: flex;
+  color: #5d6d76;
+  height: calc(100vh - 65px);
+
+  h3 {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  .purchase-orders-view {
+    flex-basis: 43%;
+    padding: 25px;
+    padding-left: 0;
+    border-right: 1px solid #1c313e;
+
+    .orders-view-body {
+      height: 80%;
+      overflow: auto;
+    }
+
+    .orders-view-header {
+      margin-bottom: 30px;
+      h3 {
+        margin-bottom: 0;
+      }
+      span {
+        font-size: 11px;
+      }
+    }
+
+    .orders-view-box div {
+      box-sizing: border-box;
+    }
+
+    .orders-view-box {
+      display: flex;
+      padding: 15px;
+      font-size: 14px;
+      background-color: #1a2d39;
+      margin-bottom: 10px;
+
+      .option {
+        padding-right: 15px;
+
+        input[type=checkbox]:before {
+          border: 2px solid #1186aa;
+          width: 15px;
+          height: 15px;
+        }
+
+        input[type=checkbox]:checked:after {
+          top: -2px;
+          left: 6px;
+        }
+       
+      }
+
+      .option.custom-control{
+        padding-top: 0;
+      }
+
+      .details {
+        width: 100%;
+        div:first-child {
+          padding-bottom: 5px;
+          font-size: 12px;
+          span {
+            display: inline-block;
+            padding-right: 10px;
+            margin-right: 15px;
+            border-right: 1px solid #26474c;
+            color: #dadddf;
+            line-height: 1.25;
+          }
+          span:last-child {
+            border: 0;
+          }
+        }
+
+        div:nth-child(2) h4 {
+          font-size: 14px;
+          color: #dadddf;
+          margin-bottom: 0;
+        }
+
+        div:nth-child(2) span {
+          font-size: 12px;
+        }
+
+        div:nth-child(3) {
+          text-align: right;
+          color: #dadddf;
+          padding-top: 5px;
+        }
+      }
+    }
+  }
+
+  .create-invoice-view {
+    flex-basis: 57%;
+    padding: 25px;
+    padding-left: 80px;
+    border-left: 1px solid $main-bg;
+    font-size: 14px;
+    background: $table-header-bg;
+
+    .create-invoice-header {
+      padding-top: 40px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .popup-close-invoice {
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2) url(/assets/images/pop-close-btn.svg) no-repeat center;
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 15px;
+      background-size: 50% 50%;
+    }
+
+    .vendor-info div {
+      margin-bottom: 10px;
+      display: flex;
+      flex-grow: 1;
+
+      span:first-child {
+        white-space: nowrap;
+        padding-right: 20px;
+        min-width: 10%;
+      }
+
+      span:last-child {
+        white-space: nowrap;
+        color: #dadddf;
+      }
+    }
+
+    .vendor-info div:last-child {
+      padding-bottom: 10px;
+    }
+
+    .vendor-info div:nth-child(2) span:last-child {
+      border: 1px solid #2b4353;
+      padding: 3px 5px;
+      background-color: #15222b;
+    }
+
+    .product-list {
+      padding-right: 30px;
+    }
+
+    .product-list h4 {
+      font-size: 14px;
+    }
+
+    .product-list .table-invoice .invoice-header,
+    .product-list .table-invoice .invoice-body-holder > div {
+      display: flex;
+      margin-bottom: 10px;
+      border-radius: 7px;
+      padding: 5px 20px;
+    }
+
+ 
+    .invoice-header {
+      background-color: #182833;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+
+    .invoice-header div:first-child,
+    .invoice-body div:first-child {
+      width: 50%;
+    }
+
+    .invoice-body-holder {
+      max-height: 130px;
+      overflow-y: scroll;
+    }
+
+    .invoice-body {
+      color: #dadddf;
+    }
+
+    .invoice-body div:first-child span {
+      display: block;
+      color: #5d6d76;
+      font-size: 12px;
+    }
+
+    .invoice-header div:nth-child(2),
+    .invoice-body div:nth-child(2) {
+      width: 20%;
+      text-align: left;
+      padding-left: 5px;
+    }
+
+    .invoice-body {
+      background-color: #1c313e;
+    }
+
+    .invoice-header div:last-child,
+    .invoice-body div:last-child {
+      width: 30%;
+      text-align: right;
+    }
+
+    .invoice-footer {
+      margin-top: 15px;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid #334f5f;
+      padding-right: 10px;
+      margin-right: 10px;
+    }
+
+    .invoice-footer > div:first-child {
+      padding-top: 15px;
+      padding-right: 10px;
+
+      & div:first-child {
+        padding-right: 5px;
+      }
+    }
+
+    .invoice-footer > div {
+    
+      display: flex;
+      text-align: right;
+      width: 100%;
+      margin-bottom: 10px;
+      color: #dadddf;
+      
+    }
+
+    .invoice-footer > div > div:first-child {
+      width: 80%;
+    }
+
+    .invoice-footer > div > div:last-child {
+      width: 20%;
+      text-align: right;
+    }
+
+    .sub-gross input {
+      background-color: transparent;
+      font-family: sans-serif;
+      font-size: 14px;
+      border: 0;
+      width: 50px;
+      color: #fff;
+      text-align: right;
+    }
+
+    .invoice-footer div.sub-gross div:last-child span {
+      border: 1px solid #233743;
+      display: inline-block;
+      padding: 3px 10px;
+      min-width: 40px;
+    }
+
+    .invoice-footer div.gross div span {
+      border: 1px solid #2a4352;
+      padding: 3px 10px;
+       display: inline-block;
+       background: #1c313e;
+       color: #fff;
+       font-weight: bold;
+    }
+    .invoice-footer div.gross div:last-child span {
+     min-width: 100%;
+     border-left: 0;
+    }
+
+     .invoice-footer div.gross div:first-child span {
+     border-right: 0;
+    }
+
+
+  }
+  
+  .add-button {
+    padding-right: 20px;
+    padding-top: 20px;
+  }
+
+  .add-button button {
+    border: 0;
+    background: #1186aa;
+    border-radius: $btn-border-radius;
+    padding: 5px 60px;
+    margin-left: auto;
+    display: block;
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

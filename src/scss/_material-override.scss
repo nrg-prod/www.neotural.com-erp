@@ -1,0 +1,139 @@
+/* fallback */
+@import "_base";
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.mat-sort-header-button,
+.mat-cell,
+.mat-footer-cell,
+.mat-calendar-arrow,
+.mat-sort-header-button,
+.mat-calendar-table-header th,
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger,
+.mat-paginator-icon,
+.mat-select-arrow,
+.mat-calendar-body-label,
+.mat-select-value,
+.mat-calendar-body-cell-content,
+.mat-sort-header-arrow,
+.mat-tab-label .mat-tab-label-content,
+.mat-input-element,
+.mat-header-cell {
+  color: $white !important;
+}
+
+.mat-calendar-arrow {
+  border-top-color: $white;
+}
+
+.mat-button:disabled {
+  opacity: 0.6;
+}
+.mat-table {
+  background: transparent;
+
+  th {
+    background-color: $material-table-header-bg;
+    text-align: center !important;
+    font-family: RobotoBold;
+  }
+  tr {
+    &:nth-child(odd) {
+      background-color: $material-table-odd-bg;
+    }
+    &:nth-child(even) {
+      background-color: $material-table-even-bg;
+    }
+  }
+}
+
+.mat-sort-header-container,
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+  justify-content: center !important;
+  text-align: center;
+}
+
+.mat-header-cell {
+  font-size: inherit;
+}
+.mat-paginator {
+  background: transparent;
+}
+
+.mat-tab-body-wrapper {
+  background-color: $material-tab-bg;
+  padding: 20px;
+}
+
+.mat-tab-label {
+  border-bottom: 1px solid $material-tab-label-separator-border;
+  opacity: 1 !important;
+  justify-content: flex-start !important;
+  font-family: RobotoBold;
+  @include fontSize($large);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  &-active {
+    background-color: $material-tab-bg;
+    color: $white;
+  }
+}
+
+.print-dialog {
+  .mat-dialog-container {
+    position: absolute;
+    right: 100vw;
+    .hide-in-print {
+      display: none;
+    }
+  }
+  @media print {
+    .mat-dialog-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      // -webkit-print-color-adjust: exact; // To get the actual print as per the webview
+
+      * {
+        color: $black !important;
+      }
+    }
+  }
+}
+
+.mat-snack-bar-container {
+  background-color: $white;
+  color: $black;
+  &.success {
+    color: $snackbar-success;
+    border: 2px solid $snackbar-success;
+  }
+  &.error {
+    color: $snackbar-error;
+    border: 2px solid $snackbar-error;
+  }
+  &.warning {
+    color: $snackbar-warning;
+    border: 2px solid $snackbar-warning;
+  }
+}

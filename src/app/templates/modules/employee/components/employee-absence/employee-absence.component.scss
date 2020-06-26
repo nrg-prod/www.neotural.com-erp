@@ -1,0 +1,71 @@
+@import "_base";
+
+.box{
+  background: rgb(37, 63, 75);
+  width: 386px;
+  margin-left: -200px;
+  border-radius: $dialog-border-radius;
+  font-family: Open Sans;
+}
+.text{
+  color:white;
+  font-family: Open Sans;
+  float: left;
+  padding-left: 2.5rem;
+  font-weight: bold;
+  font-weight: bold;
+}
+.datetext{
+  color: #627580;
+  float: right;
+  padding-right: 2.5rem;
+}
+.reasonTxt{
+  border-radius: 8px;
+  border: 1px solid #334F5F;
+  background: #1C313E;
+  width: 80%;
+  height: 14em;
+  color: $white;
+  padding-left: 15px;
+}
+button{
+  background: #1C313E;
+  border: 1px solid #1C313E;
+  height: 2rem;
+  font-size: 15px;
+  border-radius: $btn-border-radius;
+  font-weight: bold;
+  padding-right: 10px;
+}
+#absent{
+  background: #934146;
+  color: white;
+  font-size: 18px;
+  width: 17rem;
+  height: 3rem;
+  margin-bottom: 20px;
+}
+::placeholder {
+  color: #8D9BA4;
+  font-size: 15px;
+  padding-top: 5px;
+}
+
+.close {
+  background: none !important;
+  border: none !important;
+ }
+
+#popup-close  {
+  color: $white;
+  font-size: 20px;
+}
+
+#absent-box {
+  position:absolute; top:10px; z-index: 1;
+}
+
+#error-msg {
+  color: red;
+}

@@ -1,0 +1,56 @@
+
+<div class="row">
+  <div class="col-4">
+    <h4>Vendor List</h4> 
+  </div>
+  <div class="col-8">
+    <div style="float: right;">
+      <button class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addVendor()">
+        <span class="fas fa-plus"></span> Add Vendor 
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="enable">
+      <thead>
+        <tr>
+          <th class="wid-50px" style="width: 4% !important;"></th>
+          <th style="cursor:pointer;">ID #
+            <i *ngIf="!isSortCodeDesc" class="sort-by-desc" (click)="sortByOrder('code','desc')"></i>
+            <i class="sort-by-asc" *ngIf="!isSortCodeAsc" (click)="sortByOrder('code','asc')"></i>
+          </th>
+          <th>Name</th>
+          <th>Country</th>
+          <th>Email</th>
+          <th>Date</th>
+          <th>Contact Number</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of vendorsDS; let i = index" (dblclick)= "goToVendorDetails(item)"> 
+        <tr>
+          <td class="wid-50px" style="width: 4% !important;">
+            <img src="assets/images/employee.png" class="img-fluid logo" alt="Employee" />
+          </td>
+          <td>{{item.vendorcode}}</td>
+          <td>{{item.vendorName}}</td>
+          <td>{{item.country}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.addeddate}}</td>
+          <td>{{item.phoneNumber}}</td>
+          <td>{{item.city}}</td>
+          <!-- <td class="txt-right">
+            <span class="edit-delete-icon">
+              <span (click)="removeVendor(item.vendorcode)" class="fas fa-trash"></span>
+            </span>
+          </td> -->
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+  

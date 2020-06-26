@@ -1,0 +1,110 @@
+@import "_base";
+
+.header-margin-adjust {
+  height: calc(100vh - 65px);
+  position: absolute;
+  top: 65px;
+}
+
+mat-drawer-container,
+mat-drawer,
+.mat-list-base .mat-list-item {
+  background-color: inherit;
+  color: inherit !important;
+}
+
+img {
+  width: 35px;
+}
+
+.menu-icon-margin-adjust {
+  color: inherit;
+  margin-left: 15px;
+}
+
+.mat-drawer {
+  p {
+    @include fontSize($normal);
+  }
+}
+
+mat-drawer {
+ background-color: $sidenav-bg;
+}
+
+.side-navi{
+  width: 200px;
+}
+
+.side-navi ul,
+.side-navi ul li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.side-navi div.active ul{
+  border: 1px solid red;
+}
+
+.side-navi > ul li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  padding-right: 2.5rem;
+}
+
+.side-navi > ul li .active,
+.side-navi > ul  li a:hover {
+  background: #2c4655;
+}
+
+.side-navi > ul li{
+  margin-bottom: 0.5rem;
+}
+
+.side-navi > ul li a p{
+  font-size: 16px;
+}
+
+.side-navi > ul li div{
+  position: relative;
+}
+
+.side-navi > ul li div span {
+  position: absolute;
+  top: 50%; right: 10%;
+  padding: 5px;
+  background: url(/assets/images/menu-right-arrow.svg) no-repeat center;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.side-navi > ul li div span.open {
+  background: url(/assets/images/menu-down-arrow.svg) no-repeat center;
+}
+
+
+.side-navi ul li ul{
+  margin-left: 35%;
+}
+
+.side-navi ul li ul a.active,
+.side-navi ul li ul a:hover{
+  background-color: transparent;
+  color: #55bcdc;
+}
+.side-navi ul li ul a {
+  font-size: 14px;
+  padding: 0.3rem 0.5rem;
+}
+
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+  padding: 0 !important;
+}
+
+.mat-list-item a {
+  background-color:#2C4655;
+  width: 100%;
+}
+

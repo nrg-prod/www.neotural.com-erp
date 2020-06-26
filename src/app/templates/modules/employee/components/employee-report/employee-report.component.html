@@ -1,0 +1,28 @@
+<div class="box" id="employee-report-box">
+  <div align="center">
+    <div>
+      <button type="button" class="close" aria-label="Close" (click)="dailyReportClose()">
+        <span id="popup-close" aria-hidden="true">&times;</span>
+      </button>
+     <div>
+    <div class="col-12">
+      <div class="">
+        <p class="text">Daily Report</p>
+      </div>
+      <div *ngIf="isSaveDailyReport && model.report === ''" id="error-msg">Report is required</div>
+      <div class="">
+        <p class="datetext">{{commonService.getTodayDate() | date : 'EEEE MMMM d'}}</p>
+      </div>
+    </div>
+    <br/><br/>
+    <div>
+      <textarea class="reasonTxt" name="report" [(ngModel)]="this.model.report" #report="ngModel"></textarea>
+    </div>
+    <br/>
+    <div id="btn1">
+      <button id="absent" name="absent" type="button" style="margin-bottom: 20px;" (click)="saveDailyReport()">Save Report</button>
+    </div>
+  </div>
+  <!-- End Box -->
+</div>
+

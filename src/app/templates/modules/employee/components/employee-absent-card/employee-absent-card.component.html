@@ -1,0 +1,26 @@
+<div class="row mt-2">
+  <div class="col-5">Date</div>
+  <div class="col-3">Check In</div>
+  <div class="col-3">Check Out</div>
+  <div class="col-1">
+    &nbsp;
+  </div>
+</div>
+<div class="row py-2 absent-card-separator">
+  <div class="col-5">{{ absentCardDetail.date }}</div>
+  <div class="col-3">
+    {{ absentCardDetail.checkIn }}
+    <div *ngIf="absentCardDetail.checkInReason" class="w-100 small">
+      {{ absentCardDetail.checkInReason }}
+    </div>
+  </div>
+  <div class="col-3">
+    {{ absentCardDetail.checkOut }}
+    <div *ngIf="absentCardDetail.checkOutReason" class="w-100 small">
+      {{ absentCardDetail.checkOutReason }}
+    </div>
+  </div>
+  <div class="col-1">
+    <i class="fas fa-edit"></i>
+  </div>
+</div>

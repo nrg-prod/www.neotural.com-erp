@@ -1,0 +1,115 @@
+<div class="grid-container">
+  <div class="row">
+    <button id="dialog-x" (click)="dialogClose()"> X </button>
+    <form name="registerForm" (ngSubmit)="registerForm.form.valid && save(labelname)"
+    #registerForm="ngForm" novalidate>
+      <div class="column">
+        <fieldset class="form-group"> 
+          <div class="custom-file fileInputProfileWrap">
+              <p class="error">{{imageError}}</p>
+              <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+              <div class="img-space">  
+                <div *ngIf="div1 && !isImageSaved">
+                  <img id="addproductpic-box" [src]="getImage(model.customerbase64)" 
+                    onerror="this.src='/assets/images/no-image.png'" class="img-responsive" />
+                </div> 
+                <div *ngIf="isImageSaved">
+                  <img id="addproductpic-box" [src]="cardImageBase64" />
+                </div>  
+                <div *ngIf="!isImageSaved && !div1">    
+                  <img id="addproductpic-box" src="./../../assets/images/placeholder.png" class="img-responsive"> 
+                </div>
+
+                <!-- <ng-container *ngIf="isImageSaved; else elseTemplate">
+                    <img [src]="cardImageBase64" />
+                </ng-container>
+                <ng-template #elseTemplate> 
+                  <img id="imageplaceholder" src="./../../assets/images/placeholder.png" class="img-responsive"> 
+                </ng-template> -->
+              </div>
+          </div>
+        </fieldset>
+        <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+
+      </div>
+      <div class="column">
+
+        <label class="heading">{{labelname}} </label>
+        <div [ngSwitch]="showTasksOf">
+
+          <div *ngSwitchCase="'customer'">
+            <input type="text" id="textbox1" name="customerName"  [(ngModel)]="this.model.customerName" 
+            #customerName="ngModel" value="{{model.customerName}}" autocomplete="off" required/>
+    
+            <div *ngIf="customerName.errors && (customerName.dirty || customerName.touched) ||
+              (registerForm.submitted && !customerName.valid )">
+              <span [hidden]="!customerName.errors.required" class="spanerror">
+                  Required field cannot be left blank
+              </span>
+            </div>        
+          </div>
+          <div *ngSwitchCase="'vendor'">
+            <input type="text" id="textbox1" name="vendorName" [(ngModel)]="this.model.vendorName" 
+            #vendorName="ngModel" autocomplete="off" required/>
+    
+            <div *ngIf="vendorName.errors && (vendorName.dirty || vendorName.touched) ||
+              (registerForm.submitted && !vendorName.valid )">
+              <span [hidden]="!vendorName.errors.required" class="spanerror">
+                  Required field cannot be left blank
+              </span>
+            </div>        
+          </div>
+        </div>
+
+
+        <label class="heading">Phone Number </label>
+        <input type="text" id="textbox1" name="phoneNumber" [(ngModel)]="this.model.phoneNumber" 
+        #phoneNumber="ngModel" autocomplete="off" required/>
+
+        <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched) ||
+          (registerForm.submitted && !phoneNumber.valid )">
+          <span [hidden]="!phoneNumber.errors.required" class="spanerror">
+              Required field cannot be left blank
+          </span>
+        </div>   
+
+        <label class="heading">Address</label>
+        <input type="text" name="address" id="textbox4" [(ngModel)]="this.model.address" 
+          #address="ngModel" value="{{model.address}}" autocomplete="off"/>
+    
+      
+      </div>
+      <div class="column">
+        
+        <label class="heading">Email </label>
+        <input type="text" name="email" id="textbox7" [(ngModel)]="this.model.email" 
+          #email="ngModel" value="{{model.email}}" autocomplete="off"/>
+
+        <label class="heading">Country </label>
+        <select name="country" id="textbox" [(ngModel)]="this.model.country" 
+          #country="ngModel" value="{{model.country}}" class="m-t-5px">
+        <option value="India">India</option>
+        <option value="Indonesia">Indonesia</option>
+        <option value="Malaysia">Malaysia</option>
+        <option value="Singapore">Singapore</option>
+        <option value="Australia">Australia</option>
+        <option value="US">US</option>
+        <option value="UK">UK</option>
+        <option value="Others">Others</option>
+
+      </select>
+        <label class="heading">City </label>
+        <input type="text" name="city" id="textbox9" [(ngModel)]="this.model.city" 
+          #city="ngModel" value="{{model.city}}" autocomplete="off"/>
+
+
+
+        <div> </div>
+
+        <br/>
+        <button>{{btnname}}</button>
+
+      </div>
+    </form>
+  </div>
+</div>

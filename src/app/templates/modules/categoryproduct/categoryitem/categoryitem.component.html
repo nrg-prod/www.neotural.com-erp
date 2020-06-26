@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-4">
+    <h4>Product List</h4> 
+  </div>
+  <div class="col-8">
+    <div style="float: right;">
+      <button  (click)="addNewCategory()" class="create-button">
+        <span class="fas fa-plus"></span> Category 
+      </button>
+      <button  (click)="addNewProduct()" class="create-button">
+        <span class="fas fa-plus"></span> 
+        Product 
+      </button>
+  
+      <button  (click)="addpromotion('Add Discount','discount')" class="create-button">
+        <span class="fas fa-plus"></span> Discount 
+      </button>
+
+      <button  (click)="addpromotion('Add Free Gift','freegift')" class="create-button">
+        <span class="fas fa-plus"></span> Free Gift 
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="productTable">
+      <thead>
+        <tr>
+          <th>Product Image</th>
+          <th>Product Code</th>
+          <th>Product Name</th>
+          <th>Category Name</th>
+          <th>Vendor Name</th>
+          <th>Actual Price / Unit</th>
+          <th class="txt-right">Margin</th>
+          <th class="txt-right">Tax</th>
+          <th class="txt-right wid-100px">Selling Price / Unit</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let a of allproductlist; let i = index"> 
+        <tr>
+          <td>{{i}}</td>
+          <td>{{a.prodcode}}</td>
+          <td>{{a.productname}}</td>
+          <td>{{a.categoryname}}</td>
+          <td>{{a.vendorname}}</td>
+          <td>
+            <label *ngIf="a.price == null && a.unit == null"></label>
+            <label *ngIf="a.price == null && a.unit !== null">{{a.unit}}</label>
+            <label *ngIf="a.unit == null && a.price !== null">{{a.price}}</label>
+            <label *ngIf="a.unit !== null && a.price !== null">{{a.price}}/{{a.unit}}</label>
+          </td>
+          <td class="txt-right">{{a.tax}}</td>
+          <td class="txt-right">{{a.margin}}</td>
+          <td class="txt-right wid-100px">{{a.sellingprice}} 
+            <span class="edit-delete-icon user-icon">
+              <span class="fas fa-pen mar-let-40px" (click)="allproducteditcall(a.prodcode,a.vendorcode)"></span>
+              <span class="fas fa-trash" (click)="allproductdelete(a.prodcode)"></span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>  
+
+<!-- Loading Image Start -->
+<div class="row">
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">			
+    <img *ngIf="loadinggif" class="loadingimage" src="/assets/images/rotateload.gif"/> 
+  </div>
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">
+  </div>
+</div>
+<!-- Loading Image End -->

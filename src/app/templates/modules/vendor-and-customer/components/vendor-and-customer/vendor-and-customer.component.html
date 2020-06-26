@@ -1,0 +1,21 @@
+<!-- <mat-tab-group
+  animationDuration="0ms"
+  [selectedIndex]="activeTab"
+  (selectedIndexChange)="tabChanged($event)"
+>
+  <mat-tab
+    ><ng-template mat-tab-label>Vendor</ng-template>
+    <app-vendor-and-customer-list
+      [componentType]="activeTab === 0 ? 'Vendor' : ''"
+      [tabChange]="activeTab === 0"
+    ></app-vendor-and-customer-list>
+  </mat-tab>
+  <mat-tab
+    ><ng-template mat-tab-label>Customer</ng-template>
+    <app-vendor-and-customer-list
+      [componentType]="activeTab === 1 ? 'Customer' : ''"
+      [tabChange]="activeTab === 1"
+    ></app-vendor-and-customer-list>
+  </mat-tab>
+</mat-tab-group> -->
+<app-vendor-and-customer-list></app-vendor-and-customer-list>

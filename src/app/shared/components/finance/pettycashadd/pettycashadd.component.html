@@ -1,0 +1,2245 @@
+<div class="employee-content">
+  <div class="row">
+    <div class="col-lg-11">
+      <div id="addstock-div">
+        <div class="group-gap" [@.disabled]="true">
+          <mat-tab-group animationDuration="0ms">
+            <!-- First Tab Start -->
+            <mat-tab label="Employee Salary" class="matTabLabel">
+              <br />
+              <div id="mat-tab-body-content">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <p style="padding-left:15px;">Employee Salary List</p>
+                      </div>
+                      <div class="col-lg-4"></div>
+                      <div class="col-lg-4">
+                        <mat-form-field>
+                          <input
+                            matInput
+                            (keyup)="applyFilter($event.target.value)"
+                            placeholder="Search "
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Time :</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <input
+                      type="date"
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="joinDate"
+                      [(ngModel)]="model.joinDate"
+                      name="{{ model.joinDate }}"
+                      #joinDate="ngModel"
+                    />
+                    <!--    <mat-form-field id="datebox-align">
+                                            <input matInput class="form-control" id="choosedate" [matDatepicker]="picker3">
+                                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker3 ></mat-datepicker>
+                                        </mat-form-field>-->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Sort By:</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <select
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="employeeName"
+                      [(ngModel)]="model.employeeName"
+                      #employeeName="ngModel"
+                    >
+                      <option>-- Select --</option>
+                      <option
+                        *ngFor="let itemEmp of empNameList"
+                        value="{{ itemEmp }}"
+                      >
+                        {{ itemEmp }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="radio-toolbar">
+                      <label id="save-butn" (click)="searchStockReport()"
+                        >Search</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-8">
+                    <mat-paginator
+                      #sort
+                      [pageSize]="5"
+                      [hidePageSize]="true"
+                    ></mat-paginator>
+                    <div class="mat-elevation-z8">
+                      <table
+                        mat-table
+                        #hBtable
+                        [dataSource]="dataSource1"
+                        matSort
+                      >
+                        <ng-container matColumnDef="EmployeeName">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Employee Name
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="empDetails(row.empcode)"
+                            id="{{ row.empcode }}"
+                          >
+                            {{ row.employeeName }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Code">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Code
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="empDetails(row.empcode)"
+                            id="{{ row.empcode }}"
+                          >
+                            {{ row.empcode }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Rank">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Rank
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="empDetails(row.empcode)"
+                            id="{{ row.empcode }}"
+                          >
+                            {{ row.rank }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="BasicSalary">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Basic Salary
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="empDetails(row.empcode)"
+                            id="{{ row.empcode }}"
+                          >
+                            {{ row.monthlySalary }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="OverTime">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Over Time
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="empDetails(row.empcode)"
+                            id="{{ row.empcode }}"
+                          >
+                            {{ row.overtimeSalary }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Bonus">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Bonus
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="empDetails(row.empcode)"
+                            id="{{ row.empcode }}"
+                          >
+                            {{ row.bonus }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Total">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Total
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="empDetails(row.empcode)"
+                            id="{{ row.empcode }}"
+                          >
+                            {{ row.monthlySalary }}
+                          </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="firstColumns"></tr>
+                        <tr
+                          mat-row
+                          mat-row
+                          [ngClass]="table - row"
+                          tabindex="1"
+                          *matRowDef="let row; columns: firstColumns"
+                        ></tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-4" *ngIf="empDetailsDiv">
+                    <div id="employee-details">
+                      <br />
+                      <p class="text">Employee Salary Detail</p>
+                      <br />
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Name
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.employeeName }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Code
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.empcode }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Rank
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.rank }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Month
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.monthName }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Work Day
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.workingDays }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Absent
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.absentDays }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Late
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.lateDays }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Early Leave
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.earlyLeaveDays }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Overtime
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.overTime }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Basic Salary
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.monthlySalary }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Commision
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.commission }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Deduction
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.absentDeduction }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Overtime pay
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          {{ this.model.overtimeSalary }}
+                        </div>
+                      </div>
+                      <hr class="hrLine" />
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4">Total</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-5 col-xs-5 col-lg-5">
+                          {{ this.model.totalAmount }}
+                        </div>
+                      </div>
+                      <br />
+                      <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-11">
+                          <button id="print-emp-butn">
+                            <i
+                              class="fa fa-print"
+                              aria-hidden="true"
+                              id="printicon"
+                            ></i>
+                            &nbsp;
+                            <label id="text">Print Page</label>
+                          </button>
+                        </div>
+                        <div class="col-lg-1"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <!-- First Tab End -->
+            <!-- Second Tab Start -->
+            <mat-tab label="Sales">
+              <br />
+              <div id="mat-tab-body-content">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <p style="padding-left:15px;">Sales List</p>
+                      </div>
+                      <div class="col-lg-4"></div>
+                      <div class="col-lg-4">
+                        <mat-form-field>
+                          <input
+                            matInput
+                            (keyup)="applySalesFilter($event.target.value)"
+                            placeholder="Search "
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Time :</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <input
+                      type="date"
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="soDate"
+                      [(ngModel)]="model.soDate"
+                      name="{{ model.soDate }}"
+                      #soDate="ngModel"
+                    />
+                    <!--   <mat-form-field id="datebox-align">
+                                            <input matInput class="form-control" id="choosedate" [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel"  [matDatepicker]="picker4">
+                                            <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker4 ></mat-datepicker>
+                                        </mat-form-field>-->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Sort By:</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <select
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="customerName"
+                      [(ngModel)]="model.customerName"
+                      #customerName="ngModel"
+                    >
+                      <option>-- Select --</option>
+                      <option
+                        *ngFor="let itemcustomer of customerList"
+                        value="{{ itemcustomer }}"
+                      >
+                        {{ itemcustomer }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="radio-toolbar">
+                      <label id="save-butn" (click)="searchSales()"
+                        >Search</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-8">
+                    <mat-paginator
+                      #sort
+                      [pageSize]="5"
+                      [hidePageSize]="true"
+                    ></mat-paginator>
+                    <div class="mat-elevation-z8">
+                      <table mat-table #sort [dataSource]="dataSource2" matSort>
+                        <ng-container matColumnDef="Date">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Date
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="salesDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.addedDate }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="CustomerName">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Customer Name
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="salesDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.customerName }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Invoice">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Invoice
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="salesDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.invoiceNumber }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="SubTotal">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Sub Total
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="salesDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.unitPrice }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="DeliveryFee">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Delivery Fee
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="salesDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.deliveryCost }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Total">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Total
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="salesDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.netAmount }}
+                          </td>
+                        </ng-container>
+
+                        <tr
+                          mat-header-row
+                          *matHeaderRowDef="secondColumns"
+                        ></tr>
+                        <tr
+                          mat-row
+                          mat-row
+                          [ngClass]="table - row"
+                          tabindex="1"
+                          *matRowDef="let row; columns: secondColumns"
+                        ></tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div id="add-sales-details" *ngIf="addSalesDiv">
+                      <br />
+                      <div class="row" id="salessummary">
+                        <div id="textSize">Time &nbsp;&nbsp;: &nbsp;&nbsp;</div>
+                        <select
+                          class="form-control"
+                          style="background-color:#243642;color: white;width: 70%;"
+                          id="addedDate"
+                          [(ngModel)]="model.addedDate"
+                          name="{{ model.addedDate }}"
+                          #addedDate="ngModel"
+                        >
+                          <option>-- Select --</option>
+                          <option
+                            *ngFor="let itemdate of dateList"
+                            value="{{ itemdate }}"
+                          >
+                            {{ itemdate }}
+                          </option>
+                        </select>
+                      </div>
+                      <br />
+                      <div class="row" id="salessummary">
+                        <div
+                          class="col-md-5 col-xs-5 col-lg-4"
+                          id="medium-size"
+                        >
+                          All Turnover
+                        </div>
+                        <div
+                          class="col-md-1 col-xs-1 col-lg-1"
+                          id="medium-size"
+                        >
+                          :
+                        </div>
+                        <div
+                          class="col-md-5 col-xs-5 col-lg-5"
+                          id="medium-size"
+                        >
+                          {{ this.model.unitPrice }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div
+                          class="col-md-5 col-xs-5 col-lg-4"
+                          id="medium-size"
+                        >
+                          Net Turnover
+                        </div>
+                        <div
+                          class="col-md-1 col-xs-1 col-lg-1"
+                          id="medium-size"
+                        >
+                          :
+                        </div>
+                        <div
+                          class="col-md-5 col-xs-5 col-lg-5"
+                          id="medium-size"
+                        >
+                          {{ this.model.netAmount }}
+                        </div>
+                      </div>
+                    </div>
+                    <div id="sales-details" *ngIf="salesDetailsDiv">
+                      <br />
+                      <p class="text">Preview Invoice Detail</p>
+                      <br />
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Customer
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.customerName }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Code
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.custcode }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Invoice Number
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.invoiceNumber }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Date
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.addedDate }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Order List
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="back-color">
+                          {{ this.model.category }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Delivery Fee
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.deliveryCost }}
+                        </div>
+                      </div>
+                      <hr class="hrLine" />
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4">Total</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-5 col-xs-5 col-lg-5">
+                          {{ this.model.totalAmount }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                          <button id="print-sales-butn">
+                            <i
+                              class="fa fa-print"
+                              aria-hidden="true"
+                              id="printicon"
+                            ></i>
+                            &nbsp;
+                            <label id="text">Print Page</label>
+                          </button>
+                        </div>
+                      </div>
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <!-- Second Tab End -->
+            <!-- Third Tab Start -->
+            <mat-tab label="Purchase">
+              <br />
+              <div id="mat-tab-body-content">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <p style="padding-left:15px;">Purchase List</p>
+                      </div>
+                      <div class="col-lg-4"></div>
+                      <div class="col-lg-4">
+                        <mat-form-field>
+                          <input
+                            matInput
+                            (keyup)="applyPurchaseFilter($event.target.value)"
+                            placeholder="Search "
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Time :</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <input
+                      type="date"
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="poDate"
+                      [(ngModel)]="model.poDate"
+                      name="{{ model.poDate }}"
+                      #poDate="ngModel"
+                    />
+                    <!--     <mat-form-field id="datebox-align">
+                                                <input matInput class="form-control" 
+                                                [(ngModel)]="model.poDate" name="{{model.poDate}}" #poDate="ngModel" id="choosedate" [matDatepicker]="picker5">
+                                                <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker5 ></mat-datepicker>
+                                            </mat-form-field>-->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Sort By:</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <select
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="vendorName"
+                      [(ngModel)]="model.vendorName"
+                      #vendorName="ngModel"
+                    >
+                      <option>-- Select --</option>
+                      <option
+                        *ngFor="let itemvendor of vendorList"
+                        value="{{ itemvendor }}"
+                      >
+                        {{ itemvendor }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="radio-toolbar">
+                      <label id="save-butn" (click)="searchPurchase()"
+                        >Search</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-8">
+                    <mat-paginator
+                      #sort
+                      [pageSize]="5"
+                      [hidePageSize]="true"
+                    ></mat-paginator>
+                    <div class="mat-elevation-z8">
+                      <table mat-table #sort [dataSource]="dataSource3" matSort>
+                        <ng-container matColumnDef="Date">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Date
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.addedDate }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="vendorName">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Vendor Name
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.vendorName }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Invoice">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Invoice
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.invoiceNumber }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="SubTotal">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Sub Total
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.unitPrice }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="DeliveryFee">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Delivery Fee
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.deliveryCost }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Total">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Total
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.netAmount }}
+                          </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="thirdColumns"></tr>
+                        <tr
+                          mat-row
+                          mat-row
+                          [ngClass]="table - row"
+                          tabindex="1"
+                          *matRowDef="let row; columns: thirdColumns"
+                        ></tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div id="add-purchse-details" *ngIf="addPurchaseDiv">
+                      <br />
+                      <div class="row" id="salessummary">
+                        <div id="textSize">Time &nbsp;&nbsp;: &nbsp;&nbsp;</div>
+                        <select
+                          class="form-control"
+                          style="background-color:#243642;color: white;width: 70%;"
+                          id="addedDate"
+                          [(ngModel)]="model.addedDate"
+                          name="{{ model.addedDate }}"
+                          #addedDate="ngModel"
+                        >
+                          <option>-- Select --</option>
+                          <option
+                            *ngFor="let itemdate of dateList"
+                            value="{{ itemdate }}"
+                          >
+                            {{ itemdate }}
+                          </option>
+                        </select>
+                      </div>
+                      <br />
+                      <div class="row" id="salessummary">
+                        <div
+                          class="col-md-5 col-xs-5 col-lg-4"
+                          id="medium-size"
+                        >
+                          TOTAL PURCHASE
+                        </div>
+                        <div
+                          class="col-md-1 col-xs-1 col-lg-1"
+                          id="medium-size"
+                        >
+                          :
+                        </div>
+                        <div
+                          class="col-md-5 col-xs-5 col-lg-5"
+                          id="medium-size"
+                        >
+                          {{ this.model.unitPrice }}
+                        </div>
+                      </div>
+                    </div>
+                    <div id="purchase-details" *ngIf="purchaseDetailsDiv">
+                      <br />
+                      <p class="text">Preview Invoice Detail</p>
+                      <br />
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Vendor
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.vendorName }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Code
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.vendorcode }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Invoice Number
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.invoiceNumber }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Date
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.addedDate }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Order List
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="back-color">
+                          {{ this.model.category }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Delivery Fee
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.deliveryCost }}
+                        </div>
+                      </div>
+                      <hr class="hrLine" />
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4">Total</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-5 col-xs-5 col-lg-5">
+                          {{ this.model.totalAmount }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                          <button id="print-sales-butn">
+                            <i
+                              class="fa fa-print"
+                              aria-hidden="true"
+                              id="printicon"
+                            ></i>
+                            &nbsp;
+                            <label id="text">Print Page</label>
+                          </button>
+                        </div>
+                      </div>
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <!-- Third Tab End -->
+            <!-- Fourth Tab Start -->
+            <mat-tab label="Return">
+              <br />
+              <div id="mat-tab-body-content">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <p style="padding-left:15px;">Return List</p>
+                      </div>
+                      <div class="col-lg-4">
+                        <!--    <button id="print-butn">
+                                                    &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
+                                                    &nbsp;
+                                                    &nbsp;<label id="text">Print Page</label>
+                                                </button>-->
+                      </div>
+                      <div class="col-lg-4">
+                        <mat-form-field>
+                          <input
+                            matInput
+                            (keyup)="applyReturnFilter($event.target.value)"
+                            placeholder="Search "
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Time :</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <input
+                      type="date"
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="soDate"
+                      [(ngModel)]="model.soDate"
+                      name="{{ model.soDate }}"
+                      #soDate="ngModel"
+                    />
+                    <!--    <mat-form-field id="datebox-align">
+                                            <input matInput class="form-control"
+                                            [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel"
+                                             id="choosedate" [matDatepicker]="picker6">
+                                            <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker6 ></mat-datepicker>
+                                        </mat-form-field>-->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Sort By:</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <select
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="customerName"
+                      [(ngModel)]="model.customerName"
+                      #customerName="ngModel"
+                    >
+                      <option>-- Select --</option>
+                      <option
+                        *ngFor="let itemcustomer of customerList"
+                        value="{{ itemcustomer }}"
+                      >
+                        {{ itemcustomer }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="radio-toolbar">
+                      <label id="save-butn" (click)="searchReturn()"
+                        >Search</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-8">
+                    <mat-paginator
+                      #sort
+                      [pageSize]="5"
+                      [hidePageSize]="true"
+                    ></mat-paginator>
+                    <div class="mat-elevation-z8">
+                      <table mat-table #sort [dataSource]="dataSource4" matSort>
+                        <ng-container matColumnDef="Date">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Date
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseReturnDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.poDate }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Invoice">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Invoice
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseReturnDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.invoiceNumber }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Type">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Type
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseReturnDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.type }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="SubTotal">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Sub Total
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseReturnDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.subTotal }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="DeliveryFee">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Delivery Fee
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseReturnDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.deliveryCost }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Total">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Total
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="purchaseReturnDetails(row.invoiceNumber)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.totalAmount }}
+                          </td>
+                        </ng-container>
+
+                        <tr
+                          mat-header-row
+                          *matHeaderRowDef="fourthColumns"
+                        ></tr>
+                        <tr
+                          mat-row
+                          mat-row
+                          [ngClass]="table - row"
+                          tabindex="1"
+                          *matRowDef="let row; columns: fourthColumns"
+                        ></tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div id="add-return-details" *ngIf="addPurchaseReturnDiv">
+                      <br />
+                      <div class="row" id="salessummary">
+                        <div id="textSize">Time &nbsp;&nbsp;: &nbsp;&nbsp;</div>
+                        <select
+                          class="form-control"
+                          style="background-color:#243642;color: white;width: 70%;"
+                          id="addedDate"
+                          [(ngModel)]="model.addedDate"
+                          name="{{ model.addedDate }}"
+                          #addedDate="ngModel"
+                        >
+                          <option>-- Select --</option>
+                          <option
+                            *ngFor="let itemdate of dateList"
+                            value="{{ itemdate }}"
+                          >
+                            {{ itemdate }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          All Purchase Return Voucher
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          {{ this.model.unitPrice }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          All Purchase Return Cash
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          {{ this.model.netAmount }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          All Sales Return Voucher
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          {{ this.model.unitPrice }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize">
+                          All Sales Return Cash
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          {{ this.model.netAmount }}
+                        </div>
+                      </div>
+                    </div>
+                    <div id="return-details" *ngIf="purchaseReturnDetailsDiv">
+                      <p class="text">Preview Invoice Detail</p>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Invoice
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.invoiceNumber }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Date
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.poDate }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Type
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.type }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Return List
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.addedDate }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Delivery Fee
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.deliveryCost }}
+                        </div>
+                      </div>
+                      <hr class="hrLine" />
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4">Total</div>
+                        <div class="col-md-1 col-xs-1 col-lg-1">:</div>
+                        <div class="col-md-5 col-xs-5 col-lg-5">
+                          {{ this.model.totalAmount }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                          <button id="print-sales-butn">
+                            <i
+                              class="fa fa-print"
+                              aria-hidden="true"
+                              id="printicon"
+                            ></i>
+                            &nbsp;
+                            <label id="text">Print Page</label>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <!-- Fourth Tab End -->
+            <!-- Fifth Tab Start -->
+            <mat-tab label="Petty Cash">
+              <br />
+              <div id="mat-tab-body-content">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <p style="padding-left:15px;">Petty Cash List</p>
+                      </div>
+                      <div class="col-lg-4">
+                        <!--    <button id="print-butn">
+                                                    &nbsp;<i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
+                                                    &nbsp;
+                                                    &nbsp;<label id="text">Print Page</label>
+                                                </button>-->
+                      </div>
+                      <div class="col-lg-4">
+                        <mat-form-field>
+                          <input
+                            matInput
+                            (keyup)="applypettyCashFilter($event.target.value)"
+                            placeholder="Search "
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Time :</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <input
+                      type="date"
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="soDate"
+                      [(ngModel)]="model.soDate"
+                      name="{{ model.soDate }}"
+                      #soDate="ngModel"
+                    />
+                    <!--    <mat-form-field id="datebox-align">
+                                            <input matInput class="form-control"
+                                            [(ngModel)]="model.soDate" name="{{model.soDate}}" #soDate="ngModel"
+                                             id="choosedate" [matDatepicker]="picker7">
+                                            <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker7 ></mat-datepicker>
+                                        </mat-form-field>-->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2" style="margin-left: 15px;">
+                    <p>Sort By:</p>
+                  </div>
+                  <div class="col-lg-3">
+                    <select
+                      class="form-control"
+                      style="background-color:#1B2931;color: white;"
+                      id="customerName"
+                      [(ngModel)]="model.customerName"
+                      #customerName="ngModel"
+                    >
+                      <option>-- Select --</option>
+                      <option
+                        *ngFor="let itemcustomer of searchData"
+                        value="{{ itemcustomer }}"
+                      >
+                        {{ itemcustomer }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="radio-toolbar">
+                      <label id="save-butn" (click)="searchPettyCash()"
+                        >Search</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-8">
+                    <mat-paginator
+                      #sort
+                      [pageSize]="5"
+                      [hidePageSize]="true"
+                    ></mat-paginator>
+                    <div class="mat-elevation-z8">
+                      <table mat-table #sort [dataSource]="dataSource5" matSort>
+                        <ng-container matColumnDef="Description">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Petty Cash Description
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="pettyDetails(row.id)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.description }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Date">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Date
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="pettyDetails(row.id)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.addedDate }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Type">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Type
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="pettyDetails(row.id)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.type }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="From">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            From
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="pettyDetails(row.id)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.fromPerson }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="To">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            To
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="pettyDetails(row.id)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.toPerson }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Value">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Value
+                          </th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="pettyDetails(row.id)"
+                            id="{{ row.invoiceNumber }}"
+                          >
+                            {{ row.totalAmount }}
+                          </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="fifthColumns"></tr>
+                        <tr
+                          mat-row
+                          mat-row
+                          [ngClass]="table - row"
+                          tabindex="1"
+                          *matRowDef="let row; columns: fifthColumns"
+                        ></tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div id="add-petty-details">
+                      <p class="text">Edit / Delete Petty Cash</p>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Description
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          <!-- <input type="text" class="form-control" id="textSize2"
+                                                        [(ngModel)]="finance.description"
+                                                        value="{{ finance.description }}"
+                                                        placeholder="Write Petty Cash Description"
+                                                        #description="ngModel" /> -->
+
+                          <textarea
+                            type="text"
+                            value="{{ finance.description }}"
+                            [(ngModel)]="model.description"
+                            #description="ngModel"
+                            name="description"
+                            class="form-control"
+                            id="textSize2"
+                          >
+                          </textarea>
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary" style="height: 38px;">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Date
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="textSize2"
+                            name="addedDate"
+                            [(ngModel)]="finance.addedDate"
+                            value="{{ finance.addedDate }}"
+                            #addedDate="ngModel"
+                          />
+                          <!--     <mat-form-field id="datebox-align">
+                                                        <input matInput class="form-control" id="textSize2" [matDatepicker]="picker2">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker2 ></mat-datepicker>
+                                                    </mat-form-field>-->
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Type
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          <select
+                            class="form-control"
+                            id="textSize2"
+                            [(ngModel)]="finance.type"
+                            value="{{ finance.type }}"
+                            #type="ngModel"
+                          >
+                            <option>-- Select --</option>
+                            <option
+                              *ngFor="let itemType of typeList"
+                              value="{{ itemType }}"
+                            >
+                              {{ itemType }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          From
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="textSize2"
+                            [(ngModel)]="finance.fromPerson"
+                            value="{{ finance.fromPerson }}"
+                            placeholder="Customer/Vendor/Others"
+                            #fromPerson="ngModel"
+                          />
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          To
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="textSize2"
+                            [(ngModel)]="finance.toPerson"
+                            value="{{ finance.toPerson }}"
+                            placeholder="Customer/Vendor/Others"
+                            #toPerson="ngModel"
+                          />
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Value
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="textSize2"
+                            [(ngModel)]="finance.totalAmount"
+                            value="{{ finance.totalAmount }}"
+                            placeholder="IDR"
+                            #totalAmount="ngModel"
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-7">
+                          <div class="radio-toolbar">
+                            <label id="save-butn" (click)="updatePettyCash()"
+                              >Save</label
+                            >
+                          </div>
+                          <!--<div class="radio-toolbar">
+                                                        <label id="cancel-butn"
+                                                            (click)="deletePettyCash()">Cancel</label>
+                                                    </div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <form name="savePettyCash" (ngSubmit)="savePettyCash()">
+                      <div id="petty-details">
+                        <p class="text">Add Petty Cash</p>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Description
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            <!-- <input type="text" class="form-control" id="textSize2"
+                                                        [(ngModel)]="model.description"
+                                                        placeholder="Write Petty Cash Description"
+                                                        #description="ngModel" />
+-->
+                            <textarea
+                              type="text"
+                              [(ngModel)]="model.description"
+                              #description="ngModel"
+                              name="description"
+                              class="form-control"
+                              id="textSize2"
+                            >
+                            </textarea>
+                          </div>
+                        </div>
+                        <div
+                          class="row"
+                          id="salessummary"
+                          style="height: 38px;"
+                        >
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Date
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            <input
+                              type="date"
+                              class="form-control"
+                              id="textSize2"
+                              [(ngModel)]="model.addedDate"
+                              name="addedDate"
+                              placeholder="xx/xx/xx"
+                              #addedDate="ngModel"
+                            />
+                            <!--   <mat-form-field id="datebox-align">
+                                                    <input matInput class="form-control" id="textSize2" [matDatepicker]="picker1">
+                                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                                    <mat-datepicker #picker1 ></mat-datepicker>
+                                                </mat-form-field>-->
+                          </div>
+                        </div>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Type
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            <select
+                              class="form-control"
+                              id="textSize2"
+                              [(ngModel)]="model.type"
+                              name="type"
+                              #type="ngModel"
+                            >
+                              <option>-- Select --</option>
+                              <option
+                                *ngFor="let itemType of typeList"
+                                value="{{ itemType }}"
+                              >
+                                {{ itemType }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            From
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            <!-- <input type="text" class="form-control" 
+                                                        [(ngModel)]="model.fromPerson"
+                                                        placeholder="Customer/Vendor/Others" #fromPerson="ngModel" />
+-->
+                            <ng2-completer
+                              placeholder="Customer/Vendor/Others"
+                              [(ngModel)]="model.fromPerson"
+                              name="fromPerson"
+                              #fromPerson="ngModel"
+                              [datasource]="dataService"
+                              [minSearchLength]="0"
+                              id="textSize2"
+                            ></ng2-completer>
+                          </div>
+                        </div>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            To
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            <!--   <input type="text" class="form-control" id="textSize2"
+                                                        [(ngModel)]="model.toPerson" name="toPerson"
+                                                        placeholder="Customer/Vendor/Others" #toPerson="ngModel" /> -->
+                            <ng2-completer
+                              placeholder="Customer/Vendor/Others"
+                              [(ngModel)]="model.toPerson"
+                              name="toPerson"
+                              #toPerson="ngModel"
+                              [datasource]="dataService"
+                              [minSearchLength]="0"
+                            ></ng2-completer>
+                          </div>
+                        </div>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Value
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="textSize2"
+                              [(ngModel)]="model.totalAmount"
+                              name="totalAmount"
+                              placeholder="IDR"
+                              #totalAmount="ngModel"
+                            />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-5"></div>
+                          <div class="col-lg-7">
+                            <div class="radio-toolbar">
+                              <!-- <label id="save-butn">Add</label> -->
+                              <button id="save-butn">Add</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <!-- Fifth Tab End -->
+            <!-- Sixth Tab Start -->
+            <mat-tab label="Finance Report">
+              <br />
+              <div id="mat-tab-body-content">
+                <p style="padding-left:15px;">Finance List</p>
+                <div class="row">
+                  <div class="col-lg-7" id="financebackground">
+                    <br />
+                    <div class="row" style="margin: 2px;">
+                      <div class="col-4 col-md-6 col-lg-7">
+                        <div class="row">
+                          <p id="purchase-text">Date</p>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="date-box1"
+                            [(ngModel)]="model.joinDate"
+                            name="{{ model.joinDate }}"
+                            #joinDate="ngModel"
+                          />
+                          <!--    <mat-form-field id="datebox-align">
+                                                            <input matInput class="form-control" 
+                                                            [(ngModel)]="model.joinDate" name="{{model.joinDate}}" #joinDate="ngModel"
+                                                        id="choosedate" [matDatepicker]="picker8">
+                                                            <mat-datepicker-toggle matSuffix [for]="picker8"></mat-datepicker-toggle>
+                                                            <mat-datepicker #picker8 ></mat-datepicker>
+                                                        </mat-form-field>-->
+                          <!--  <hr id="second-h2">-->
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="date-box1"
+                            [(ngModel)]="model.joinDate"
+                            name="{{ model.joinDate }}"
+                            #joinDate="ngModel"
+                          />
+                          <!--    <mat-form-field id="datebox-align">
+                                                            <input matInput class="form-control" 
+                                                            [(ngModel)]="model.joinDate" name="{{model.joinDate}}"
+                                                            #joinDate="ngModel"id="choosedate" [matDatepicker]="picker9">
+                                                            <mat-datepicker-toggle matSuffix [for]="picker9"></mat-datepicker-toggle>
+                                                            <mat-datepicker #picker9 ></mat-datepicker>
+                                                        </mat-form-field>-->
+                        </div>
+                        <hr />
+                        <div class="row" style="margin: auto;">
+                          <div id="debcred-box">
+                            <p id="border-bottom">DEBIT</p>
+                            <p id="border-bottom">CREDIT</p>
+                            <p id="border-bottom">PROFIT/LOST</p>
+                          </div>
+                          <div id="debcred-box2">
+                            <p id="border-bottom"></p>
+                            <p id="border-bottom"></p>
+                            <p id="border-bottom"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-6 col-lg-5">
+                        <button id="print-butn">
+                          &nbsp;<i
+                            class="fa fa-print"
+                            aria-hidden="true"
+                            id="icon-mod"
+                          ></i>
+                          &nbsp; &nbsp;<label id="text">Print Page</label>
+                        </button>
+                        <br /><br />
+                        <mat-form-field style="color: black;">
+                          <input
+                            matInput
+                            (keyup)="applyFinanceFilter($event.target.value)"
+                            placeholder="Search "
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <br />
+                    <mat-paginator
+                      #sort
+                      [pageSize]="5"
+                      [hidePageSize]="true"
+                    ></mat-paginator>
+                    <div class="mat-elevation-z8">
+                      <table
+                        mat-table
+                        [dataSource]="dataSource6"
+                        matSort
+                        style="height: 340px;"
+                      >
+                        <ng-container matColumnDef="Date">
+                          <th mat-header-cell *matHeaderCellDef>Date</th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="financedetaildivcall(row.date)"
+                            id="{{ row.date }}"
+                          >
+                            {{ row.date }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Category">
+                          <th mat-header-cell *matHeaderCellDef>Category</th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="financedetaildivcall(row.date)"
+                            id="{{ row.date }}"
+                          >
+                            {{ row.category }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Description">
+                          <th mat-header-cell *matHeaderCellDef>Description</th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="financedetaildivcall(row.date)"
+                            id="{{ row.date }}"
+                          >
+                            {{ row.description }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Debit">
+                          <th mat-header-cell *matHeaderCellDef>Debit</th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="financedetaildivcall(row.date)"
+                            id="{{ row.date }}"
+                          >
+                            {{ row.debit }}
+                          </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Credit">
+                          <th mat-header-cell *matHeaderCellDef>Credit</th>
+                          <td
+                            mat-cell
+                            *matCellDef="let row"
+                            (click)="financedetaildivcall(row.date)"
+                            id="{{ row.date }}"
+                          >
+                            {{ row.credit }}
+                          </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="sixthColumns"></tr>
+                        <tr
+                          mat-row
+                          mat-row
+                          [ngClass]="table - row"
+                          tabindex="1"
+                          *matRowDef="let row; columns: sixthColumns"
+                        ></tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div id="finance-detail" *ngIf="financedetails">
+                      <div style="height: 10px;"></div>
+                      <p class="text">DETAIL</p>
+
+                      <div style="height: 10px;"></div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Date
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.date }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Category
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.category }}
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Payment
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          Cash - Bank Transfer 8105207774 - Paulus
+                        </div>
+                      </div>
+                      <div class="row" id="salessummary">
+                        <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                          Total
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                          :
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5" id="textSize1">
+                          {{ this.model.totalAmount }}
+                        </div>
+                      </div>
+
+                      <div id="finance-summarybox">
+                        <br />
+                        <p class="text">Preview Invoice Detail</p>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Customer
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            {{ this.model.customer }}
+                          </div>
+                        </div>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Code
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            {{ this.model.code }}
+                          </div>
+                        </div>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Invoice
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            {{ this.model.code }}
+                          </div>
+                        </div>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Order List
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            {{ this.model.code }}
+                          </div>
+                        </div>
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Delivery Fee
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            {{ this.model.deliveryCost }}
+                          </div>
+                        </div>
+                        <hr class="hrLine" />
+                        <div class="row" id="salessummary">
+                          <div class="col-md-5 col-xs-5 col-lg-4" id="textSize">
+                            Total
+                          </div>
+                          <div class="col-md-1 col-xs-1 col-lg-1" id="textSize">
+                            :
+                          </div>
+                          <div
+                            class="col-md-5 col-xs-5 col-lg-5"
+                            id="textSize1"
+                          >
+                            {{ this.model.totalAmount }}
+                          </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                          <div class="col-lg-1"></div>
+                          <div class="col-lg-3">
+                            <button id="print-sales-butn">
+                              <i
+                                class="fa fa-print"
+                                aria-hidden="true"
+                                id="printicon"
+                              ></i>
+                              &nbsp;
+                              <label id="text">Print Page</label>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <!-- Sixth Tab End -->
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br /><br /><br />
+</div>

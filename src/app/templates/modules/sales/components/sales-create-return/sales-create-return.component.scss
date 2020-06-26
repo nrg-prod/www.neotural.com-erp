@@ -1,0 +1,180 @@
+
+@import "_base";
+
+
+::ng-deep .mat-dialog-container {
+  background:$po-order-form-bg;
+  border-radius: $dialog-border-radius;
+}
+label{
+  color:$white;
+}
+.heading {
+  color:$table-header-font;
+  margin-left: 35px;
+}
+
+.heading1{
+  color:$table-header-font;
+  margin-left: 15px;
+}
+
+.regular-radio{
+  margin-left: 15px;
+}
+#radiolabel{
+  padding-left: 10px;
+}
+#qtyBox{
+  background: $table-invoived-row-bg;
+  color: $white;
+  margin: 20px 0px 0px 15px;
+  height: 30px;
+  width: 85px;
+  padding: 0px 0px 0px 5px;
+}
+#priceBox{
+  margin: 20px 0px 0px 15px;
+  height: 30px;
+  width: 85px;
+}
+input{
+  border: 1px solid $header-bg; 
+}
+.marginRow{
+  margin-bottom: -30px !important; 
+}
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid $validation-green; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid $validation-red; /* red */
+}
+
+.spanerror{
+  margin-left: 0px !important;
+}
+span{
+  color: $white;
+  background-color:$error-code; 
+  font-size: 12px;
+  margin-left: 15px;
+}
+input[type=text], select, textarea {
+  width: 50%;
+  padding: 12px;
+  background: none;
+  border-radius: 4px;
+  resize: vertical;
+  color:$white;
+  border: 1px solid $header-bg; 
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  color: $white;
+  width: 50%;
+  padding: 12px 20px;
+  border: none;
+  //border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+h5{
+  color:$white;
+  margin-left: 40px;
+}
+.container {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  height: 80%;
+  border-radius: 5px;
+}
+.col-20{
+  float: left;
+  width: 30%;
+  margin-top: 6px;
+}
+.col-25 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+
+.col-100 {
+  float: left;
+  width: 100%;
+  margin-top: 6px;
+}
+.regular-radio {
+	-webkit-appearance: none;
+  background-color: $table-invoived-row-bg; 
+	border: 1px solid $btn-bg;
+  /* background-color: #c18484; 
+	border: 1px solid red; */
+	box-shadow: 0 1px 2px $white, inset 0px -15px 10px -12px $white;
+	padding: 6px;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+}
+
+
+.regular-radio:checked:after {
+	content: ' ';
+	width: 6px;
+  height: 6px;
+	border-radius: 50px;
+	position: absolute;
+	/*background: #99a1a7;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);*/
+  box-shadow: inset 0px 0px 10px $btn-bg;
+	text-shadow: 0px;
+  left: 3px;
+  top: 3px;
+	font-size: 12px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.save-button {
+  width: 250px;
+  height: 40px;
+  color: white;
+  background: $btn-bg;
+  border: 1px solid $btn-bg;
+  border-radius: 20px;
+}
+.left-arrow {
+  font-size: 25px;
+  float: left;
+  margin-right: 20px;
+}
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,60 @@
+
+@import "_base";
+
+* {
+  font-size: 13px;
+  color: white;
+}
+::ng-deep .categoryeditdelete .mat-dialog-container {
+  background-color: #434f5b;
+  width: 700px;
+  height: 480px;
+  padding: 17px;
+}
+#editdelete-secondlayer {
+  background: #333c45;
+  width: 100%;
+  height: 100%;
+}
+#edit-del-text {
+  font-size: 23px;
+  margin: 8px;
+}
+#editdelcategory-div {
+  width: 180px;
+  height: 340px;
+  background: #272e34;
+  margin: 30px;
+  text-align: center;
+}
+#categoryname-div {
+  width: 100%;
+  height: 60px;
+  background: #272e34;
+  border: none;
+  box-shadow: none;
+}
+#categorydesc-div {
+  width: 100%;
+  height: 140px;
+  background: #272e34;
+  border: none;
+  box-shadow: none;
+}
+#save-btn {
+  width: 140px;
+  height: 35px;
+  background: #51af57;
+  border: none;
+}
+#cancel-btn {
+  width: 140px;
+  height: 35px;
+  background: #ff0000;
+  border: none;
+}
+#categoryeditdeletetext-row {
+  cursor: pointer;
+  width: 90%;
+  margin: auto;
+}

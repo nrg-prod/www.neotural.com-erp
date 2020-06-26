@@ -1,0 +1,26 @@
+
+<div class="box" id="absent-box">
+ 
+  <div align="center">
+    <button type="button" class="close" aria-label="Close" (click)="absencePopupClose()">
+      <span id="popup-close" aria-hidden="true">&times;</span>
+    </button><br>
+    <div class="col-12">
+      <div class="">
+        <p class="text">Absence</p>
+      </div>
+      <div *ngIf="isSaveAbsent && model.reason === ''" id="error-msg">Reason is required</div>
+      <div class="">
+        <p class="datetext">{{commonService.getTodayDate() | date : 'EEEE MMMM d'}}</p>
+      </div>
+    </div>
+    <div>
+      <textarea class="reasonTxt" placeholder="Reason" name="reason" [(ngModel)]="this.model.reason" #reason="ngModel"></textarea>
+    </div>
+    <br/>
+    <div id="btn1">
+      <button id="absent" name="absent" type="button" (click)="saveAbsence()">Mark as Absent</button>
+    </div>
+  </div>
+  <!-- End Box -->
+</div>

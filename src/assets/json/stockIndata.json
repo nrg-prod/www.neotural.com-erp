@@ -1,0 +1,20 @@
+[
+   { "sNo": "1", "addedDate": "01-01-2020","stockIncategory":"Purchase INV001","productName":"Apple","category": "Fabric","quantity":"30 meter","recentStock":"30000"},
+   { "sNo": "2", "addedDate": "02-02-2020","stockIncategory":"Sales Inv002","productName":"Orange","category": "Cotton","quantity":"20","recentStock":"3000"},
+   { "sNo": "3", "addedDate": "03-01-2020","stockIncategory":"Category Inv003","productName":"Grape","category": "Silk","quantity":"10 ","recentStock":"30000"},
+   { "sNo": "4", "addedDate": "02-02-2020","stockIncategory":"Product Inv004","productName":"PineApple","category": "Carbon","quantity":"40","recentStock":"10000"},
+   { "sNo": "5", "addedDate": "03-01-2020","stockIncategory":"Sales Inv005","productName":"Guava","category": "Fabric","quantity":"50","recentStock":"2000"},
+   { "sNo": "6", "addedDate": "01-01-2020","stockIncategory":"Product Inv006","productName":"Lime","category": "Cotton","quantity":"80","recentStock":"1500"},
+   { "sNo": "7", "addedDate": "02-02-2020","stockIncategory":"Purchase Inv007","productName":"Pomegranate","category": "Fabric","quantity":"60","recentStock":"40000"},
+   { "sNo": "8", "addedDate": "01-01-2020","stockIncategory":"Category Inv008","productName":"Orange","category": "Silk","quantity":"100","recentStock":"500"},
+   
+   { "sNo": "9", "addedDate": "01-01-2020","stockIncategory":"Purchase Inv009","productName":"Apple","category": "Carbon","quantity":"30","recentStock":"30000"},
+   { "sNo": "10", "addedDate": "02-02-2020","stockIncategory":"Product Inv010","productName":"Orange","category": "Fabric","quantity":"2","recentStock":"3000"},
+   { "sNo": "11", "addedDate": "03-01-2020","stockIncategory":"CategoryInv011","productName":"Grape","category": "Cotton","quantity":"10","recentStock":"30000"},
+   { "sNo": "12", "addedDate": "02-02-2020","stockIncategory":"Sales Inv012","productName":"PineApple","category": "Silk","quantity":"40","recentStock":"10000"},
+   { "sNo": "13", "addedDate": "03-01-2020","stockIncategory":"Product Inv013","productName":"Guava","category": "Fabric","quantity":"50","recentStock":"2000"},
+   { "sNo": "14", "addedDate": "01-01-2020","stockIncategory":"Category Inv014","productName":"Lime","category": "Silk","quantity":"80","recentStock":"1500"},
+   { "sNo": "15","addedDate": "02-02-2020","stockIncategory":"Sales Inv015","productName":"Pomegranate","category": "Cotton","quantity":"60","recentStock":"40000"},
+   { "sNo": "16","addedDate": "01-01-2020","stockIncategory":"Purchase Inv016","productName":"Orange","category": "Fabric","quantity":"100","recentStock":"500"}
+]
+

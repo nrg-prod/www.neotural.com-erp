@@ -1,0 +1,544 @@
+<div class="row">
+  <div class="col-5 col-md-5 col-lg-4">
+    <div style="width: 20px;"></div> 
+      <h2 style="margin: 12px;">User Management</h2>
+ <!--    <div class="row">
+   <div id="green-background">
+      <i id="user-icon" class="fa fa-user"></i>
+      <i id="cog-icon" class="fa fa-cogs" aria-hidden="true"></i>
+    </div>
+      
+    </div>-->
+
+    <div id="maindiv">
+    <div style="height: 20px;"></div>
+      <div class="row">
+        <div class="col-3 col-md-3 col-lg-3">
+          <img id="user-img" src="./assets/images/user.png">
+        </div>
+        <div class="col-9 col-md-9 col-lg-9">
+          <p style="margin: 0px;">Welcome</p>
+          <p id="usename-size">Hendry Mulyana</p>
+          <p>General Manager</p>
+        </div>
+      </div>
+
+      <div id="masterlist-div">
+              <div *ngFor="let list of masterlist" (click)="mainlList(list.number)" 
+              id="{{ list.number }}" class="categorylist-alignment">
+              <p>{{ list.name }}</p>     
+              </div>
+      </div>      
+    </div>
+  </div>
+    <div class="col-7 col-md-7 col-lg-8">
+        <div class="row">
+          <div class="col-6 col-md-6 col-lg-6">
+            <div *ngIf="componentdetails" id="component-div">
+                <div id="component-div2">
+                    <div style="height: 10px;"></div>
+            <!--Employement details-->
+            <div class="component-butn" (click)="emplyeedetails(1)" id="1">
+              <div class="row">
+                <div class="col-3 col-md-4 col-lg-3">
+                  <img style="width: 40px;" src="./assets/images/employee.png" />
+                </div>
+                <div class="col-6 col-md-3 col-lg-6">
+                  <p>Employment</p>
+                </div>
+                <div class="col-3 col-md-5 col-lg-3">
+                  <input type="checkbox" class="checkboxsize">
+                </div>
+              </div> 
+            </div>
+            <div style="height: 10px;"></div>
+            <!--ven&cust details-->
+            <div class="component-butn" (click)="venandcustdetails(2)" id="2">
+                  <div class="row">
+                      <div class="col-3 col-md-4 col-lg-3">
+                          <img style="width: 40px;" src="./assets/images/vendor-customer.png" />
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-6">
+                          <p>Vendor&Customer</p>
+                        </div>
+                        <div class="col-3 col-md-5 col-lg-3">
+                          <input type="checkbox" class="checkboxsize">
+                        </div>
+                  </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--category&product details-->
+            <div class="component-butn" (click)="catandproddetails(3)" id="3">
+                <div class="row">
+                    <div class="col-3 col-md-4 col-lg-3">
+                        <img style="width: 40px;" src="./assets/images/category-product.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                        <p>Category&Product</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                        <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--purchase details-->
+            <div class="component-butn" (click)="purchasedetails(4)" id="4">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/circle-cropped.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Purchase</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--sales details-->
+            <div class="component-butn" (click)="salesdetails(5)" id="5">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/sales.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Sales</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--finance details-->
+            <div class="component-butn" (click)="financedetails(6)" id="6">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/finance.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Finance</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--stock details-->
+            <div class="component-butn" (click)="stockdetails(7)" id="7">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/stock.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Stock</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+              <div style="height: 10px;"></div>
+            <!--report details-->
+            <div class="component-butn" (click)="reportdetails(8)" id="8">
+              <div class="row">
+                  <div class="col-3 col-md-4 col-lg-3">
+                      <img style="width: 40px;" src="./assets/images/reports.png" />
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-6">
+                      <p>Report</p>
+                    </div>
+                    <div class="col-3 col-md-5 col-lg-3">
+                      <input type="checkbox" class="checkboxsize">
+                    </div>
+                </div> 
+              </div>
+
+        </div>
+    </div>
+  </div>
+
+        <div class="col-6 col-md-6 col-lg-6">
+        <div *ngIf="categorydetails" id="category-div">
+           <div style="height: 10px;"></div>
+           <!--Emp componentdetails start-->
+              <div *ngIf="empcategorydetails">
+                <div class="row" style="margin-left: 5px;">
+                   <div class="col-9 col-md-7 col-lg-9">
+                     <p>Employee List</p>
+                   </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                     <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Add New Employee</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Absence</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Contract Tempelate</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Employee Report</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                   <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+           </div>
+        <!--Emp componentdetails End-->
+        <!--vencust componentdetails start-->
+        <div *ngIf="vencustcategorydetails">
+                <div class="row" style="margin-left: 5px;">
+                   <div class="col-9 col-md-7 col-lg-9">
+                     <p>Vendor List</p>
+                   </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                     <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Customer</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Add Vendor</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Add Customer</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+           </div>
+        <!--vencust componentdetails End-->
+        <!--Catandprod componentdetails start-->
+        <div *ngIf="catandprodcategorydetails">
+                <div class="row" style="margin-left: 5px;">
+                   <div class="col-9 col-md-7 col-lg-9">
+                     <p>Category List</p>
+                   </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                     <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Category Add/Delete</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Product List</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-9 col-md-7 col-lg-9">
+                    <p>Product Add/Delete</p>
+                  </div>
+                  <div class="col-3 col-md-5 col-lg-3">
+                    <input type="checkbox" class="checkboxsize">
+                  </div>
+                </div>
+                <br/>
+           </div>
+        <!--Catandprod componentdetails End-->
+         <!--purchase componentdetails start-->
+         <div *ngIf="purchasecategorydetails">
+          <div class="row" style="margin-left: 5px;">
+             <div class="col-9 col-md-7 col-lg-9">
+               <p>purchase Order</p>
+             </div>
+            <div class="col-3 col-md-5 col-lg-3">
+               <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+            <div class="row" style="margin-left: 5px;">
+              <div class="col-9 col-md-7 col-lg-9">
+                <p>purchase Invoice</p>
+              </div>
+              <div class="col-3 col-md-5 col-lg-3">
+                <input type="checkbox" class="checkboxsize">
+              </div>
+            </div>
+            <br/>
+
+            <div class="row" style="margin-left: 5px;">
+              <div class="col-9 col-md-7 col-lg-9">
+                <p>purchase Return</p>
+              </div>
+              <div class="col-3 col-md-5 col-lg-3">
+                <input type="checkbox" class="checkboxsize">
+              </div>
+            </div>
+            <br/>
+
+            <div class="row" style="margin-left: 5px;">
+              <div class="col-9 col-md-7 col-lg-9">
+                <p>purchase Report</p>
+              </div>
+              <div class="col-3 col-md-5 col-lg-3">
+                <input type="checkbox" class="checkboxsize">
+              </div>
+            </div>
+            <br/>
+      </div>
+    <!--purchase componentdetails End-->
+    <!--Sales componentdetails start-->
+    <div *ngIf="salescategorydetails">
+      <div class="row" style="margin-left: 5px;">
+         <div class="col-9 col-md-7 col-lg-9">
+           <p>Sales Order</p>
+         </div>
+        <div class="col-3 col-md-7 col-lg-3">
+           <input type="checkbox" class="checkboxsize">
+        </div>
+      </div>
+      <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Sales Invoice</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Sales Return</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Sales Report</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+      </div>
+      <!--Sales componentdetails End-->
+      <!--finance componentdetails start-->
+      <div *ngIf="financecategorydetails">
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-9 col-md-7 col-lg-9">
+            <p>Finance Order</p>
+          </div>
+          <div class="col-3 col-md-5 col-lg-3">
+            <input type="checkbox" class="checkboxsize">
+          </div>
+        </div>
+        <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Finance</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Finance Return</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Finance Report</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+      </div>
+      <!--finance componentdetails End-->
+      <!--Stock componentdetails start-->
+      <div *ngIf="stockcategorydetails">
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-9 col-md-7 col-lg-9">
+            <p>Stock In</p>
+          </div>
+          <div class="col-3 col-md-5 col-lg-3">
+            <input type="checkbox" class="checkboxsize">
+          </div>
+        </div>
+        <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Stock Out</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Stock Return</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Stock Damage</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+          
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Stock Report</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+      </div>
+      <!--Stock componentdetails End-->
+       <!--Report componentdetails start-->
+       <div *ngIf="reportcategorydetails">
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-9 col-md-7 col-lg-9">
+            <p>Emp Report</p>
+          </div>
+          <div class="col-3 col-md-5 col-lg-3">
+            <input type="checkbox" class="checkboxsize">
+          </div>
+        </div>
+        <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Vencust Report</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Catprod Report</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Purchase Report</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+          <br/>
+          
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-9 col-md-7 col-lg-9">
+              <p>Sales Report</p>
+            </div>
+            <div class="col-3 col-md-5 col-lg-3">
+              <input type="checkbox" class="checkboxsize">
+            </div>
+          </div>
+      </div>
+      <!--Report componentdetails End-->
+        </div>
+      </div>
+
+      </div>
+        
+   </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-4">
+    <h4>Invoice List</h4> 
+  </div>
+  <div class="col-8">
+    <div style="float: right;">
+      <button  (click)="makePayment()" [disabled]="!isPurchaseInvoice ? true:false" class="create-button" [ngStyle]="getMakePaymentStyle()">
+        <span class="fas fa-plus"></span> Make Payment
+      </button>
+      <button [disabled]="!isSalesInvoice ? true:false"
+        (click)="receivePayment()"
+        class="create-button" [ngStyle]="getReceivePaymentStyle()">
+          Receive Payment
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="invoiceTable">
+      <thead>
+        <tr>
+          <th>
+            <!-- <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input1" id="customChecks2">
+              <label class="custom-control-label1" for="customCheck2"></label>
+            </div> -->
+          </th>
+          <th>Invoice Date
+            <i *ngIf="!isSortDateDesc" class="sort-by-desc" (click)="sortByOrder('date','desc')"></i>
+            <i class="sort-by-asc" *ngIf="!isSortDateAsc" (click)="sortByOrder('date','asc')"></i>
+          </th>
+          <th>Invoice Number</th>
+          <th>Invoice Type
+            <i *ngIf="!isSortTypeDesc" class="sort-by-desc" (click)="sortByOrder('type','desc')"></i>
+            <i class="sort-by-asc" *ngIf="!isSortTypeAsc" (click)="sortByOrder('type','asc')"></i>
+          </th>
+          <th>Total Amount</th>
+          <th>Invoice Status</th>
+          <th>Payment Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of invoiceList; let i = index"> 
+        <tr>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <label>
+                <input type="checkbox" class="custom-control-input1" id="customCheck{{i}}" 
+                (click)="rowSelected(i,item, $event.target.checked)">
+              </label>
+            </div>
+          </td>
+          <td>{{item.fromdate}}</td>
+          <td>{{item.invoiceNumber}}</td>
+          <td>{{item.invoicetype}}</td>
+          <td>{{item.totalAmount}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.paymentStatus}}</td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+  
+
+<!-- Loading Image Start -->
+<div class="row">
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">			
+    <img *ngIf="loadinggif" class="loadingimage" src="/assets/images/rotateload.gif"/> 
+  </div>
+  <div class="col-6 col-md-6 col-xs-6 col-lg-6">
+  </div>
+</div>
+<!-- Loading Image End -->

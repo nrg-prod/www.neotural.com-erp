@@ -1,0 +1,20 @@
+[
+   { "sNo": "1", "addedDate": "01-01-2020","lastAction":"Purchase IPO-XXXX-01","quantity":"30 Meter","unitPrice":"30 Meter","dmgqtytotal":"100 Meter","addedqty":"-"},
+   { "sNo": "2", "addedDate": "02-02-2020","lastAction":"Sales ISO-XXXX-01","quantity":"20 Meter","unitPrice":"300 Meter","dmgqtytotal":"10 Meter","addedqty":"-"},
+   { "sNo": "3", "addedDate": "03-01-2020","lastAction":"Purchase Return IPR-XXXX-01","quantity":"10 Meter","unitPrice":"30 Meter","dmgqtytotal":"200 Meter","addedqty":"-"},
+   { "sNo": "4", "addedDate": "02-02-2020","lastAction":"Damage Stock","quantity":"40 Meter","unitPrice":"10 Meter","dmgqtytotal":"500 Meter","addedqty":"-"},
+   { "sNo": "5", "addedDate": "03-01-2020","lastAction":"Purchase IPO-XXXX-01","quantity":"-","unitPrice":"20 Meter","dmgqtytotal":"1000 Meter","addedqty":"100 Meter"},
+   { "sNo": "6", "addedDate": "01-01-2020","lastAction":"Sales ISO-XXXX-01","quantity":"80 Meter","unitPrice":"1500 Meter","dmgqtytotal":"200 Meter","addedqty":"-"},
+   { "sNo": "7", "addedDate": "02-02-2020","lastAction":"Damage Stock","quantity":"-","unitPrice":"40000 Meter","dmgqtytotal":"300 Meter","addedqty":"250 Meter"},
+   { "sNo": "8", "addedDate": "01-01-2020","lastAction":"Purchase Return IPR-XXXX-01","quantity":"-","unitPrice":"500 Meter","dmgqtytotal":"400 Meter","addedqty":"5000 Meter"},
+   
+   { "sNo": "9", "addedDate": "01-01-2020","lastAction":"Sales ISO-XXXX-01","quantity":"30 Meter","unitPrice":"30000 Meter","dmgqtytotal":"100 Meter","addedqty":"-"},
+   { "sNo": "10","addedDate": "02-02-2020","lastAction":"Damage Stock","quantity":"-","unitPrice":"3000 Meter","dmgqtytotal":"10 Meter","addedqty":"6000 Meter"},
+   { "sNo": "11","addedDate": "03-01-2020","lastAction":"Purchase Return IPR-XXXX-01","quantity":"10 Meter","unitPrice":"3000 Meter","dmgqtytotal":"200 Meter","addedqty":"-"},
+   { "sNo": "12","addedDate": "02-02-2020","lastAction":"Purchase IPO-XXXX-01","quantity":"40 Meter","unitPrice":"1000 Meter","dmgqtytotal":"500 Meter","addedqty":"-"},
+   { "sNo": "13","addedDate": "03-01-2020","lastAction":"Sales ISO-XXXX-01","quantity":"-","unitPrice":"2000 Meter","dmgqtytotal":"1000 Meter","addedqty":"100000 Meter"},
+   { "sNo": "14","addedDate": "01-01-2020","lastAction":"Damage Stock","quantity":"-","unitPrice":"1500 Meter","dmgqtytotal":"200 Meter","addedqty":"124000 Meter"},
+   { "sNo": "15","addedDate": "02-02-2020","lastAction":"Purchase Return IPR-XXXX-01","quantity":"60 Meter","unitPrice":"40000 Meter","dmgqtytotal":"300 Meter","addedqty":"-"},
+   { "sNo": "16","addedDate": "01-01-2020","lastAction":"Purchase IPO-XXXX-01","quantity":"-","unitPrice":"500 Meter","dmgqtytotal":"400 Meter","addedqty":"50000 Meter"}
+]
+

@@ -1,0 +1,31 @@
+<div class="box" id="employee-checkin-checkout-box">
+  <div align="center">
+    <button type="button" class="close" id="close-button" aria-label="Close" (click)="checkinCheckoutPopupClose()">
+      <span id="popup-close" aria-hidden="true">&times;</span>
+    </button><br>
+    <div class="col-12">
+      <div class="">
+        <p class="text">Attendance</p>
+      </div>
+      
+      <div class="">
+        <p class="datetext">{{commonService.getTodayDate() | date : 'EEEE MMMM d'}}</p>
+      </div>
+    </div>
+    <div>
+      <input type="text" placeholder="{{currentTime | date : 'h:mm a'}}" class="timeTxt" readonly/>
+      <br/><br/>
+      <div *ngIf="isSaveChecinCheckout && model.checkinCheckoutReason === ''" id="error-msg">Reason is required</div>
+      <textarea class="reasonTxt" placeholder="Reason" name="checkinCheckoutReason" [(ngModel)]="this.model.checkinCheckoutReason" #checkinCheckoutReason="ngModel"></textarea>
+    </div>
+    <br/>
+    <div id="btn1">
+      <button id="checkIn" class="checkin-checkout" name="checkIn" type="button" (click)="saveCheckinCheckedout('checkedin')" [disabled]="isDisableCheckin" [ngClass]="isDisableCheckin ? 'checkin-disabled' : ''">{{checkinLabel}}</button>
+    </div>
+    <div id="btn2">
+      <button id="checkOut" class="checkin-checkout" name="checkOut" type="button" (click)="saveCheckinCheckedout('checkedout')" [disabled]="isDisableCheckout" [ngClass]="isDisableCheckout ? 'checkout-disabled' : ''">{{checkoutLabel}}</button>
+    </div>
+    <div style="clear: both; height: 20px;"></div>
+  </div>
+  <!-- End Box -->
+</div>

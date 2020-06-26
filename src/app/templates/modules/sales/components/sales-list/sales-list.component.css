@@ -1,0 +1,249 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size:13px;
+} */
+
+.table-container {
+  width: 96.5%;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead tr th:first-child,
+tbody tr td:first-child {
+  width: 50px;
+}
+
+/* th, td {
+  padding: 10px;
+  color: white;
+} */
+tbody {
+  height: 525px;
+  overflow-y: auto;
+  display: block;
+}
+
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* th{
+  color:#ffffff;
+  background-color:#21272D;
+  background-color:#033c5f;
+  border-left: 1px solid white;
+} 
+tr:nth-child(odd){
+  background-color: #434F5B;
+}
+tr:nth-child(even){
+  background-color: #323B44;
+}
+td{
+  border-left: 1px solid white;
+} */
+
+h3 {
+  color: white;
+  font-size: 18px;
+}
+#savebtn {
+  background-color: #51af57;
+  border: #51af57;
+  color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  padding: 5px;
+}
+#textColor {
+  background-color: #243641;
+  border: 1px solid white;
+  color: white;
+  width: 100%;
+  height: 30px;
+}
+
+#rowdelete-icon {
+  margin-top: 5px;
+  color: white;
+}
+#rowdelete-div {
+  height: 25px;
+  width: 25px;
+  background: #ef6956;
+  border-radius: 16px;
+  color: white;
+}
+
+#middleContent {
+  vertical-align: middle;
+  text-align: center;
+}
+
+#sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  padding: 5px;
+}
+
+h2 {
+  font-size: 30px;
+}
+.mat-tab-group {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.mat-tab-label {
+  cursor: pointer;
+}
+
+.tab {
+  margin-left: 25px;
+}
+textarea {
+  height: 38px;
+}
+#labeltext {
+  color: white;
+}
+.tablink {
+  float: left;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  /* padding: 14px 14px; */
+  font-size: 17px;
+  text-align: center;
+  width: 25%;
+  height: 10%;
+}
+
+.tablink.active {
+  border-bottom: 3px solid #007bff;
+}
+
+#addemployee-div {
+  background: #1b2931;
+  height: 880px;
+  border-radius: 10px;
+  margin-left: 10px;
+  /* border: 1px solid black;
+  margin : 0px 15px 30px 20px; */
+}
+
+a {
+  display: block;
+  text-align: center;
+  padding: 12px 12px;
+  text-decoration: none;
+}
+
+button {
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 20px;
+}
+.addButton {
+  background-color: #27ae60;
+  padding: 10px 25px;
+}
+.romoveButton {
+  background-color: #174fa6;
+  padding: 10px 15px;
+}
+#date-details {
+  width: 100%;
+  margin: 0 25px;
+  height: auto;
+  background-color: #151f25;
+}
+
+.text {
+  text-align: center;
+  padding: 10px;
+  margin: -10px 0 auto;
+}
+
+#purchasetext {
+  padding-left: 30px;
+  font-size: small;
+}
+#purchaseoutput {
+  font-size: small;
+}
+
+hr {
+  background-color: white;
+  width: 85%;
+  margin: auto;
+}
+
+#checkIn-butn {
+  background-color: #07ab07;
+  padding-top: 4px;
+  height: 32px;
+  margin: 5px 0 0 75px;
+  text-align: center;
+  color: white;
+}
+#checkOut-butn {
+  background-color: #d40505;
+  height: 32px;
+  margin: 5px 0 0 5px;
+  text-align: center;
+  color: white;
+}
+
+.radio-toolbar input[type="radio"] {
+  display: none;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+::placeholder {
+  color: white;
+}
+
+@media (min-width: 810px) and (max-width: 1024px) and (orientation: landscape) {
+  #addemployee-div {
+    background: #1b2931;
+    height: 880px;
+    width: 107%;
+    border-radius: 10px;
+    /* border: 1px solid black;
+    margin : 0px 15px 30px 95px; */
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #addemployee-div {
+    background: #1b2931;
+    height: 880px;
+    width: 107%;
+    border-radius: 10px;
+    /* border: 1px solid black;
+    margin : 0px 15px 30px 45px; */
+  }
+}

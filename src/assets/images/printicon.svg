@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <g id="Group_322" data-name="Group 322" transform="translate(-1748 -133)">
+    <g id="Group_174" data-name="Group 174">
+      <path id="Path_65" data-name="Path 65" d="M22,0A22,22,0,1,1,0,22,22,22,0,0,1,22,0Z" transform="translate(1748 133)" fill="#334f5f"/>
+    </g>
+    <path id="Icon_ionic-md-print" data-name="Icon ionic-md-print" d="M19.529,7.813H5.471a3.136,3.136,0,0,0-3.127,3.125v6.771h3.9v4.167h12.51V17.708h3.9V10.938A3.136,3.136,0,0,0,19.529,7.813Zm-2.341,12.5H7.813v-6.25h9.375ZM18.755,3.125H6.245V7.031h12.51V3.125Z" transform="translate(1757.448 142.6)" fill="#fff"/>
+  </g>
+</svg>

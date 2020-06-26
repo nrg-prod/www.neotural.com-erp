@@ -1,0 +1,188 @@
+
+@import "_base";
+
+
+h4{ 
+  font-size: $header-label; 
+}
+
+::ng-deep .mat-dialog-container {
+  background:$po-order-form-bg;
+}
+
+/* Just common table stuff. Really. */
+table  { 
+  border-collapse: collapse; 
+  width: 100%; 
+}
+th { 
+  background:$table-header-bg; 
+}
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+thead {
+  background-color: $table-header-bg;
+}
+tbody {
+  background-color:$table-invoived-row-bg; 
+}
+.table>thead>tr>th{
+  font-size: $table-font-size;
+  border-top: 0px solid $main-bg;
+  border-bottom:10px solid $main-bg;
+  color:$table-header-font;
+} 
+.table>tbody>tr>td{
+  font-size: $table-font-size;
+  border-top:5px solid $main-bg;   
+  color:$table-row-font-color;
+  vertical-align: middle;
+  height: 60px;
+}
+.table > tbody > tr:hover {
+  background-color: $header-bg;
+}
+.table > tbody > tr:hover, .table > tbody > tr:hover span  {
+  background-color: $header-bg;
+}
+table tbody tr td span{
+  display: block;
+}
+
+table tbody tr:hover td span{
+  display: block !important;
+}
+tr[ng-click] {
+  cursor: pointer;
+}
+
+.txt-right{
+  text-align: right;
+}
+
+input{
+  background: #1c313e;
+  width: 80%;
+  height: 30px;
+  border: 1px solid $header-bg !important;
+  color: $white;
+  padding-left: 5px;
+}
+.edit-delete-icon {
+  position: relative;
+  height: 20px;
+  top: 0px;
+  margin-top: -18px;
+}
+.fa-pen,.fa-times {
+  float: right;
+  cursor: pointer;
+}
+.fa-check {
+  float: left;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.loadingimage{
+	left: 90%;
+	position: absolute;
+	margin-top: 30%;
+}
+// iPhone media query start
+
+// iPhone 6, 7, & 8 in portrait & landscape
+@media only screen and (min-width: 375px) and (max-width: 667px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+
+ // iPhone 6, 7, & 8 Plus in portrait & landscape
+@media only screen and (min-width: 414px) and (max-width: 736px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+
+
+ // iPhone X in landscape & iPhone X in portrait
+@media only screen and (min-width: 375px) and (max-width: 812px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+
+
+// iPhone 5 & 5S in portrait & landscape
+@media only screen and (min-width: 320px) and (max-width: 568px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+ // iPhone 2G-4S in portrait
+ @media only screen and (min-width: 320px) and (max-width: 480px) { 
+  h3 {
+     font-size:12px;
+ }
+ .table>tbody>tr>td{
+ font-size:10px;
+ }
+ .table>thead>tr>th{
+   font-size:10px;
+ } 
+ }
+
+ // iPhone media query end
+
+ // Galaxy S6
+
+ // Xperia Z3
+
+ // Lumia 920
+
+ // Nexus 6
+
+ // Iphone 6 Plus
+
+ // Galaxy Note 4 
+
+ // Galaxy Note II 
+
+ // iPad Air
+
+ // Galaxy Tab 2 10.1
+
+ // Galaxy Nexus 7
+
+ // Kindle Fire
+
+ // Kindle Fire HD 7"
+
+ // Kindle Fire HD 8.9"

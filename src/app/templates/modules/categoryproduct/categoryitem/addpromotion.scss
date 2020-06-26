@@ -1,0 +1,233 @@
+@import "_base";
+
+* {
+  font-size: 13px;
+  color: white;
+}
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+span{
+  color:white;
+  font-size: 12px;
+  margin: 5px 0px;
+}
+#x {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: -5px -5px 0px 0px;
+  /* background: #16222B; */
+  border: red;
+  color: white;
+  top: -10px;
+  right: -10px;
+  border-radius: 25px;
+}
+::ng-deep .addpromotion .mat-dialog-container {
+  background:$po-order-form-bg;
+  //width: 500px;
+  //height: 60vh;
+ // width: 100vh;
+  height: auto; 
+  border-radius: $dialog-border-radius;
+  padding: 17px;
+}
+
+.heading {
+  color:$table-header-font !important;
+}
+
+.autosearch1 .completer-input {
+  font-family: fontawesome;
+  font-size: 12px;
+  width: 100%;
+  height: 80%;
+  background:$po-order-form-bg;
+  border: 1px solid $header-bg;
+  box-shadow: none;
+  margin: 0px 0px 10px -20px;
+  color: white;
+}
+
+.mat-form-field {
+  font-family: fontawesome;
+  font-size: 12px;
+  width: 100%;
+  height: 80%;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  box-shadow: none;
+  margin-left: -20px;
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  font-size: large;
+  color: white;
+  font-weight: bold;
+}
+#box-dialouge {
+  position: relative;
+  background:$po-order-form-bg;
+  height: 100%;
+}
+input{
+  border: 1px solid $header-bg;
+}
+select {
+  width: 100%;
+  height: 1.8rem;
+  border-radius: 4px;
+  background:$po-order-form-bg;
+  border: 1px solid $header-bg;
+  margin: 0px 0px 5px -20px;
+  padding-left: 5px;
+}
+#inputBoxVal {
+  width: 100%;
+  height: 1.8rem;
+  border-radius: 4px;
+  background:$po-order-form-bg;
+  margin: 0px 0px 5px -20px;
+  padding-left: 5px;
+}
+#inputDis{
+  width: 20%;
+  height: 1.8rem;
+  border-radius: 4px;
+  background:$po-order-form-bg;
+  margin: 0px 50px 5px -20px;
+  padding-left: 15px;
+}
+#inputQty{
+  width: 70%;
+  height: 1.8rem;
+  border-radius: 4px;
+  background:$po-order-form-bg;
+  margin: 0px 0px 5px -20px;
+  padding-left: 5px;
+}
+#promotion-periodbox{
+  background:$po-order-form-bg;
+  width: 45%;
+  height: 2.1rem;
+  font-size: 12px;
+  box-shadow: none;
+  margin: 0px 0px 10px -20px;
+  padding: 0.375rem 0rem;
+}
+#promotion-periodbox2{
+  background:$po-order-form-bg;
+  width: 45%;
+  height: 2.1rem;
+  font-size: 12px;
+  box-shadow: none;
+  margin: 0px 0px 10px -20px;
+  padding: 0.375rem 0rem;
+}
+#labelbar{
+  color: white;
+  width: 10%;
+  margin: 0px 10px;
+}
+input[type=search] {
+  font-family: fontawesome;
+  font-size: 20px;
+  width: 100%;
+  height: 80%;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg;
+  box-shadow: none;
+  margin-left: -20px;
+}
+
+#save-btn {
+  width: 140px;
+  height: 35px;
+  background: $btn-bg;
+  border: none;
+  border-radius: $btn-border-radius;
+}
+#cancel-btn {
+  width: 140px;
+  height: 35px;
+  background: #ff0000;
+  border: none;
+}
+.search-box-override{
+  position: initial;
+}
+.regular-radio {
+	-webkit-appearance: none;
+  /*background-color: #fafafa;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);*/
+  background-color: #272e34; 
+	border: 1px solid #272e34;
+	box-shadow: 0 1px 2px white, inset 0px -15px 10px -12px white;
+	padding: 8px;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+}
+
+.regular-radio:checked:after {
+	content: ' ';
+	width: 6px;
+  height: 6px;
+	border-radius: 50px;
+	position: absolute;
+	/*background: #99a1a7;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);*/
+  box-shadow: inset 0px 0px 10px white;
+	text-shadow: 0px;
+  left: 5px;
+  top: 5px;
+	font-size: 12px;
+}
+::placeholder {
+  color: white;
+}
+::ng-deep .completer-input {
+  display: block;
+  background: #20252A;
+  border-color: 1px solid white;
+  color: white;
+  width: 100%;
+  height: 30px;
+  margin: 0px 0px 5px -20px;
+  padding-left: 32px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+}
+
+::ng-deep .completer-dropdown {
+  width: 100% !important;
+  margin: -15px 0px 0px -20px;
+  padding: -15px 0px 0px -20px;
+  position: relative !important;
+}
+.close {
+  border: none;
+  color:white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#close-icon{
+  font-size: 1.5rem;
+}
+.spanerror{
+  background-color: $error-code;
+  margin: -5px 0px 0px -20px;
+}

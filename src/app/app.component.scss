@@ -1,0 +1,16 @@
+@import "_base";
+
+.modal-content{
+  background-color:     $po-order-form-bg  !important;
+  }
+  .btnlogout{
+      background-color:     $btn-bg  !important;
+    }
+
+    button[name="btn"] {
+      background: $btn-bg;
+      padding: 8px 40px;
+      font-family: $font-family;
+      border-radius: $btn-border-radius;
+      border: none;
+    }

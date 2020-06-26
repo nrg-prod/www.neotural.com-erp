@@ -1,0 +1,45 @@
+
+<div class="row">
+  <div class="col-4">
+    <h4>Purchase Return List</h4> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="returntable">
+      <thead>
+        <tr>
+          <th>Return #</th>
+          <th>Vendor Name</th>
+          <th>Product Name</th>
+          <th>Invoiced Date</th>
+          <th class="txt-right">Quantity Invoiced</th>
+          <th ></th>
+          <th>Item Status</th>
+          <th>Payment Method</th>
+          <th class="txt-right">Quantity</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let ret of poreturnList; let i = index"> 
+        <tr>
+          <td>{{ret.invoicenumber}}</td>
+          <td>{{ret.vendorname}}</td>
+          <td>{{ret.itemname}}</td>
+          <td>{{ret.invoiceddate}}</td>
+          <td class="txt-right">{{ret.invoicedqty}}</td>
+          <td ></td>
+          <td>{{ret.itemStatus}}</td>
+          <td>{{ret.returnStatus}}</td>
+          <td class="txt-right">{{ret.qty}}</td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+::ng-deep .editInvoice .mat-dialog-container {
+  background-color: #434f5b;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  color: white;
+}
+
+#box-dialouge {
+  background: #333c45;
+  height: auto;
+}
+#rowdelete-icon {
+  margin-left: 10px;
+  margin-top: 8px;
+  color: white;
+}
+#rowdelete-div {
+  height: 30px;
+  width: 30px;
+  background: #ef6956;
+  border-radius: 16px;
+  color: white;
+}
+#rowedit-div {
+  height: 30px;
+  width: 30px;
+  background: #267cb4;
+  border-radius: 16px;
+  color: white;
+}
+table {
+  table-layout: fixed;
+  width: 90%;
+  border-collapse: collapse;
+  margin-left: 40px;
+  display: block;
+}
+th,
+td {
+  padding: 10px;
+  border: 1px solid darkgray;
+  color: white;
+}
+tbody {
+  height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 14.2857%;
+  color: white;
+}
+th {
+  background-color: #21272d;
+}
+
+td {
+  background-color: #434f5b;
+}
+
+#checkIn-butn {
+  background-color: #07ab07;
+  width: 100px;
+  height: 32px;
+  margin: 5px 0 0 0px;
+  text-align: center;
+  border: 1px solid #07ab07;
+}
+#checkOut-butn {
+  background-color: #d40505;
+  width: 120px;
+  height: 32px;
+  margin: 5px 0 0 5px;
+  text-align: center;
+}
+
+.radio-toolbar label {
+  padding: 4px 11px;
+  color: white;
+  cursor: pointer;
+}
+
+#middleContent {
+  vertical-align: middle;
+}

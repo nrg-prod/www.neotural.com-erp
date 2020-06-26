@@ -1,0 +1,13 @@
+[
+   { "sNo": "1","code":"2001","category":"Buisiness","customer":"Josni","date":"3/01/2020","debit":"10000","credit":"10000","description":"Good product"},
+   { "sNo": "2","code":"2002","category":"Trade","customer":"Nisho","date":"5/08/2019","debit":"10000","credit":"10000","description":"Good product"},
+   { "sNo": "3","code":"2003","category":"Furnitute","customer":"Alex","date":"7/01/2020","debit":"250000","credit":"250000","description":"Good product"},
+   { "sNo": "4","code":"2004","category":"Buisiness","customer":"Jeff","date":"8/12/2019","debit":"300000","credit":"300000","description":"Good product"},
+   { "sNo": "5","code":"2005","category":"Furnitute","customer":"Nisho","date":"9/01/2020","debit":"37000","credit":"37000","description":"Good product"},
+   { "sNo": "6","code":"2006","category":"Buisiness","customer":"Alex","date":"10/11/2019","debit":"450000","credit":"450000","description":"Good product"},
+   { "sNo": "7","code":"2007","category":"Trade","customer":"Josni","date":"11/01/2020","debit":"36000","credit":"36000","description":"Good product"},
+   { "sNo": "8","code":"2008","category":"Trade","customer":"Jeff","date":"14/10/2019","debit":"78000","credit":"78000","description":"Good product"}
+   
+
+]
+

@@ -1,0 +1,13 @@
+[
+   { "ProductName": "Apple","Productcode":"001","discount":"50%","discounttime":"14 Oct-24 Oct 19","qty":"30/300kg left","price":"300000"},
+   { "ProductName": "Orange","Productcode":"002","discount":"60%","discounttime":"14 Oct-24 Oct 19","qty":"30/300kg left","price":"300000"},
+   { "ProductName": "Apple","Productcode":"003","discount":"50%","discounttime":"14 Oct-24 Oct 19","qty":"30/300kg left","price":"300000"},
+   { "ProductName": "Orange","Productcode":"004","discount":"60%","discounttime":"14 Oct-24 Oct 19","qty":"30/300kg left","price":"300000"},
+   { "ProductName": "Apple","Productcode":"005","discount":"50%","discounttime":"14 Oct-24 Oct 19","qty":"30/300kg left","price":"300000"},
+   { "ProductName": "Orange","Productcode":"006","discount":"60%","discounttime":"14 Oct-24 Oct 19","qty":"30/300kg left","price":"300000"},
+   { "ProductName": "Apple","Productcode":"007","discount":"50%","discounttime":"14 Oct-24 Oct 19","qty":"30/300kg left","price":"300000"},
+   { "ProductName": "Orange","Productcode":"008","discount":"60%","discounttime":"14 Oct-24 Oct 19","qty":"30/300kg left","price":"300000"}
+   
+
+]
+

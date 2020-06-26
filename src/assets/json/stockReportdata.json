@@ -1,0 +1,20 @@
+[
+   { "sNo": "1","itemCode":"001", "lastUpdate": "01-01-2020","productName":"Apple","category": "Fabric","readyStock":"30 meter","damageStock":"10 meter","vendorName":"Josni","status":"Active"},
+   { "sNo": "2","itemCode":"002", "lastUpdate": "02-02-2020","productName":"Orange","category": "Cotton","readyStock":"20","damageStock":"2 meter","vendorName":"Nisho","status":"InActive"},
+   { "sNo": "3","itemCode":"003", "lastUpdate": "03-01-2020","productName":"Grape","category": "Silk","readyStock":"10 ","damageStock":"1 meter","vendorName":"Alex","status":"Active"},
+   { "sNo": "4","itemCode":"004", "lastUpdate": "02-02-2020","productName":"PineApple","category": "Carbon","readyStock":"40","damageStock":"5 meter","vendorName":"Jeff","status":"Active"},
+   { "sNo": "5","itemCode":"005", "lastUpdate": "03-01-2020","productName":"Guava","category": "Fabric","readyStock":"50","damageStock":"12 meter","vendorName":"John","status":"Active"},
+   { "sNo": "6","itemCode":"006", "lastUpdate": "01-01-2020","productName":"Lime","category": "Cotton","readyStock":"80","damageStock":"50 meter","vendorName":"Mary","status":"Active"},
+   { "sNo": "7","itemCode":"007", "lastUpdate": "02-02-2020","productName":"Pomegranate","category": "Fabric","readyStock":"60","damageStock":"25 meter","vendorName":"Nick","status":"Active"},
+   { "sNo": "8","itemCode":"008", "lastUpdate": "01-01-2020","productName":"Orange","category": "Silk","readyStock":"100","damageStock":"45 meter","vendorName":"Jose","status":"Active"},
+   
+   { "sNo": "9","itemCode":"009", "lastUpdate": "01-01-2020","productName":"Apple","category": "Carbon","readyStock":"30","damageStock":"18 meter","vendorName":"Kryson","status":"Active"},
+   { "sNo": "10","itemCode":"010","lastUpdate": "02-02-2020","productName":"Orange","category": "Fabric","readyStock":"2","damageStock":"0","vendorName":"Denish","status":"Active"},
+   { "sNo": "11","itemCode":"011","lastUpdate": "03-01-2020","productName":"Grape","category": "Cotton","readyStock":"10","damageStock":"1 meter","vendorName":"Juli","status":"Active"},
+   { "sNo": "12","itemCode":"012","lastUpdate": "02-02-2020","productName":"PineApple","category": "Silk","readyStock":"40","damageStock":"3 meter","vendorName":"Suji","status":"Active"},
+   { "sNo": "13","itemCode":"013","lastUpdate": "03-01-2020","productName":"Guava","category": "Fabric","readyStock":"50","damageStock":"22 meter","vendorName":"Josni","status":"Active"},
+   { "sNo": "14","itemCode":"014","lastUpdate": "01-01-2020","productName":"Lime","category": "Silk","readyStock":"80","damageStock":"20 meter","vendorName":"Roch","status":"Active"},
+   { "sNo": "15","itemCode":"015","lastUpdate": "02-02-2020","productName":"Pomegranate","category": "Cotton","readyStock":"60","damageStock":"30 meter","vendorName":"Nisho","status":"Active"},
+   { "sNo": "16","itemCode":"016","lastUpdate": "01-01-2020","productName":"Orange","category": "Fabric","readyStock":"100","damageStock":"27 meter","vendorName":"Nanthini","status":"Active"}
+]
+

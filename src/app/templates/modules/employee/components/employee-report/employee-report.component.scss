@@ -1,0 +1,75 @@
+@import "_base";
+.box{
+  background: rgb(37, 63, 75);
+  width: 30rem;
+  margin-left: -150px;
+  border-radius: $dialog-border-radius;
+  top:5rem;
+  font-family: Open Sans;
+}
+.text{
+  color:white;
+  font-family: Open Sans;
+  float: left;
+  padding-left: 2.5rem;
+  font-weight: bold;
+ font-size: 18px;
+}
+.datetext{
+  color: #627580;
+  float: right;
+  padding-right: 2.5rem;
+}
+.reasonTxt{
+  border-radius: 8px;
+  border: 1px solid #1C313E;
+  background: #1C313E;
+  width: 80%;
+  height: 14em;
+  color: white;
+  padding: 3px 15px;
+  font-size: 16px;
+}
+button{
+  background: #1C313E;
+  border: 1px solid #1C313E;
+  width: 10%;
+  height: 2rem;
+  font-size: 15px;
+  border-radius: $btn-border-radius;
+  font-weight: bold;
+}
+#absent{
+  background: #1186AA;
+  border: 1px solid #1186AA;
+  color: white;
+  font-size: 18px;
+  width: 14rem;
+  height: 2.5rem;
+}
+::placeholder {
+  color: #8D9BA4;
+  font-size: 15px;
+}
+
+.col-12 {
+  padding-top: 15px;
+}
+
+.close {
+  background: none !important;
+  border: none !important;
+ }
+
+#popup-close  {
+  color: $white;
+  font-size: 20px;
+}
+
+#error-msg  {
+  color: red;
+}
+
+#employee-report-box {
+  position:absolute; top:10px; z-index: 1;
+}

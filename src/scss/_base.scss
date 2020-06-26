@@ -1,0 +1,95 @@
+$main-bg: #15222B;
+$header-bg: #2C4655;
+$btn-bg:#1186aa;
+$login-bg: #2f4755;
+$po-order-form-bg: #1c313e;
+$h2-bg: #eaeced;
+$font-family: Open Sans;
+$green:green;
+$open-status:#1585A2;
+$error-code:#a94442;
+
+$table-font-size: 14px;
+$table-open-row-bg: #253f4b;
+$table-invoived-row-bg: #1A2D39;
+$table-header-bg: #17252F;
+$table-header-font: #97A4AC;
+$table-row-font-color:#fff;
+$header-title-font-size: 24px;
+
+
+$white: white;
+$black: black;
+$validation-green: #42A948;
+$validation-red: #a94442;
+
+$text-primary-color: white;
+$login-form-bg: #e1e1e0;
+$login-title-color: #666666;
+$search-icon-color: #666666;
+$sidenav-bg: #1A2D39;
+$widget-sales-bg: #30cfa6;
+$widget-orders-bg: #b457fd;
+$widget-purchase-bg: #f89f47;
+$widget-earnings-bg: #78bbf3;
+$data-widget-bg: #434f5b;
+$data-widget-content-bg: #333c45;
+$sales-completed: #29c0b1;
+$sales-delayed: #fbbc06;
+$sales-canceled: #ff3366;
+$disabled-input-bg: #253844;
+$btn-red-bg: #c1272c;
+$btn-green-bg: #51af57;
+$btn-orange-bg: #f89f47;
+$preview-detail-bg: #1b2932;
+
+// Material colors:
+$material-tab-bg: #243641;
+$material-tab-content-bg: #1b2932;
+$material-table-header-bg: #333c45;
+$material-table-odd-bg: #3e4954;
+$material-table-even-bg: #47525e;
+$material-tab-label-separator-border: #58665e;
+$snackbar-success: #30cfa6;
+$snackbar-error: #ff3366;
+$snackbar-warning: #fbbc06;
+
+
+// font-sizes
+$normal: 14;
+$small: 12;
+$large: 18;
+$x-large: 26;
+
+$btn-border-radius: 20px;
+$dialog-border-radius: 5px;
+$btn-padding: 0.5rem 1.5rem;
+$header-label: 18px;
+
+@mixin fontSize($size) {
+  font-size: $size + px;
+}
+
+@mixin formatPlaceHolder() {
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $login-title-color;
+    opacity: 1; /* Firefox */
+    opacity: 50%;
+    @include fontSize($small);
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $login-title-color;
+    opacity: 50%;
+    @include fontSize($small);
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $login-title-color;
+    opacity: 50%;
+    @include fontSize($small);
+  }
+}

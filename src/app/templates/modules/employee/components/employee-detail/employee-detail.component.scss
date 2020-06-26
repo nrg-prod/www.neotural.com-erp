@@ -1,0 +1,125 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+.ble-colr{color: rgba(85,112,129,1)}
+.side-wapper{padding-bottom:20px; background-color:#17252F; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+    -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075); float: left;}
+.side-profile-box{background-color:#1A2D39; margin: 30px 10px 10px 10px; width: 90%;padding: 15px; -webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+    -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+    box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)}
+
+.profile-div{
+    margin-right: 10px;
+    width: calc(30% - 10px);
+    overflow: hidden;
+    img {
+        max-width: 70%;
+        max-height: 75px;
+    }
+    //float:left;background-color:#1A2D39;background-color: #1A2D39;
+   // padding: 15px;
+   // margin-top: 15px;
+   // width: 100%;-webkit-box-shadow:3px 2px 5px -1px rgba(0,0,0,.075);
+   // -moz-box-shadow: 3px 2px 5px -1px rgba(0,0,0,.075);
+    //box-shadow:3px 2px 5px -1px rgba(0,0,0,.075)
+
+
+}
+
+h5{
+    font-size: 0.8rem;
+}
+
+
+.back-colr{background-color:#15222B;}
+.text-profile{float: left;
+    margin-left: 10px;
+    margin-top: 15px;}
+    .float-left{float: left;}
+    .m-t-20{margin-top: 20px;}
+    .m-t-10{margin-top: 10px;}
+    .m-b-20px{margin-bottom: 20px;}
+    .clr-both{clear: both;}
+    .date-div{border:2px solid #284556; padding: 15px 0px; text-align: center;height: 52px;}
+    .time-div{background-color:#1C313E;height: 52px;margin-left: 10px; padding-top: 5px;}
+    .last-div{background-color:#253F4B; height: 52px;margin-left: 10px;}
+    .middle-div{background-color:#253F4B;height: 52px;margin-left: 10px;padding-top: 5px; width: 533px;}
+    .panel-title > a.collapsed:before {
+        float: right !important;
+         content:"\f067";
+    }
+    .panel-title > a:before {
+        float: right !important;
+        font-family: FontAwesome;
+        content:"\f068"; 
+       padding-right: 5px;
+    }
+    .panel-title > a:hover, 
+    .panel-title > a:active, 
+    .panel-title > a:focus  {
+        text-decoration:none;
+    }
+.p-t-20{padding-top:20px;}
+.p-t-10{padding-top:10px;}
+.left-arrow{font-size: 25px; float: left;margin-right: 20px;}
+.text-area-style{
+    background-color: #17252F;
+    color: #fff;
+    border: 1px solid #334F5F;
+    border-radius: 0px;
+    font-size: 13px;
+    height: 170px; margin-top: 10px; text-align: left;
+}
+
+::ng-deep .mat-datepicker-popup { 
+    /* Do you changes here */
+    top:290px !important;
+    pointer-events: initial !important;
+}
+
+::ng-deep .mat-calendar-table-header th { 
+    color: rgba(85,112,129,1) !important;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+    color: rgba(85,112,129,1) !important;
+}
+
+::ng-deep .mat-calendar-body-label {
+    color: rgba(85,112,129,1) !important;
+}
+
+::ng-deep .mat-calendar-header {
+    color: rgba(85,112,129,1) !important;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-next-button {
+    color: rgba(85,112,129,1) !important;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-previous-button {
+    color: rgba(85,112,129,1) !important;
+}
+
+.org-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+    box-shadow: 0 0 8px #0c141a !important;
+    padding: 10px;
+    background: #1a2d39;
+
+    img {
+        width: 8vh;
+        height: 8vh;
+        border-radius: 50%;
+    }
+
+    & div:last-child{
+        padding-left: 10px;
+
+        & span {
+            color: #bfc5c8;
+        }
+    }
+
+}

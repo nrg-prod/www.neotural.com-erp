@@ -1,0 +1,175 @@
+<ng-container *ngIf="!showDetail">
+  <!-- <div class="row"> -->
+    <ng-container *ngTemplateOutlet="CustomerListTable"></ng-container>
+    <ng-template #CustomerListTable>
+      <div class="row">
+        <div class="col-4">
+          <h4>Customer List</h4> 
+        </div>
+        <div class="col-8">
+          <div style="float: right;">
+            <button  class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;"
+              (click)="addCustomer(null,null,null,null,null,null,null,null)">
+              <span class="fas fa-plus"></span> Add New Customer 
+            </button>
+            <img src="assets/images/print.png" style="margin-right: 10px;" class="img-fluid logo" alt="print"/>
+            <img src="assets/images/download.png" class="img-fluid logo" alt="download" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <!-- <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input1" id="customChecks2">
+                    <label class="custom-control-label1" for="customCheck2"></label>
+                  </div> -->
+                </th>
+                <th style="cursor:pointer;">ID #</th>
+                <th style="cursor:pointer;">Name</th>
+                <th style="cursor:pointer;">Country</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>City</th>
+                <th class="txt-right">Phone Number</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of customersDS; let i = index"
+              id="purchase-order-row-id{{i}}"> 
+              <tr>
+                <td>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input1">
+                  </div>
+                </td>
+                <td>{{item.custcode}}</td>
+                <td>{{item.customerName}}</td>
+                <td>{{item.country}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.city}}</td>
+                <td class="txt-right">{{item.phoneNumber}}
+                  <span class="edit-delete-icon user-icon">
+                    <span class="fas fa-trash" (click)="deleteVendorCustomer(item.custcode)"></span>
+                    <span class="fas fa-pen mar-let-40px" (click)="addCustomer(item.id,item.custcode,item.customerName,
+                    item.country,item.address,item.email,item.city,item.phoneNumber,item.customerbase64)"></span>
+                  </span>
+                </td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+      </div>        
+    </ng-template>
+  <!-- </div> -->
+  
+  <!-- <div class="row">
+    <div class="col-2">Customer List</div>
+    <div class="row col-10">
+      <span class="col px-2">
+        <button
+          class="col"
+          (click)="printPage(CustomerListTable)"
+        >
+          <i class="fas fa-print"></i>
+          Print Page
+        </button>
+      </span>
+      <span class="col px-2">
+        <div>
+          <button class="col" (click)="toggleVendorDetailView('')">
+            <i class="fas fa-plus"></i>
+            Add New Customer
+          </button>
+        </div>
+      </span>
+      <div class="col-5">
+        <div class="search-box">
+          <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          <input
+            class="search-text-box"
+            type="search"
+            matInput
+            (keyup)="applyFilter($event.target.value)"
+            placeholder="Customer Name / Code"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngTemplateOutlet="CustomerListTable"></ng-container>
+  <ng-template #CustomerListTable>
+    <div>
+      <table class="w-100 margin-20" mat-table [dataSource]="customers">
+        <ng-container matColumnDef="custcode">
+          <th mat-header-cell *matHeaderCellDef>Customer Code</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.custcode }}">
+            {{ row.custcode }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="customerName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row" id="{{ row.customerName }}">
+            {{ row.customerName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="addeddate">
+          <th mat-header-cell *matHeaderCellDef>
+            Joining Date
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.addeddate }}">
+            {{ row.addeddate }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phoneNumber">
+          <th mat-header-cell *matHeaderCellDef>
+            Contact Number
+          </th>
+          <td mat-cell *matCellDef="let row" id="{{ row.phoneNumber }}">
+            {{ row.phoneNumber }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef hideInPrint>Action</th>
+          <td mat-cell *matCellDef="let row" class="actions" hideInPrint>
+            <i class="fas fa-eye" (click)="toggleVendorDetailView(row.id)"></i>
+            <i class="fas fa-print" (click)="productprint()"></i>
+            <i
+              class="fas fa-edit"
+              (click)="toggleVendorDetailView(row.id, true)"
+            ></i>
+            <i class="fas fa-trash" (click)="deleteVendorCustomer(row.id)"></i>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr
+          mat-row
+          [ngClass]="table - row"
+          tabindex="1"
+          *matRowDef="let row; columns: displayedColumns2"
+        ></tr>
+      </table>
+    </div>
+  </ng-template>
+
+  <mat-paginator [pageSize]="5" [hidePageSize]="true"></mat-paginator> -->
+</ng-container>
+<ng-container *ngIf="showDetail">
+  <app-vendor-and-customer-detail
+    #vendorDetail
+    (backNavigation)="backNavigation()"
+    [code]="chosenId"
+    [componentType]="Customer"
+    [isEditMode]="isEditMode"
+  ></app-vendor-and-customer-detail>
+</ng-container>

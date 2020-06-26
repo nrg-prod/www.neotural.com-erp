@@ -1,0 +1,21 @@
+[
+   { "sNo": "1","invoiceNumber":"001","customerName":"Josni","soDate":"3/01/2020","subTotal":"10000"},
+   { "sNo": "2","invoiceNumber":"002","customerName":"Nisho","soDate":"5/08/2019","subTotal":"10000"},
+   { "sNo": "3","invoiceNumber":"003","customerName":"Alex","soDate":"7/01/2020","subTotal":"250000"},
+   { "sNo": "4","invoiceNumber":"004","customerName":"Jeff","soDate":"8/12/2019","subTotal":"300000"},
+   { "sNo": "5","invoiceNumber":"005","customerName":"Nisho","soDate":"9/01/2020","subTotal":"37000"},
+   { "sNo": "6","invoiceNumber":"006","customerName":"Alex","soDate":"10/11/2019","subTotal":"450000"},
+   { "sNo": "7","invoiceNumber":"007","customerName":"Josni","soDate":"11/01/2020","subTotal":"36000"},
+   { "sNo": "8","invoiceNumber":"008","customerName":"Jeff","soDate":"14/10/2019","subTotal":"78000"},
+   { "sNo": "9","invoiceNumber":"009","customerName":"Josni","soDate":"3/01/2020","subTotal":"10000"},
+   { "sNo": "10","invoiceNumber":"010","customerName":"Nisho","soDate":"5/08/2019","subTotal":"10000"},
+   { "sNo": "11","invoiceNumber":"011","customerName":"Alex","soDate":"7/01/2020","subTotal":"250000"},
+   { "sNo": "12","invoiceNumber":"012","customerName":"Jeff","soDate":"8/12/2019","subTotal":"300000"},
+   { "sNo": "13","invoiceNumber":"013","customerName":"Nisho","soDate":"9/01/2020","subTotal":"37000"},
+   { "sNo": "14","invoiceNumber":"014","customerName":"Alex","soDate":"10/11/2019","subTotal":"450000"},
+   { "sNo": "15","invoiceNumber":"015","customerName":"Josni","soDate":"11/01/2020","subTotal":"36000"},
+   { "sNo": "16","invoiceNumber":"016","customerName":"Jeff","soDate":"14/10/2019","subTotal":"78000"}
+   
+
+]
+

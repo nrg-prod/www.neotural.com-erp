@@ -1,0 +1,74 @@
+
+<div class="row">
+  <div class="col-4">
+      <h4>Purchase Invoices</h4>             
+  </div>
+  <div class="col-8">
+    <button [disabled]="!isAddStock ? true:false"
+      (click)="addStock()"
+      class="create-button" [ngStyle]="getaddStockStyle()">
+        Add Stock
+    </button>  
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="invTale">
+      <thead>
+        <tr>
+          <th>
+              <!-- <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input1" id="customChecks2">
+                <label class="custom-control-label1" for="customCheck2"></label>
+            </div> -->
+          </th>
+          <th>Invoice Date</th>
+          <th>Invoice #</th>
+          <!--  <th>Product List</th> -->
+          <th>Vendor</th>
+          <th>Qty</th>
+          <th class="txt-right">Sub Total</th>
+          <th class="txt-right">Delivery Cost</th>
+          <th class="txt-right">Total</th>
+          <th>Invoice Status</th>
+          <th>Stock Status</th>
+          <th class="txt-right"></th>
+        </tr>
+      </thead>
+      <tbody class="purchase-order-row-invoiced" *ngFor="let item of invoiceList; let i = index"> 
+        <tr>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <label>
+                <input type="checkbox" class="custom-control-input1" id="customCheck{{i}}" 
+                (click)="rowSelected(i,item, $event.target.checked)">
+              </label>
+            </div>
+          </td>
+          <td>{{item.invoicedate}}</td>
+          <td>{{item.invoicenumber}}</td>
+          <!--  <td>{{item.productName}}</td> -->
+          <td>{{item.vendorname}}</td>
+          <td>{{item.qty}}</td>
+          <td class="txt-right">{{item.subtotal}}</td>
+          <td class="txt-right">{{item.deliveryprice}}</td>
+          <td class="txt-right">{{item.totalprice}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.stockstatus}}</td>
+          <td class="txt-right">
+            <span class="edit-delete-icon invoice-view">
+              <a href="javascript:0" (click)="generatePdf(item.base64)" class="pdf-icon"><i  class="fa">&#xf1c1;</i></a>
+            </span>
+          </td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+

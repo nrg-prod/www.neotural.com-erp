@@ -1,0 +1,16 @@
+@import "_base";
+
+$logout-bg: #f34236;
+$settings-bg: #67b032;
+
+.fa-power-off {
+  background-color: $logout-bg;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.fa-cog {
+  background-color: $settings-bg;
+  padding: 10px;
+  border-radius: 50%;
+}

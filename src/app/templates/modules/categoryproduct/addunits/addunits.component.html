@@ -1,0 +1,110 @@
+<div *ngIf="showbackbtn"> <a (click)="unitClose()" style="color: #fff;float: left;cursor: pointer;">
+  <i class="fas fa-chevron-left left-arrow"></i></a></div>
+<br/>
+
+<div class="container">
+  <form
+    name="unitForm"
+    (submit)="unitForm.form.valid && addUnit(btnsave)"
+    #unitForm="ngForm"
+    novalidate>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname" class="heading">Unit name	</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="unitname"
+        [(ngModel)]="model.unitname"
+        #unitname="ngModel"
+        id="unitname" 
+        required
+        placeholder="Enter Unit..">     
+        <div *ngIf="unitname.errors  && (unitname.dirty || unitname.touched) ||
+        (unitForm.submitted && !unitname.valid )">
+          <span [hidden]="!unitname.errors.required">
+            Required field cannot be left blank
+          </span>
+         </div>
+      
+      </div>
+    </div>
+  
+
+    <div class="row">
+      <div class="col-25">
+        <label for="lname" class="heading">Unit symbol	</label>
+      </div>
+      <div class="col-75">
+        <input type="text" 
+        [(ngModel)]="model.unitsymbol"
+        #unitsymbol="ngModel"
+        id="unitsymbol" 
+        name="unitsymbol"
+        required
+        placeholder="Enter Unit Symbol..">
+
+        <div *ngIf="unitsymbol.errors  && (unitsymbol.dirty || unitsymbol.touched) ||
+        (unitForm.submitted && !unitsymbol.valid )">
+          <span [hidden]="!unitsymbol.errors.required">
+            Required field cannot be left blank
+          </span>
+         </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+          <label for="lname" class="heading">Quantity name </label>       </div>
+        <div class="col-75">
+          <input type="text" name="quantityname"
+          [(ngModel)]="model.quantityname"
+          #quantityname="ngModel"
+          id="quantityname" 
+          name="quantityname" 
+          placeholder="Enter Quantity Name..">
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="country" class="heading">Quantity symbol		</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="quantitysymbol"
+        [(ngModel)]="model.quantitysymbol"
+        #quantitysymbol="ngModel"
+        id="quantitysymbol" 
+        name="quantitysymbol" 
+        placeholder="Enter Quantity Symbol..">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="subject" class="heading">Dimension symbol  </label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="dimensionsymbol"
+        [(ngModel)]="model.dimensionsymbol"
+        #dimensionsymbol="ngModel"
+        id="dimensionsymbol" 
+        name="dimensionsymbol" 
+        placeholder="Enter Dimension Symbol..">
+      </div>
+    
+    </div>
+    <br/>
+
+    <div class="row">
+      <div class="col-25"></div>
+      <div class="col-75">
+       <!-- <button  [disabled]="!unitForm.form.valid" class="save-button">SAVE</button> -->
+        <button  class="save-button">{{btnsave}}</button>
+
+      </div>
+    </div>
+    
+        
+  </form>
+</div>

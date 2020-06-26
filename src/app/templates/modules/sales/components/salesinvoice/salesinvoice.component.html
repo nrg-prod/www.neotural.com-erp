@@ -1,0 +1,49 @@
+
+<div class="row">
+  <div class="col-4">
+    <h4>Sales Invoices</h4> 
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="invTale">
+      <thead>
+        <tr>
+          <th>Invoice Date</th>
+          <th>Invoice #</th>
+          <th>Customer</th>
+          <th>Qty</th>
+          <th class="txt-right">Sub Total</th>
+          <th class="txt-right">Delivery Cost</th>
+          <th class="txt-right">Total</th>
+          <th>Status</th>
+          <th class="txt-right"></th>
+        </tr>
+      </thead>
+      <tbody class="purchase-order-row-invoiced" *ngFor="let item of invoiceList"> 
+        <tr>
+          <td>{{item.invoicedate}}</td>
+          <td>{{item.invoicenumber}}</td>
+          <td>{{item.customerName}}</td>
+          <td>{{item.qty}}</td>
+          <td class="txt-right">{{item.subtotal}}</td>
+          <td class="txt-right">{{item.deliveryprice}}</td>
+          <td class="txt-right">{{item.totalprice}}</td>
+          <td>{{item.status}}</td>
+          <td class="txt-right">
+            <span class="edit-delete-icon invoice-view">
+              <a href="javascript:0" (click)="generatePdf(item.base64)" class="pdf-icon"><i  class="fa">&#xf1c1;</i></a>
+            </span>
+          </td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+

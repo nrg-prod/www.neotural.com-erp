@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-12">
+    <h4>Category List</h4> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+
+      <table class="table" *ngIf="enable">
+        <thead>
+          <tr>
+            <th>Category Code</th>
+            <th>Category Name</th>
+            <th>Category Description</th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let c of categorylist; let i = index"> 
+          <tr>
+            <td>{{c.categorycode}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.description}}
+              <span class="edit-delete-icon user-icon">
+                <span (click)="categorydelete(c.categorycode)" class="fas fa-trash"></span>
+                <span (click)="categoryedit(c.categorycode,c.name,c.description)" class="fas fa-pen mar-let-40px"></span>
+              </span>
+            </td>
+      
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

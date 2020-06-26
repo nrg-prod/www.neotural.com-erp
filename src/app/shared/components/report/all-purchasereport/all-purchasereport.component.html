@@ -1,0 +1,400 @@
+<div id="purchasebackground1">
+  <div style="height: 10px;"></div>
+  <div class="row">
+    <div class="col-7 col-md-7 col-lg-7">
+      <div class="row">
+        <div class="col-2 col-md-2 col-lg-2">
+          <img
+            style="width: 70px;margin-left: 26px;"
+            src="./assets/images/circle-cropped.png"
+          />
+        </div>
+        <div class="col-6 col-md-6 col-lg-6">
+          <label id="text-size">Purchase Report</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 col-md-2 col-lg-2"></div>
+    <div class="col-5 col-md-5 col-lg-3">
+      <div id="back-btn" routerLink="/report/allreport">
+        <label>BACK</label>
+      </div>
+    </div>
+  </div>
+
+  <div style="height: 10px;"></div>
+  <div id="purchasebackground2">
+    <div class="row" style="height: 100%">
+      <div class="col-7 col-md-7 col-lg-7">
+        <div class="row" id="row-size">
+          <div class="col-6 col-md-6 col-lg-6">
+            <p id="purchase-text">PURCHASE ORDER</p>
+            <p id="purchase-text">PURCHASE RETURN</p>
+            <p id="purchase-text">OVERALL LIST</p>
+          </div>
+          <div class="col-6 col-md-6 col-lg-6">
+            <div class="row" id="button-printpage">
+              <i class="fa fa-print" aria-hidden="true" id="icon-align"></i>
+              &nbsp;&nbsp;
+              <p id="font-size15">Print Page</p>
+            </div>
+            <mat-form-field style="color: black;">
+              <input
+                matInput
+                (keyup)="applyFilter($event.target.value)"
+                placeholder="Employee Name/Code"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="No">
+              <th mat-header-cell *matHeaderCellDef>No</th>
+              <td
+                mat-cell
+                *matCellDef="let row; let i = index"
+                (click)="purchaseorderdivcall(row.invoicenumber)"
+                id="{{ row.invoicenumber }}"
+              >
+                {{ i + 1 }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="PoInvoice">
+              <th mat-header-cell *matHeaderCellDef>PO Invoice</th>
+              <td
+                mat-cell
+                *matCellDef="let row"
+                (click)="purchaseorderdivcall(row.invoicenumber)"
+                id="{{ row.invoicenumber }}"
+              >
+                {{ row.invoicenumber }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="poDate">
+              <th mat-header-cell *matHeaderCellDef>PO Date</th>
+              <td
+                mat-cell
+                *matCellDef="let row"
+                (click)="purchaseorderdivcall(row.invoicenumber)"
+                id="{{ row.invoicenumber }}"
+              >
+                {{ row.invoicedate }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="vendor">
+              <th mat-header-cell *matHeaderCellDef>Vendor</th>
+              <td
+                mat-cell
+                *matCellDef="let row"
+                (click)="purchaseorderdivcall(row.invoicenumber)"
+                id="{{ row.invoicenumber }}"
+              >
+                {{ row.vendorname }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Total">
+              <th mat-header-cell *matHeaderCellDef>Total</th>
+              <td
+                mat-cell
+                *matCellDef="let row"
+                (click)="purchaseorderdivcall(row.invoicenumber)"
+                id="{{ row.invoicenumber }}"
+              >
+                {{ row.totalprice }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr
+              mat-row
+              mat-row
+              [ngClass]="table - row"
+              tabindex="1"
+              *matRowDef="let row; columns: displayedColumns"
+            ></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-5 col-md-5 col-lg-5">
+        <div style="height: 20px;"></div>
+        <div id="purchaseorder-detailbackcolor" *ngIf="purchaseorderhide">
+          <div style="height: 10px;"></div>
+          <p id="purchaseorderdetail-text">PURCHASE ORDER DETAIL</p>
+
+          <div style="height: 10px;"></div>
+          <div id="purchasebackground2">
+            <div class="row" style="height: 100%">
+              <div class="col-7 col-md-7 col-lg-7">
+                <div class="row" id="row-size">
+                  <div class="col-6 col-md-6 col-lg-7">
+                    <p id="purchase-text">PURCHASE ORDER</p>
+                    <p id="purchase-text">PURCHASE RETURN</p>
+                    <p id="purchase-text">OVERALL LIST</p>
+                  </div>
+                  <div class="col-6 col-md-6 col-lg-5">
+                    <div class="row">
+                      <div class="col-6 col-md-6 col-lg-5"></div>
+                      <div class="col-6 col-md-6 col-lg-7">
+                        <div class="row" id="button-printpage1">
+                          <i
+                            class="fa fa-print"
+                            aria-hidden="true"
+                            id="icon-align"
+                          ></i>
+                          &nbsp;&nbsp;
+                          <p id="font-size15">Print Page</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <mat-form-field style="color: black;">
+                      <input
+                        matInput
+                        (keyup)="applyFilter($event.target.value)"
+                        placeholder="&nbsp;&nbsp;&nbsp;&nbsp; Search PO order"
+                      />
+                    </mat-form-field>
+
+                    <div class="row" style="height: 20px;">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="fontsize-12">Date</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="fontsize-12">{{ this.model.invoicedate }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row" style="height: 20px;">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="fontsize-12">Vendor</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="fontsize-12">{{ this.model.vendorname }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row" style="height: 20px;">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="fontsize-12">Order List</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="fontsize-12">{{ this.model.vendorname }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row" style="height: 20px;">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="fontsize-12">DeliveryFee</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="fontsize-12">100</p>
+                      </div>
+                    </div>
+                    <hr />
+
+                    <div class="row">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="font-weight">Total</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="font-weight">{{ this.model.totalprice }}</p>
+                      </div>
+                    </div>
+
+                    <div id="purchase-summarybox">
+                      <p id="purchaseordersum-text">Purchase Order Summary</p>
+
+                      <div class="row" style="height: 20px;">
+                        <div class="col-2 col-md-2 col-lg-2"></div>
+                        <div class="col-5 col-md-5 col-lg-3">
+                          <p id="fontsize-12">poDate</p>
+                        </div>
+                        <div class="col-5 col-md-5 col-lg-1">
+                          <p>:</p>
+                        </div>
+                        <div class="col-5col-md-5 col-lg-5">
+                          <p id="fontsize-12">{{ this.model.invoicedate }}</p>
+                        </div>
+                      </div>
+
+                      <<<<<<< HEAD
+                      <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="dataSource" matSort>
+                          <ng-container matColumnDef="No">
+                            <th mat-header-cell *matHeaderCellDef>No.</th>
+                            <td
+                              mat-cell
+                              *matCellDef="let row; let i = index"
+                              (click)="purchaseorderdivcall(row.invoicenumber)"
+                              id="{{ row.invoicenumber }}"
+                            >
+                              {{ i + 1 }}
+                            </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="PoInvoice">
+                            <th mat-header-cell *matHeaderCellDef>
+                              PO Invoice
+                            </th>
+                            <td
+                              mat-cell
+                              *matCellDef="let row"
+                              (click)="purchaseorderdivcall(row.invoicenumber)"
+                              id="{{ row.invoicenumber }}"
+                            >
+                              {{ row.invoicenumber }}
+                            </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="poDate">
+                            <th mat-header-cell *matHeaderCellDef>PO Date</th>
+                            <td
+                              mat-cell
+                              *matCellDef="let row"
+                              (click)="purchaseorderdivcall(row.invoicenumber)"
+                              id="{{ row.invoicenumber }}"
+                            >
+                              {{ row.invoicedate }}
+                            </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="vendor">
+                            <th mat-header-cell *matHeaderCellDef>Vendor</th>
+                            <td
+                              mat-cell
+                              *matCellDef="let row"
+                              (click)="purchaseorderdivcall(row.invoicenumber)"
+                              id="{{ row.invoicenumber }}"
+                            >
+                              {{ row.vendorname }}
+                            </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="Total">
+                            <th mat-header-cell *matHeaderCellDef>Total</th>
+                            <td
+                              mat-cell
+                              *matCellDef="let row"
+                              (click)="purchaseorderdivcall(row.invoicenumber)"
+                              id="{{ row.invoicenumber }}"
+                            >
+                              {{ row.totalprice }}
+                            </td>
+                          </ng-container>
+
+                          <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                          ></tr>
+                          <tr
+                            mat-row
+                            mat-row
+                            [ngClass]="table - row"
+                            tabindex="1"
+                            *matRowDef="let row; columns: displayedColumns"
+                          ></tr>
+                        </table>
+                      </div>
+                    </div>
+                    =======
+                    <div class="row" style="height: 20px;">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="fontsize-12">TotalProduct</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="fontsize-12">2 items</p>
+                      </div>
+                    </div>
+                    >>>>>>> Add sidenav config and preloadingStrategy
+
+                    <div class="row" style="height: 20px;">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="fontsize-12">Subtotal</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="fontsize-12">{{ this.model.totalprice }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row" style="height: 21px;">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="fontsize-12">DeleveryFee</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="fontsize-12">500.000</p>
+                      </div>
+                    </div>
+                    <hr />
+
+                    <div class="row">
+                      <div class="col-2 col-md-2 col-lg-2"></div>
+                      <div class="col-5 col-md-5 col-lg-3">
+                        <p id="font-weight">Total</p>
+                      </div>
+                      <div class="col-5 col-md-5 col-lg-1">
+                        <p>:</p>
+                      </div>
+                      <div class="col-5col-md-5 col-lg-5">
+                        <p id="font-weight">{{ this.model.totalprice }}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="height: 5px;"></div>
+                  <div class="row" id="button-printpage">
+                    <i
+                      class="fa fa-print"
+                      aria-hidden="true"
+                      id="icon-align"
+                    ></i>
+                    &nbsp;&nbsp;
+                    <p id="font-size15">Print Page</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+@import "_base";
+
+textarea,
+input,
+select {
+  appearance: none;
+  border: none;
+  width: 100%;
+
+  // &:disabled {
+  background-color: $disabled-input-bg;
+  color: $white;
+  // }
+}
+
+textarea {
+  height: 48px;
+}
+
+.three-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.max-height-adjust {
+  max-height: 570px;
+}
+.vendor-photo {
+  width: 220px;
+  height: 280px;
+}
+#editselect-box {
+  width: 100%;
+}

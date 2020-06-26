@@ -1,0 +1,47 @@
+<!--<a [routerLink]="['units']">Units</a> &nbsp; :: &nbsp;<a [routerLink]="['/addunits']">addunits</a>
+-->
+<div class="row">
+  <div class="col-4">
+    <h4>Unit List</h4> 
+  </div>
+  <div class="col-8">
+    <div style="float: right;">
+      <button class="create-button" style="float: left; margin-right: 10px; margin-top: 4px;" (click)="addNewUnits()">
+        <span class="fas fa-plus"></span> Units 
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="enable">
+      <thead>
+        <tr>
+          <th>Unit name</th>
+          <th>Unit symbol</th>
+          <th>Quantity name</th>
+          <th>Quantity symbol</th>
+          <th class="wid-130px">Dimension symbol</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let a of unitlist; let i = index"> 
+        <tr>
+          <td>{{a.unitname}}</td>
+          <td>{{a.unitsymbol}}</td>
+          <td>{{a.quantityname}}</td>
+          <td>{{a.quantitysymbol}}</td>
+          <td class="wid-130px">{{a.dimensionsymbol}} 
+            <span class="edit-delete-icon user-icon">
+              <span class="fas fa-pen mar-let-40px" (click)="unitedit(a.id,a.unitname,a.unitsymbol,
+                a.quantityname,a.quantitysymbol,a.dimensionsymbol)"></span>
+              <span class="fas fa-trash" (click)="unitdelete(a.id)"></span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

@@ -1,0 +1,277 @@
+<div class="container">
+    <button type="button" class="close" aria-label="Close" 
+        (click)="addProductEditClose()" style="position: relative; left: 20px; top: -5px;">
+        <span aria-hidden="true" id="close-icon">&times;</span>
+    </button>
+    <div class="row">
+        <i class="fa fa-plus-circle" id="disedit-icon" aria-hidden="true"></i> 
+        <h2>Edit Product</h2>
+    </div>
+    <div class="row" style="margin-left: 15px;">
+        <div class="col-50">
+            <form name="productEditForm" (ngSubmit)="productEditForm.form.valid && setItem()"
+                #productEditForm="ngForm" novalidate>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="fname" class="heading">Category </label>
+                    </div>
+                    <div class="col-70">
+                        <select id="editselect-box"  name="categorycode" [(ngModel)]="model.categorycode" 
+                            #categorycode="ngModel" required>
+                            <option value="">---- Select ----</option>
+                            <option *ngFor="let itemcategory of allcategorylist" 
+                                [selected]="itemcategory === categorycode"
+                                value="{{itemcategory}}"> {{itemcategory}} </option>
+                        </select>
+
+                        <div *ngIf="categorycode.errors  && (categorycode.dirty || categorycode.touched) ||
+                            (productEditForm.submitted && !categorycode.valid )">
+                            <span [hidden]="!categorycode.errors.required" class="spanerror">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="fname" class="heading">Product Name </label>
+                    </div>
+                    <div class="col-70">
+                        <input id="name-box" name="productname" [(ngModel)]="model.productname" autocomplete="off"
+                            #productname="ngModel" value="{{model.productname}}" placeholder="Product Name" required>             
+
+                        <div *ngIf="productname.errors  && (productname.dirty || productname.touched) ||
+                            (productEditForm.submitted && !productname.valid )">
+                            <span [hidden]="!productname.errors.required" class="spanerror">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="fname" class="heading">Description </label>
+                    </div>
+                    <div class="col-70">
+                        <textarea type="text" id="description-box" [(ngModel)]="model.description" 
+                            #description="ngModel" value="{{model.description}}"
+                            placeholder="Product Description" name="description">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="fname" class="heading">Vendor </label>
+                    </div>
+                    <div class="col-70">
+                        <select id="editselect-box" name ="vendorcode" [(ngModel)]="model.vendorcode"
+                            #vendorcode="ngModel" required>
+                            <option value="">---- Select ----</option>
+                            <option *ngFor="let vendornamecode of vendornamecodelist"  
+                                [selected]="vendornamecode === vendorcode"
+                                value="{{vendornamecode}}"> {{vendornamecode}} </option>
+                        </select>
+
+                        <div *ngIf="vendorcode.errors  && (vendorcode.dirty || vendorcode.touched) ||
+                            (productEditForm.submitted && !vendorcode.valid )">
+                            <span [hidden]="!vendorcode.errors.required" class="spanerror">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="fname" class="heading">Unit </label>
+                    </div>
+                    <div class="col-70">
+                        <select id="editselect-box" name="unit" [(ngModel)]="model.unit"
+                            #unit="ngModel" required>
+                            <option value="">--- Select Unit ---</option>
+                            <option id="editselect-box" *ngFor="let item of allUnitlist" 
+                                [selected]="item === unit"
+                                value="{{item.unitname}}"> {{item.unitname}} </option>
+                        </select>
+
+                        <div *ngIf="unit.errors  && (unit.dirty || unit.touched) ||
+                            (productEditForm.submitted && !unit.valid )">
+                            <span [hidden]="!unit.errors.required" class="spanerror">
+                                Required field cannot be left blank
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="fname" class="heading">Price </label>
+                    </div>
+                    <div class="col-70">
+                        <input type="text" id="price-box" 
+                            [(ngModel)]="model.price" value="{{model.price}}"
+                            #price="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
+                            placeholder="IDR X.XXX.XXX" autocomplete="off" name="price"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label class="heading">Tax </label>
+                    </div>
+                    <div class="col-20">
+                        <input type="text" id="tax-box"
+                            [(ngModel)]="model.tax" value="{{model.tax}}"
+                            #tax="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
+                            placeholder="10%" autocomplete="off" name="tax"/>
+                    </div>
+                    <div class="col-20">
+                        <label class="heading">Margin </label>
+                    </div>
+                    <div class="col-20">
+                        <input type="text" id="margin-box"
+                            [(ngModel)]="model.margin" value="{{model.margin}}"
+                            #margin="ngModel" (ngModelChange)="getSellingPrice(model.price,model.tax,model.margin)"
+                            placeholder="40%" autocomplete="off" name="margin"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="fname" class="heading">Selling Price </label>
+                    </div>
+                    <div class="col-70">
+                        <input type="text" id="productcode-box" [(ngModel)]="model.sellingprice" 
+                            #sellingprice="ngModel" value="{{ model.sellingprice }}"
+                            placeholder="IDR 30.000" name="sellingprice" readonly/>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-50"></div>
+                    <div class="col-50">
+                        <button id="save-btn">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-50">
+            <label id="text-cursor">Product Picture</label> 
+            <div class="row">
+                <div>
+                    <fieldset> 
+                            <div class="custom-file fileInputProfileWrap">
+                                <input type="file" (change)="fileChangeEvent($event,0)" class="fileInputProfile">
+                                <div class="img-space">   
+                                    <div id="addproductpic-box" *ngIf="div1 && !isImageSaved0">
+                                        <img [src]="getImage(model.productImage[0])" onerror="this.src='/assets/images/no-image.png'" />
+                                    </div>
+                                    
+                                <!--  <ng-template #isImageSaved0 id="addproductpic-box">
+                                        <img [src]="productImage[0]" />
+                                    </ng-template> -->
+
+                                     <div *ngIf="isImageSaved0" id="addproductpic-box">
+                                        <img [src]="productImage[0]" />
+                                    </div>  
+                                    <div *ngIf="!isImageSaved0 && !div1">    
+                                        <div  id="addproductpic-box">
+                                            <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+                                        </div>
+                                </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-danger" *ngIf="isImageSaved0" (click)="removeImage(0)">Remove </a>
+                        </div>
+                    </div>
+                    
+                </div> 
+                &nbsp;
+                <div>   
+                    <fieldset> 
+                        <div class="custom-file fileInputProfileWrap">
+                            <input type="file" (change)="fileChangeEvent($event,1)" class="fileInputProfile">
+                            <div class="img-space">   
+                                <div id="addproductpic-box" *ngIf="div2 && !isImageSaved1"> 
+                                    <img [src]="getImage(model.productImage[1])" onerror="this.src='/assets/images/no-image.png'" />
+                                </div>         
+                                <div *ngIf="isImageSaved1" id="addproductpic-box">
+                                    <img [src]="productImage[1]" />
+                                </div>
+
+                                    <div *ngIf="!isImageSaved1 && !div2">    
+                                    <div id="addproductpic-box">
+                                        <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-danger" *ngIf="isImageSaved1" (click)="removeImage(1)">Remove </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Second Image Row -->  
+            <div class="row">
+                <div>
+                    <fieldset> 
+                        <div class="custom-file fileInputProfileWrap">
+                            <input type="file" (change)="fileChangeEvent($event,2)" class="fileInputProfile">
+                            <div class="img-space">  
+                                <div id="addproductpic-box" *ngIf="div3 && !isImageSaved2"> 
+                                    <img [src]="getImage(model.productImage[2])" onerror="this.src='/assets/images/no-image.png'" />
+                                </div>
+                                <div *ngIf="isImageSaved2" id="addproductpic-box">
+                                    <img [src]="productImage[2]" />
+                                </div>
+                                <div *ngIf="!isImageSaved2 && !div3">    
+                                    <div id="addproductpic-box">
+                                        <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-danger" *ngIf="isImageSaved2" (click)="removeImage(2)">Remove </a>
+                        </div>
+                    </div>
+                </div> 
+                &nbsp;
+                <div>   
+                    <fieldset> 
+                        <div class="custom-file fileInputProfileWrap">
+                            <input type="file" (change)="fileChangeEvent($event,3)" class="fileInputProfile">
+                            <div class="img-space">   
+                                <div id="addproductpic-box" *ngIf="div4 && !isImageSaved3"> 
+                                    <img [src]="getImage(model.productImage[3])" onerror="this.src='/assets/images/no-image.png'" />
+                                </div>
+                                <div *ngIf="isImageSaved3" id="addproductpic-box">
+                                    <img [src]="productImage[3]" />
+                                </div>
+                                <div *ngIf="!isImageSaved3 && !div4">    
+                                    <div id="addproductpic-box">
+                                        <i class="fa fa-plus-circle" id="addpicture-icon" aria-hidden="true"></i> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-danger" *ngIf="isImageSaved3" (click)="removeImage(3)">Remove </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        
+    

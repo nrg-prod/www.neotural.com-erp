@@ -1,0 +1,136 @@
+<h3 style="font-size: 22px;">Sales Invoice</h3>
+<br/>
+<div class="row">
+    <div class="col-lg-6" style="margin-left: inherit;">
+        <table>
+            <tr>
+              <th scope="row" id="thead">Invoice Number</th>
+              <td id="tdbody">{{ this.model.invoiceNumber }}</td>
+            </tr>
+            <tr>
+              <th scope="row" id="thead">Date</th>
+              <td id="tdbody">{{ this.model.soDate }}</td>
+            </tr>
+            <tr>
+                <th scope="row" id="thead">Terms</th>
+                <td id="tdbody">30 Days</td>
+            </tr>
+            <tr>
+                <th scope="row" id="thead">Status</th>
+                <td id="tdbody">{{ this.model.status }}</td>
+            </tr>
+            <!-- <tr>
+                <th scope="row" id="thead">Sales Person</th>
+                <td id="tdbody">Alex    {{ this.sales.salesPerson }}</td>
+            </tr>
+            <tr>
+                <th scope="row" id="thead">Order Number</th>
+                <td id="tdbody">Pur001{{ this.sales.orderNumber }}</td>
+            </tr>
+            <tr>
+                <th scope="row" id="thead">Currency Code</th>
+                <td id="tdbody">15000 USD{{ this.sales.netAmount }}</td>
+            </tr>  -->
+        </table>
+    </div>
+    <div class="col-lg-6" style="margin-top: -85px;">
+        <div class="imageRight">
+            <img src="./assets/images/nrg_logo.png" class="imagecenter" />
+        </div>
+        <div id="p-text">
+            <p>NICKY OKITA TANAKA,</p>
+            <p>10110 , Jakarta,</p>
+            <p>Jakarta,</p>
+            <p>Indonesia.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6" style="margin-left: inherit;">
+        <div class="biilingdetails">
+            <p style="font-weight: bold;text-decoration: underline;">Billing To:</p>
+            <p>{{ this.sales.customerName }}</p>
+            <p>{{ this.sales.city }},</p>
+            <p>{{ this.sales.country }}</p>
+            <p>Phone : {{ this.sales.phoneNumber }}.</p>
+            <p>{{ this.sales.email }}</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th> 
+                <th>Qty</th>
+                <th>Description</th>
+                <th>UnitPrice</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let list of salesViewList">
+                <td>{{ list.itemname }}</td>
+                <td>{{ list.qty }}</td>
+                <td>{{ list.description }}</td>
+                <td>{{ list.unitprice }}</td>
+                <td>{{ list.subtotal }}</td>
+            </tr>
+        </tbody>
+      </table>
+</div>
+<div class="row">
+    <table>
+        <tr>
+            <th scope="row" id="thead">Sub Total</th> 
+            <th scope="row" id="thead">Discount</th>
+            <th scope="row" id="thead">Shipping</th>
+            <th scope="row" id="thead">Total</th>
+        </tr>
+        <tr>
+            <td id="tdbody">{{ this.model.subTotal }}</td>
+            <td id="tdbody">0.0</td>
+            <td id="tdbody">0.0</td>
+            <td id="tdbody">{{ this.model.subTotal }}</td>
+        </tr>
+        <!-- <tr>
+            <th scope="row" id="thead">GST</th>
+            <th scope="row" id="thead"></th>
+            <th scope="row" id="thead"></th>
+            <th scope="row" id="thead">Deposit</th>
+        </tr>
+        <tr>
+            <td id="tdbody">473.0</td>
+            <td id="tdbody">0.0</td>
+            <td id="tdbody">0.0</td>
+            <td id="tdbody">0.0</td>
+        </tr> -->
+        <tr>
+            <th style="border: none"></th>
+            <th style="border: none"></th>
+            <th style="border: none"></th>
+            <th scope="row" id="thead">Amount Due</th>
+        </tr>
+        <tr>
+            <td style="border: none"></td>
+            <td style="border: none"></td>
+            <td style="border: none"></td>
+            <td id="tdbody">{{ this.model.subTotal }}</td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-6" style="margin-left: inherit;">
+        <div class="biilingdetails">
+            <p>Note :</p>
+            <p>Thanks for your business!</p>
+        </div>
+    </div>
+
+</div>
+ 

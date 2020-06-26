@@ -1,0 +1,8 @@
+@import "_base";
+
+.odd-row {
+  background-color: $material-table-odd-bg;
+}
+.even-row {
+  background-color: $material-table-even-bg;
+}

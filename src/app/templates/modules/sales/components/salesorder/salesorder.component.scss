@@ -1,0 +1,186 @@
+@import "_base";
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+#x {
+  position: absolute;
+  background: #16222B;
+  border: red;
+  color: white;
+  top: -10px;
+  right: -10px;
+  border-radius: 25px;
+
+}
+span{
+  color:white;
+  font-size: 12px;
+  margin: 5px 0px;
+}
+.spanerror{
+  background-color: $error-code;
+}
+.spanerror1{
+  background-color: $error-code;
+  margin-left: 8.3vh;
+}
+::ng-deep .mat-dialog-container{
+  overflow: hidden !important;
+}
+.grid-container3 {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1rem auto 1rem;
+  grid-gap: 15px;
+  padding: 15px;
+  background:$po-order-form-bg;
+  border-radius: $dialog-border-radius; 
+  font-size: 14px;
+}
+#h2ID{
+  color:$h2-bg;
+  font-family: $font-family;
+  font-size: 20px;
+  margin-top: 0px;
+  font-weight: bold;
+}
+#pID{
+  color:$h2-bg;
+  font-family: $font-family;
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+}
+#totID{
+  color:$h2-bg;
+  font-family: $font-family;
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+  margin-left: 50vh;
+}
+#date-box{
+  color:$h2-bg;
+}
+
+#po-label{
+  color:#7a8992;
+  width: 85%;
+  margin-bottom: 4px;
+}
+#po-price{
+  color: $white;
+  width: 35%;
+  margin-bottom: 4px;
+}
+#po-textbox{
+  color:$h2-bg;
+  background: $po-order-form-bg;
+  width: 85%;
+  color: #fff; 
+  padding: 0px 5px;
+  margin-bottom: 15px;
+  height: 30px;
+}
+hr{
+  width: 100%;
+  background-color:#4D616D;
+  margin-top: 300px;
+}
+select,input{
+  border: 1px solid  #2C4655;
+}
+#selected-box{
+  width: 85%;
+  background: $po-order-form-bg;
+  color:$h2-bg;
+  margin-bottom: 15px;
+  height: 30px;
+  padding: 5px;
+}
+.m-t-5px{margin-top: 5px;}
+.m-t-15px{margin-top: 15px;}
+.m-t-20px{margin-top: 20px !important;}
+#options-box{
+  width: 85%;
+  height: 1.5rem;
+  background: none;
+  color:$h2-bg;
+}
+
+#add-text{
+  text-align: center;
+  margin: 6px;
+  cursor: pointer;
+}
+
+#add-btn{
+  width: 90px;
+  border: 1px solid #1186aa;
+  background: $btn-bg;
+  color:$h2-bg;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+
+body {background-color: #16222B;}
+
+.grid-container4 {
+  display: grid;
+  grid-template-columns: 8rem auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+    background: $po-order-form-bg;
+    height: 3rem;
+}
+#date-borderbox{
+  width: 85%;
+  border: 1px solid  #2C4655;
+  margin-bottom: 15px;
+  height: 30px;
+  padding: 5px;
+}
+
+.text-field-align{padding: 1px 8px; height: 25px;}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+#font-size{
+  font-size: 12px;
+  color: #6E7D87;
+}
+
+
+.mat-dialog-container{
+  background: inherit !important;
+}
+.ng-trigger-dialogContainer {
+  background: inherit !important;
+}
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.update-btn{width: 100px;
+  height: 30px;
+  line-height: 30px; font-weight: normal;
+  float: right;}

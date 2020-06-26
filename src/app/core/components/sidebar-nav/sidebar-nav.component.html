@@ -1,0 +1,42 @@
+<mat-drawer-container class="header-margin-adjust w-100">
+  <mat-drawer #drawer mode="side" disableClose="true" opened="true" class="">
+    <mat-nav-list *ngIf='isExpanded' class="side-navi" >
+      <ul>
+      <li *ngFor="let menuItem of menuItems; let i = index" class="navi-link-deduct" >
+        <div
+          [ngClass]="{
+            active:
+              (!currentPath && menuItem.path === '/') ||
+              menuItem.path === assignPath
+          }"
+          class="navi-link-deduct"
+          
+        >
+          <a
+            class="d-flex align-items-center navi-link-deduct"
+            [routerLink]="[menuItem.path]"
+            routerLinkActive="router-link-active"
+            (click)="shuffleOverrideLinks(i); false"
+          >
+            <img class="navi-link-deduct" [src]="menuItem.icon" />
+            <p class="m-0 pl-3 navi-link-deduct" mat-line>
+              {{ menuItem.label }} </p>
+          </a>
+          <span *ngIf="menuItem.childern.length" class="child-shuffle" [class.open]="showChildNum == i" (click)="shuffleChildLinks(i);false"></span>
+          
+        </div>
+        <div *ngIf="showChildNum == i">
+            <ul *ngIf="menuItem.submenu">
+              <li *ngFor="let child of menuItem.childern; let i = index">
+                <a [routerLink]="child?.path" class="navi-link-deduct" [routerLinkActive]="['active']">{{child.label}}</a>
+              </li>
+            </ul>
+        </div>
+
+      </li>
+      </ul>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <ng-content></ng-content>
+</mat-drawer-container>

@@ -1,0 +1,104 @@
+@import "_base";
+.box{
+  background: rgb(37, 63, 75);
+  width: 25rem;
+  margin-left: -200px;
+  border-radius: $dialog-border-radius;
+  top:5rem;
+  font-family: Open Sans;
+}
+.text{
+  color:white;
+  font-family: Open Sans;
+  float: left;
+  padding-left: 2.5rem;
+  font-weight: bold;
+}
+.datetext{
+  color: #627580;
+  float: right;
+  padding-right: 2.5rem;
+}
+.timeTxt{
+  width: 83%;
+  height: 50px;
+  background: #2C4655;
+  border: 1px solid #2C4655;
+  color: #97A4AC;
+}
+.reasonTxt{
+  border-radius: 8px;
+  border: 1px solid #334F5F;
+  background: #1C313E;
+  width: 80%;
+  height: 14em;
+  color: $white;
+  padding-left: 15px;
+}
+.checkin-checkout{
+  background: #1C313E;
+  border: 1px solid #1C313E;
+  width: 35%;
+  height: 2.5rem;
+  font-size: 16px;
+  border-radius: $btn-border-radius;
+  font-weight: bold;
+}
+#checkIn{
+  background: #149A52;
+  color: white;
+  float: left;
+  width: 42%;
+}
+#checkOut{
+  background: #D84444;
+  color: white;
+  float: right;
+  width: 42%;
+}
+#btn1{
+  padding-left: 2.5rem;
+}
+#btn2{
+  padding-right: 2.5rem;
+}
+.timeTxt::placeholder {
+  text-align: center;
+  font-size: 22px;
+  font-weight:bold;
+}
+::placeholder {
+  color: #8D9BA4;
+  font-size: 15px;
+}
+
+#employee-checkin-checkout-box {
+  position:absolute; top:10px; z-index: 1;
+}
+
+#close-button {
+  background: none !important;
+  border: none !important;
+  height: 2rem !important;
+  font-size: 15px !important;
+  padding-right: 10px;
+ }
+
+#popup-close  {
+  color: $white;
+  font-size: 20px;
+}
+
+.checkin-disabled {
+  color: #149A52 !important;
+  background: #1C313E !important;
+}
+
+.checkout-disabled {
+  color: #CC4343 !important;
+  background: #1C313E !important;
+}
+
+#error-msg {
+  color: red;
+}

@@ -1,0 +1,96 @@
+<header class="w-100 position-fixed d-flex align-items-center p-4">
+
+  <h1 hidden>ERP</h1>
+
+  <button 
+    (click)="toggleSideNavi()"
+    aria-label="Toggle Side Navigation" 
+    class="header-menu">
+  </button>
+
+  <a [routerLink]="['/']" class="app-logo">
+    <img 
+      src="assets/images/LOGO-nrg.svg" 
+      class="img-fluid logo position-absolute" 
+      alt="app logo" />
+  </a>
+
+  <input class="global-search-box" type="input" [(ngModel)]="searchText" autocomplete="on" placeholder="Search here" />
+
+  <div class="user-config">
+    <div class="user-info">
+      <h3>Hendri Mulyana</h3>
+      <span>General Manager</span>
+    </div>
+    <div class="user-photo">
+      <img src="assets/images/photo-manager.svg" (mouseenter)="optionListToggle(true)" alt="photo user" />
+      <ul class="option-list" [class.show]="showMenu" (mouseleave)="optionListToggle(false)">
+        <li><a [routerLink]="['']">Edit Profile</a></li>
+        <li><a  (click)="logout()">Sign Out</a></li>
+      </ul>
+    </div>
+    <div class="user-options">
+      <a [routerLink]="['/']" class="user-option"></a>
+    </div>
+  </div>
+  
+</header>
+
+<!-- <div class=" col-1 col-lg-1"></div>
+
+<div class="col-md-2 col-2 col-lg-1">
+  <img
+    src="./assets/images/nrg_logo.png"
+    id="nrg-logo-paddding"
+    [routerLink]="['/landingpage']"
+  />
+</div>
+<div class="col-md-5 col-3 col-lg-3">
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    autocomplete="on"
+    placeholder="&#xf002; search here"
+    class="searchicon"
+  />
+</div>
+<div class="col-md-1 col-1 col-lg-3"></div>
+
+<div class="col-lg-1"></div>
+
+<div class="col-2 col-lg-2">
+  <div class="dropdown">
+    <div class="dropbtn icons btn-right showLeft" (click)="showDropdown()">
+      <div id="user-img">
+        <img src="./assets/images/user.png" />
+      </div>
+    </div>
+    <div id="myDropdown" class="dropdown-content">
+      <div id="user-imag">
+        <img src="./assets/images/user.png" style="margin-left: 105px;" />
+      </div>
+      <br />
+      <div id="div-details">
+        <h2 id="black-color">Hendry</h2>
+        <label style="margin-left: -25px;">General Manager</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5 col-4 col-lg-2">
+  <div class="row">
+    <div id="user-img1">
+      <i class="fa fa-cog" aria-hidden="true" id="icon-color"></i>
+    </div>
+    <div id="user-img2">
+      <i
+        [routerLink]="['/login']"
+        class="fa fa-power-off"
+        aria-hidden="true"
+        id="icon-color"
+      >
+      </i>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,76 @@
+@import "_base";
+
+::ng-deep .addnewcategory .mat-dialog-container {
+  background:$po-order-form-bg;
+  border-radius: $dialog-border-radius;
+  overflow: hidden;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+span{
+  color:white;
+  font-size: 12px;
+}
+#x {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: -15px -15px 0px 0px;
+  /* background: #16222B; */
+  border: red;
+  color: white;
+  top: -10px;
+  right: -10px;
+  border-radius: 25px;
+}
+
+/* Style all input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  font-size: 12px;
+  font-family: $font-family;
+  background:$po-order-form-bg;
+  border: 1px solid  $header-bg; 
+  color:$white;
+  //border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin: 5px 0px 3px 0px;
+}
+button[type="submit"]{
+  background: $btn-bg;
+  width: 100%;
+  border: none;
+  border-radius: $btn-border-radius;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  padding: 12px;
+  font-family: $font-family;
+}
+label{
+  color:$white;
+}
+/* Style the container for inputs */
+.container {
+  position: relative;
+  background:$po-order-form-bg;
+  padding: 20px;
+}
+
+.cdk-overlay-pane.my-dialog {
+  position: relative!important;
+}
+
+.spanerror{
+  background-color: $error-code;
+}

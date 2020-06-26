@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-4">
+    <h4>Purchase Order List</h4> 
+  </div>
+  <div class="col-8">
+    <div style="float: right;">
+      <button id="delete" [disabled]="!isDeleteButton ? true:false" [ngStyle]="getDeleteButtonStyle()">
+        <i class="fas fa-trash"></i>
+      </button>
+      <button [disabled]="!isCreateReturn ? true:false"
+        (click)="createReturn()"
+        class="create-button" [ngStyle]="getCreateReturnStyle()">
+          Create Return
+      </button>
+      <button  
+        [disabled]="!isCreateInvoice ? true:false" 
+        class="create-button" [ngStyle]="getCreateInvoiceStyle()"
+        (click)="createInvoice()">Create Invoice
+      </button>
+  
+      <button  (click)="addPurchaseOrder(null,null)" [disabled]="isAddPurchaseOrder" class="create-button" [ngStyle]="getAddPurchaseOrderStyle()">
+        <span class="fas fa-plus"></span> Add Purchase Order 
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table" *ngIf="purchaseTable">
+      <thead>
+        <tr>
+          <th>
+            <!-- <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input1" id="customChecks2">
+              <label class="custom-control-label1" for="customCheck2"></label>
+            </div> -->
+          </th>
+          <th style="cursor:pointer;">Number</th>
+          <th style="cursor:pointer;">Date
+            <i *ngIf="!isSortDateDesc" class="sort-by-desc" (click)="sortByOrder('date','desc')"></i>
+          <i class="sort-by-asc" *ngIf="!isSortDateAsc" (click)="sortByOrder('date','asc')"></i>
+          </th>
+          <th style="cursor:pointer;">Status
+            <i *ngIf="!isSortStatusDesc" class="sort-by-desc" (click)="sortByOrder('status','desc')"></i>
+            <i class="sort-by-asc" *ngIf="!isSortStatusAsc" (click)="sortByOrder('status','asc')"></i>
+          </th>
+          <th>Vendor</th>
+          <th>Category</th>
+          <th>Product Name</th>
+          <th class="txt-right">Quantity</th>
+          <th class="txt-right wid-130px">Sub Total</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of purchaseOrderList; let i = index"
+        id="purchase-order-row-id{{i}}"> 
+        <tr>
+          <td>
+            <div class="custom-control custom-checkbox">
+              <label>
+                <input type="checkbox" class="custom-control-input1" id="customCheck{{i}}" 
+                (click)="rowSelected(i,item, $event.target.checked)">
+              </label>
+            </div>
+          </td>
+          <td>{{item.pocode}}</td>
+          <td>
+            <span [ngClass]="item.status !== 'Open' ? 'font-norm' : 'font-bld'">{{item.date | date : 'dd/MM/yyyy'}}</span>
+          </td>
+          <td>
+            <span *ngIf="item.status === 'Open'" class="open-status">{{item.status}}</span>
+            <span *ngIf="item.status !== 'Open'" class="invoice-status">{{item.status}}</span>
+          </td>
+          <td>{{item.vendorname}}</td>
+          <td><span [ngClass]="item.status !== 'Open' ? 'font-norm' : 'font-bld'">{{item.categoryname}}</span></td>
+          <td><span [ngClass]="item.status !== 'Open' ? 'font-norm' : 'font-bld'">{{item.productname}}</span></td>
+          <td class="txt-right">{{item.qty}}</td>
+          <td class="txt-right wid-130px">{{item.subtotal}}
+            <span class="edit-delete-icon user-icon" *ngIf="isCheckedArr.length === 0 && item.status === 'Open'">
+              <span class="fas fa-pen mar-let-40px" (click)="addPurchaseOrder(item.id, item)" ></span>
+              <span class="fas fa-trash" (click)="removePurchaseOrder(item.id)"></span>
+            </span>
+          </td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+  

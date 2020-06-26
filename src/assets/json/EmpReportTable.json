@@ -1,0 +1,68 @@
+[
+  {
+    "employeeName": "EMPLOYEE1",
+    "empcode": "101001",
+    "rank": "supervisor",
+    "phone": "908762",
+    "email": "nisho@gmail.com",
+    "join": "20oct",
+    "status": "active",
+    "overtimeSalary": "5000",
+    "monthlySalary": "50000"
+  },
+  {
+    "employeeName": "EMPLOYEE2",
+    "empcode": "101002",
+    "rank": "manager",
+    "phone": "908762",
+    "email": "nisho@gmail.com",
+    "join": "20oct",
+    "status": "active",
+    "overtimeSalary": "1000",
+    "monthlySalary": "15000"
+  },
+  {
+    "employeeName": "EMPLOYEE3",
+    "empcode": "101003",
+    "rank": "administrator",
+    "phone": "908762",
+    "email": "nisho@gmail.com",
+    "join": "20oct",
+    "status": "inactive",
+    "overtimeSalary": "1500",
+    "monthlySalary": "25000"
+  },
+  {
+    "employeeName": "EMPLOYEE4",
+    "empcode": "101004",
+    "rank": "clerk",
+    "phone": "908762",
+    "email": "nisho@gmail.com",
+    "join": "20oct",
+    "status": "inactive",
+    "overtimeSalary": "2500",
+    "monthlySalary": "35000"
+  },
+  {
+    "employeeName": "EMPLOYEE5",
+    "empcode": "101005",
+    "rank": "auditor",
+    "phone": "908762",
+    "email": "nisho@gmail.com",
+    "join": "20oct",
+    "status": "active",
+    "overtimeSalary": "800",
+    "monthlySalary": "10000"
+  },
+  {
+    "employeeName": "EMPLOYEE6",
+    "empcode": "101006",
+    "rank": "manager",
+    "phone": "908762",
+    "email": "nisho@gmail.com",
+    "join": "20oct",
+    "status": "inactive",
+    "overtimeSalary": "3500",
+    "monthlySalary": "20000"
+  }
+]
