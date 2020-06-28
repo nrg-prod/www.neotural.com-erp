@@ -4,9 +4,7 @@
 
 export const environment = {
   production: false,
-   apiUrl: "https://login.neotural.com/erp"
-
-
+   apiUrl: "http://localhost:8095/erp/"
 };
 
 /*
